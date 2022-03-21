@@ -14,7 +14,6 @@
         <activity android:name=".ResourcesActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".CalenderActivity"></activity>
-        <activity android:name=".LoginnActivity"></activity>
         <activity android:name=".AccountSetUpActivity"></activity>
         <activity
             android:name=".GoogleSignInActivity"
