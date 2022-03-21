@@ -92,9 +92,16 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                                         bookNames.add(document.getData().get("name").toString());
                                                         bookUrls.add(document.getData().get("link").toString());
-                                                        Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
+
                                                     }
                                                 }
+                                                nbBooks = bookNames.size();
+                                                int[] bookstatus = new int[nbBooks];
+                                                System.out.println(nbBooks);
+                                                System.out.println('\n' + bookNames.get(0));
+                                                Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
+                                                MyAdapter adapter = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
+                                                listView.setAdapter(adapter);
                                             }
                                         });
                             }
@@ -102,10 +109,7 @@ public class ResourcesActivity extends AppCompatActivity {
                     }
                 });
 
-        nbBooks = bookNames.size();
-        int[] bookstatus = new int[nbBooks];
-        System.out.println(nbBooks);
-        System.out.println('\n' + bookNames.get(0));
+
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,8 +178,6 @@ public class ResourcesActivity extends AppCompatActivity {
                 indic.setX(games_but.getX()+40);
             }
         });
-        MyAdapter adapter = new MyAdapter(this,bookNames,bookUrls,bookstatus);
-        listView.setAdapter(adapter);
     }
 
     class MyAdapter extends ArrayAdapter<String> {

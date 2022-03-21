@@ -136,17 +136,18 @@
 
     <ListView
         android:id="@+id/listview"
-        android:layout_width="309dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
+        android:cacheColorHint="#00FFFFFF"
         android:elevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cal_but"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_res"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         tools:foregroundGravity="center">
 
     </ListView>
