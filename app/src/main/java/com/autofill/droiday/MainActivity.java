@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent( MainActivity.this,LoginActivity.class);
+                Intent intent =new Intent( MainActivity.this,ResourcesActivity.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 stopService(getIntent());

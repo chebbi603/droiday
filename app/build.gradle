@@ -18,6 +18,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    configurations {
+        all*.exclude module: 'support-v4'
+    }
 
     buildTypes {
         release {

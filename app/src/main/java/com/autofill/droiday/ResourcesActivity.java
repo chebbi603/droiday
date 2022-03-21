@@ -78,7 +78,7 @@ public class ResourcesActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                lvl = document.getData().get("lvl").toString();
+                                lvl = document.getData().get("level").toString();
                                 db.collection("Books")
                                         .document(""+lvl)
                                         .collection("bk")
@@ -101,8 +101,6 @@ public class ResourcesActivity extends AppCompatActivity {
                 });
 
         nbBooks = bookNames.size();
-        String booknames[] = (String[]) bookNames.toArray();
-        String bookurl[] = (String[]) bookUrls.toArray();
         int[] bookstatus = new int[nbBooks];
 
         return_btn.setOnClickListener(new View.OnClickListener() {
@@ -169,16 +167,18 @@ public class ResourcesActivity extends AppCompatActivity {
                 indic.setX(games_but.getX()+40);
             }
         });
+        MyAdapter adapter = new MyAdapter(this,bookNames,bookUrls,bookstatus);
+        listView.setAdapter(adapter);
     }
 
     class MyAdapter extends ArrayAdapter<String> {
 
         Context context;
-        String rTitle[];
-        String rUrl[];
+        List<String> rTitle;
+        List<String> rUrl;
         int rStatus[];
 
-        MyAdapter(Context c, String title[], String url[], int[] status) {
+        MyAdapter(Context c, List<String> title, List<String> url, int[] status) {
             super(c, R.layout.row, R.id.title, title);
             this.context = c;
             this.rTitle = title;
@@ -194,7 +194,7 @@ public class ResourcesActivity extends AppCompatActivity {
             ImageView myBack = row.findViewById(R.id.backimg);
             TextView myTitle = row.findViewById(R.id.title);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
-            myTitle.setText(rTitle[position]);
+            myTitle.setText(rTitle.get(position));
             if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
             else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
             myTitle.setTypeface(latobold);
