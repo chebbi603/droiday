@@ -18,13 +18,38 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ResourcesActivity extends AppCompatActivity {
+
     ListView listView;
+    private FirebaseAuth mAuth;
+    FirebaseUser mUser;
+    FirebaseFirestore db;
+    String lvl;
+    int nbBooks;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resources);
+
+        List<String> bookNames = new ArrayList<String>();
+        List<String> bookUrls = new ArrayList<String>();
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
@@ -35,11 +60,43 @@ public class ResourcesActivity extends AppCompatActivity {
         Button series = (Button) findViewById(R.id.series_btn);
         Button return_btn = (Button) findViewById(R.id.return_btn);
         listView = (ListView) findViewById(R.id.listview);
+
         title.setText("");
         manuels.setVisibility(View.VISIBLE);
         exam.setVisibility(View.VISIBLE);
         series.setVisibility(View.VISIBLE);
         return_btn.setVisibility(View.INVISIBLE);
+
+        db.collection("users")
+                .document(mUser.getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                lvl = document.getData().get("lvl").toString();
+                                db.collection("Books")
+                                        .document(""+lvl)
+                                        .collection("bk")
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        bookNames.add(document.getData().get("name").toString());
+                                                        bookUrls.add(document.getData().get("link").toString());
+                                                    }
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+                    }
+                });
+
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +107,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 return_btn.setVisibility(View.INVISIBLE);
             }
         });
+
         manuels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +118,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 return_btn.setVisibility(View.VISIBLE);
             }
         });
+
         exam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +129,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 return_btn.setVisibility(View.VISIBLE);
             }
         });
+
         series.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,18 +140,21 @@ public class ResourcesActivity extends AppCompatActivity {
                 return_btn.setVisibility(View.VISIBLE);
             }
         });
+
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 indic.setX(cal_but.getX() + 40);
             }
         });
+
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 indic.setX(home_but.getX()+40);
             }
         });
+
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
