@@ -82,30 +82,33 @@ public class ResourcesActivity extends AppCompatActivity {
                             if (document.exists()) {
                                 lvl = document.getData().get("level").toString();
                                 db.collection("Books")
-                                        .document(""+lvl)
-                                        .collection("bk")
-                                        .get()
-                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                if (task.isSuccessful()) {
-                                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                                        bookNames.add(document.getData().get("name").toString());
-                                                        bookUrls.add(document.getData().get("link").toString());
-                                                        Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
-                                                    }
+                                    .document(""+lvl)
+                                    .collection("bk")
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    bookNames.add(document.getData().get("name").toString());
+                                                    bookUrls.add(document.getData().get("link").toString());
                                                 }
+                                                Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
+                                                nbBooks = bookNames.size();
+                                                int[] bookstatus = new int[nbBooks];
+                                                System.out.println(nbBooks);
+                                                System.out.println('\n' + bookNames.get(0));
+                                                MyAdapter adapter = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
+                                                listView.setAdapter(adapter);
                                             }
-                                        });
+                                        }
+                                    });
                             }
                         }
                     }
                 });
 
-        nbBooks = bookNames.size();
-        int[] bookstatus = new int[nbBooks];
-        System.out.println(nbBooks);
-        System.out.println('\n' + bookNames.get(0));
+
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,9 +179,6 @@ public class ResourcesActivity extends AppCompatActivity {
                 indic.setX(games_but.getX()+40);
             }
         });
-
-        MyAdapter adapter = new MyAdapter(this,bookNames,bookUrls,bookstatus);
-        listView.setAdapter(adapter);
     }
 
     class MyAdapter extends ArrayAdapter<String> {

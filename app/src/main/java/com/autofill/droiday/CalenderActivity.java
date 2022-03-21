@@ -38,10 +38,10 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
 
-        ImageView indic  = (ImageView) findViewById(R.id.indic);
-        ImageView home_but = (ImageView) findViewById(R.id.home_but);
-        ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
-        ImageView games_but = (ImageView) findViewById(R.id.games_but);
+        ImageView indic  = (ImageView) findViewById(R.id.indic2);
+        ImageView home_but = (ImageView) findViewById(R.id.home_but2);
+        ImageView cal_but = (ImageView) findViewById(R.id.cal_but2);
+        ImageView games_but = (ImageView) findViewById(R.id.games_but2);
 
         initWidgets();
         selectedDate = LocalDate.now();
