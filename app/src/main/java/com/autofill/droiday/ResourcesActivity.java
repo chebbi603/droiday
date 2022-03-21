@@ -1,12 +1,26 @@
 package com.autofill.droiday;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ResourcesActivity extends AppCompatActivity {
 
@@ -88,4 +102,41 @@ public class ResourcesActivity extends AppCompatActivity {
             }
         });
     }
+
+    class MyAdapter extends ArrayAdapter<String> {
+
+        Context context;
+        String rTitle[];
+        String rUrl[];
+        int rStatus[];
+
+        MyAdapter(Context c, String title[], String url[], int[] status) {
+            super(c, R.layout.row, R.id.title, title);
+            this.context = c;
+            this.rTitle = title;
+            this.rUrl = url;
+            this.rStatus = status;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            @SuppressLint("ViewHolder") View row = layoutInflater.inflate(R.layout.row, parent, false);
+            ImageView myBack = row.findViewById(R.id.backimg);
+            TextView myTitle = row.findViewById(R.id.title);
+            Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
+            myTitle.setText(rTitle[position]);
+            if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
+            myTitle.setTypeface(latobold);
+            myTitle.setX(myBack.getX() + 8);
+            return row;
+        }
+
+
+        }
+
+
+
 }
