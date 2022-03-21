@@ -97,6 +97,11 @@ public class ResourcesActivity extends AppCompatActivity {
                     }
                 });
 
+        nbBooks = bookNames.size();
+        String booknames[] = (String[]) bookNames.toArray();
+        String bookurl[] = (String[]) bookUrls.toArray();
+        int[] bookstatus = new int[nbBooks];
+
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
