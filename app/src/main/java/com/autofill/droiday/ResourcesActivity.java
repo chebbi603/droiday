@@ -69,6 +69,7 @@ public class ResourcesActivity extends AppCompatActivity {
         exam.setVisibility(View.VISIBLE);
         series.setVisibility(View.VISIBLE);
         return_btn.setVisibility(View.INVISIBLE);
+        listView.setVisibility(View.INVISIBLE);
 
         db.collection("users")
                 .document(mUser.getUid())
@@ -103,7 +104,8 @@ public class ResourcesActivity extends AppCompatActivity {
 
         nbBooks = bookNames.size();
         int[] bookstatus = new int[nbBooks];
-
+        System.out.println(nbBooks);
+        System.out.println('\n' + bookNames.get(0));
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +114,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.VISIBLE);
                 series.setVisibility(View.VISIBLE);
                 return_btn.setVisibility(View.INVISIBLE);
+                listView.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -123,6 +126,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.INVISIBLE);
                 series.setVisibility(View.INVISIBLE);
                 return_btn.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -198,8 +202,9 @@ public class ResourcesActivity extends AppCompatActivity {
             TextView myTitle = row.findViewById(R.id.title);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myTitle.setText(rTitle.get(position));
-            if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
-            else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
+            //if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            //else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
+            myBack.setBackground(getDrawable(R.drawable.blue_but_done));
             myTitle.setTypeface(latobold);
             myTitle.setX(myBack.getX() + 8);
             return row;
