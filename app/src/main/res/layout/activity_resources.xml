@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResourcesActivity">
+    <ImageView
+        android:id="@+id/home_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_but"
+        app:layout_constraintEnd_toStartOf="@+id/cal_but"
+        app:srcCompat="@drawable/home_icon" />
+
+    <ImageView
+        android:id="@+id/cal_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/calendar_icon" />
+
+    <ImageView
+        android:id="@+id/games_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_but"
+        app:layout_constraintStart_toEndOf="@+id/cal_but"
+        app:srcCompat="@drawable/game_icon" />
+
+    <ImageView
+        android:id="@+id/indic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_but"
+        app:srcCompat="@drawable/indicator" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Resources"
+        android:textColor="#1A1545"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_res"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Resources :"
+        android:textColor="#1A1545"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/return_btn"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/exams_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/tab_green"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Epreuves et examens"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#126016"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cal_but"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/books_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/tab_blue"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Manuels"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/series_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/series_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/tab_yellow"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Séries d'exercices"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#5A3814"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/exams_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato"
+        android:text="Find the resources \nyou need anytime"
+        android:textColor="#182137"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/return_btn"
+        android:layout_width="32dp"
+        android:layout_height="47dp"
+        android:text="R"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_res" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "842245530015",
+    "project_id": "eduapp-c6f81",
+    "storage_bucket": "eduapp-c6f81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842245530015:android:9185623c692803da97ddaa",
+        "android_client_info": {
+          "package_name": "com.autofill.droiday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842245530015-6o5g5jihvk0ecefuniuc45vlromja3cn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autofill.droiday",
+            "certificate_hash": "9721b431844172bcbe8f72053719d8b14dc3e925"
+          }
+        },
+        {
+          "client_id": "842245530015-tmkb8kv69q9ojn65r1g5poihe0k9ack5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autofill.droiday",
+            "certificate_hash": "0478b0d7bb18907cb554689ca1e19aad01ec4ece"
+          }
+        },
+        {
+          "client_id": "842245530015-63ajumvc3on3ukrok6d7q54gbcr4vulv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaW-Aw3iguHrwoZChFAltcUxd5znJFYbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842245530015-63ajumvc3on3ukrok6d7q54gbcr4vulv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

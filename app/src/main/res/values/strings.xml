@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">droiday</string>
+    <string name="facebook_app_id">727775048254098</string>
+    <string name="fb_login_protocol_scheme">fb727775048254098</string>
+    <string name="facebook_client_token">4d7ce1d92532e52f440dc2588c3f9762</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
+</resources>
