@@ -15,11 +15,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class ResourcesActivity extends AppCompatActivity {
-
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +34,12 @@ public class ResourcesActivity extends AppCompatActivity {
         Button exam = (Button) findViewById(R.id.exams_btn);
         Button series = (Button) findViewById(R.id.series_btn);
         Button return_btn = (Button) findViewById(R.id.return_btn);
+        listView = (ListView) findViewById(R.id.listview);
         title.setText("");
         manuels.setVisibility(View.VISIBLE);
         exam.setVisibility(View.VISIBLE);
         series.setVisibility(View.VISIBLE);
         return_btn.setVisibility(View.INVISIBLE);
-
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
