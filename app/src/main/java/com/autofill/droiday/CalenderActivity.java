@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,10 +37,41 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
+
+        ImageView indic  = (ImageView) findViewById(R.id.indic);
+        ImageView home_but = (ImageView) findViewById(R.id.home_but);
+        ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
+        ImageView games_but = (ImageView) findViewById(R.id.games_but);
+
         initWidgets();
         selectedDate = LocalDate.now();
         today = selectedDate;
         setMonthView();
+
+        cal_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                indic.setX(cal_but.getX() + 40);
+            }
+        });
+
+        home_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                indic.setX(home_but.getX()+40);
+                Intent intent = new Intent(CalenderActivity.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
+
+        games_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                indic.setX(games_but.getX()+40);
+                Intent intent = new Intent(CalenderActivity.this, ResourcesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initWidgets()

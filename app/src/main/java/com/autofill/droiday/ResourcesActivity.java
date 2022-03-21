@@ -161,6 +161,8 @@ public class ResourcesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 indic.setX(home_but.getX()+40);
+                Intent intent = new Intent(ResourcesActivity.this, HomePage.class);
+                startActivity(intent);
             }
         });
 
@@ -170,6 +172,7 @@ public class ResourcesActivity extends AppCompatActivity {
                 indic.setX(games_but.getX()+40);
             }
         });
+
         MyAdapter adapter = new MyAdapter(this,bookNames,bookUrls,bookstatus);
         listView.setAdapter(adapter);
     }
