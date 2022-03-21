@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -151,6 +152,8 @@ public class ResourcesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 indic.setX(cal_but.getX() + 40);
+                Intent intent = new Intent(ResourcesActivity.this, CalenderActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -97,6 +97,8 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 indic.setX(games_but.getX()+11);
+                Intent intent = new Intent(HomePage.this, ResourcesActivity.class);
+                startActivity(intent);
             }
         });
 
