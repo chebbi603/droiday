@@ -101,7 +101,13 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                     user.put("xp", "0");
 
                     // Add a new document with a generated ID
-                    db.collection("users").document(mUser.getUid()).set(user);
+                    DocumentReference doc = db.collection("users").document(mUser.getUid());
+                    doc.set(user);
+
+                    //create Participation
+                    Map<String, Object> part = new HashMap<>();
+                    doc.collection("Participation").document("-1").set(part);
+
                     //Sign Out
                     if(email!=null && password!=null ) {
                         FirebaseAuth.getInstance().signOut();
