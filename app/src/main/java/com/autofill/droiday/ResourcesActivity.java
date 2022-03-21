@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -88,6 +90,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                                         bookNames.add(document.getData().get("name").toString());
                                                         bookUrls.add(document.getData().get("link").toString());
+                                                        Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
                                                     }
                                                 }
                                             }
