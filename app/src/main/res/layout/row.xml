@@ -8,7 +8,10 @@
 
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-155dp"
+        tools:layout_editor_absoluteY="16dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -18,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/blue_but_done" />
@@ -32,14 +36,23 @@
                 android:text="Job Interview"
                 android:textColor="#FFF"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/backimg"
                 app:layout_constraintTop_toTopOf="@+id/backimg" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="87dp"
+                android:layout_height="23dp"
+                android:background="@color/white"
+                android:text="Button"
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backimg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
