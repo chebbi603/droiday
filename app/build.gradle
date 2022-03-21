@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-firestore'
 
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
