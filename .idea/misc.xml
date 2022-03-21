@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_home.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_login.xml" value="0.3374094202898551" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_main.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_password_reset.xml" value="0.3374094202898551" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
       </map>
