@@ -143,6 +143,9 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                                 monthParticipation = (List<Integer>) document.get("mnthP");
                                 Log.d("ffg", "onComplete: " + monthParticipation);
                                 setMonthView();
+                            }else{
+                                monthParticipation=null;
+                                setMonthView();
                             }
                         }
                     };

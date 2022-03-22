@@ -53,24 +53,6 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         db = FirebaseFirestore.getInstance();
         selectedDate = calender.getSelectedDate();
         rand = new Random();
-        //Log.d("TAAAaaaaaaaaaaaaAG", "helllllllllllllllllloooooooooooooo" + selectedDate.getYear() + "-" + selectedDate.getMonthValue());
-        /*db.collection("users")
-            .document(mUser.getUid())
-            .collection("Participation")
-            .document("" + selectedDate.getYear() + "-" + selectedDate.getMonthValue())
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            monthParticipation = (List<Integer>) document.get("mnthP");
-                            Log.d("ffg", "onComplete: " + monthParticipation);
-                        }
-                    }
-                };
-            });*/
         monthParticipation = calender.getMonthParticipation();
     }
 
@@ -83,7 +65,6 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         //layoutParams.height = (int) (parent.getHeight() * 0.166666666);
         layoutParams.height = (int) (parent.getWidth() * 0.14285714285);//1/7
-        //monthParticipation = calender.getMonthParticipation();
         return new CalendarViewHolder(view, onItemListener);
     }
 
@@ -93,7 +74,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         //monthParticipation = calender.getMonthParticipation();
         holder.dayOfMonth.setText(daysOfMonth.get(position));
-        if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null){
+        if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null && monthParticipation!=null){
             selectedDate = selectedDate.withDayOfMonth(Integer.valueOf(daysOfMonth.get(position)));
             //Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
             if (selectedDate.equals(today)) {
