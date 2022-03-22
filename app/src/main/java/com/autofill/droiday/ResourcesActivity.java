@@ -50,9 +50,12 @@ public class ResourcesActivity extends AppCompatActivity {
 
         List<String> bookNames = new ArrayList<String>();
         List<String> bookUrls = new ArrayList<String>();
+
+        //FireBase
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+        //Initializing Views
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);

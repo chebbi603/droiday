@@ -1,5 +1,6 @@
 package com.autofill.droiday;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,16 +8,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CalenderActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -24,6 +36,11 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     private RecyclerView calendarRecyclerView;
     private static LocalDate selectedDate;
     public static LocalDate today;
+    public static LocalDate firstDay;
+
+    private FirebaseAuth mAuth;
+    FirebaseUser mUser;
+    FirebaseFirestore db;
 
     public LocalDate getToday(){
         return today;
@@ -31,6 +48,10 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     public LocalDate getSelectedDate(){
         return selectedDate;
     }
+    public LocalDate getFistDay(){
+        return firstDay;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +63,25 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
         ImageView home_but = (ImageView) findViewById(R.id.home_but2);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but2);
         ImageView games_but = (ImageView) findViewById(R.id.games_but2);
+        //FireBase
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("users")
+                .document(mUser.getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                firstDay = LocalDate.parse(document.getData().get("first_day").toString());
+                            }
+                        }
+                    }
+                });
 
         initWidgets();
         selectedDate = LocalDate.now();
