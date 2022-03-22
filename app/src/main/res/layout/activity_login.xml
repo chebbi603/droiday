@@ -20,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:background="@drawable/fb_btn"
         android:fontFamily="@font/lato_bold"
         android:text="Sign in with Facebook"
@@ -29,17 +29,17 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GglButton" />
 
     <Button
         android:id="@+id/GglButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="129dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/g_button"
         android:fontFamily="@font/lato_bold"
         android:text="Sign in with Google"
@@ -47,9 +47,9 @@
         android:textColor="#535353"
         android:textSize="18sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/fbButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewAccBtn" />
 
     <TextView
         android:id="@+id/SetUpText"
@@ -90,10 +90,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Password"
-        android:fontFamily="@font/lato_bold"
         android:background="@drawable/field"
+        android:ems="10"
+        android:fontFamily="@font/lato_bold"
+        android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="30dp"
         android:textColor="#000000"
@@ -117,7 +117,7 @@
         android:id="@+id/LoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btn1"
         android:fontFamily="@font/lato_bold"
         android:text="Log in"
@@ -126,7 +126,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/ForgotBtn" />
 
     <TextView
         android:id="@+id/NewAccBtn"
