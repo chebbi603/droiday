@@ -40,13 +40,24 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         selecetedDate = calender.getSelectedDate();
         holder.dayOfMonth.setText(daysOfMonth.get(position));
-        Log.d("TAAAAG", "" + selecetedDate+ " *** " +today);
-        if(today.getDayOfMonth() == position-1 && selecetedDate.equals(today)) {
-            holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xff03a9f4));
+        Log.d("TAAAAG", "" + selecetedDate + " *** " + today);
+        if (!daysOfMonth.get(position).equals("")){
+            if (selecetedDate.equals(today)) {
+                if (today.getDayOfMonth() == position - 1) {
+                    holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xff03a9f4));
+                } else if (today.getDayOfMonth() > position - 1) {
+                    holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xffaef5c8));
+                }
+            } else if (selecetedDate.isBefore(today)) {
+                holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xffaef5c8));
+            } else {
+                holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0x00000000));
+            }
+        }else{
+            holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0x00000000));
         }
     }
 
