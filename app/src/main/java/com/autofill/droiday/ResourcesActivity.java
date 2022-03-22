@@ -122,13 +122,12 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                         try {
+
+                                                            String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                                                            DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
+                                                            String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
                                                             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
                                                             if(file.exists()) {
-                                                                String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
-                                                                DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
-
-                                                                String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
-
                                                                 dmr.setTitle(fileName);
                                                                 dmr.setDescription("Some descrition about file"); //optional
                                                                 dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
