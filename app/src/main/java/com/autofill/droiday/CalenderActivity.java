@@ -88,18 +88,11 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                 });
 
 
-        cal_but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                indic.setX(cal_but.getX() + 40);
-            }
-        });
-
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(home_but.getX()+40);
                 Intent intent = new Intent(CalenderActivity.this, HomePage.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });
@@ -107,8 +100,8 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(games_but.getX()+40);
                 Intent intent = new Intent(CalenderActivity.this, ResourcesActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });

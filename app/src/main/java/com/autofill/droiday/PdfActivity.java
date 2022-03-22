@@ -66,6 +66,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, CalenderActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });
@@ -74,6 +75,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, HomePage.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });
@@ -82,6 +84,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, ResourcesActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });
