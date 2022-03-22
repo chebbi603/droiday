@@ -68,6 +68,7 @@
             android:layout_weight="1"
             android:background="#00FFFFFF"
             android:text="@string/back"
+            android:onClick="previousMonthAction"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -86,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#00FFFFFF"
+            android:onClick="nextMonthAction"
             android:text="@string/forward"
             android:textSize="20sp"
             android:textStyle="bold" />
