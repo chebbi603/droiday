@@ -44,6 +44,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import android.app.DownloadManager;
 
@@ -55,11 +56,11 @@ public class ResourcesActivity extends AppCompatActivity {
     FirebaseUser mUser;
     FirebaseFirestore db;
     String lvl;
-    int nbBooks, nbExams;
+    int nbBooks, nbExams, nbSeries;
     String filename = "file.mt";
     FileOutputStream outputStream;
     DocumentReference docRef;
-    List<String> bookNames, bookUrls, examNames, examUrls, Subjects, Tests;
+    List<String> bookNames, bookUrls, examNames, examUrls, serieNames, serieUrls, Subjects, Tests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,8 @@ public class ResourcesActivity extends AppCompatActivity {
         bookUrls = new ArrayList<String>();
         examNames = new ArrayList<String>();
         examUrls = new ArrayList<String>();
+        serieNames = new ArrayList<String>();
+        serieUrls = new ArrayList<String>();
         Subjects = new ArrayList<String>();
         Tests = new ArrayList<String>();
         Tests.add("Contrôle 1");
@@ -144,7 +147,6 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.INVISIBLE);
                 series.setVisibility(View.INVISIBLE);
                 return_btn.setVisibility(View.VISIBLE);
-                //listViewDevoirs.setVisibility(View.INVISIBLE);
 
                 //Manuels
                 docRef.collection("bk")
@@ -234,7 +236,6 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.INVISIBLE);
                 series.setVisibility(View.INVISIBLE);
                 return_btn.setVisibility(View.VISIBLE);
-                //listViewDevoirs.setVisibility(View.VISIBLE);
 
                 //Series
                 docRef.collection("Devoirs")
@@ -364,8 +365,115 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.INVISIBLE);
                 series.setVisibility(View.INVISIBLE);
                 return_btn.setVisibility(View.VISIBLE);
-                /*Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
-                startActivity(intent);*/
+                docRef.collection("Series")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Subjects = new ArrayList<String>();
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Subjects.add(document.getId());
+                                    }
+                                }
+                                FolderAdapter adapter = new FolderAdapter(ResourcesActivity.this,Subjects);
+                                listView.setAdapter(adapter);
+                                listView.setVisibility(View.VISIBLE);
+
+                                //On Click On Subject
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                        String subject = Subjects.get(i);
+                                        title.setText("Series de :"+ subject);
+                                        listView.setVisibility(View.INVISIBLE);
+                                        FolderAdapter adapter = new FolderAdapter(ResourcesActivity.this,Tests);
+                                        listView.setAdapter(adapter);
+
+                                        docRef.collection("Series")
+                                            .document(subject)
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        DocumentSnapshot document = task.getResult();
+                                                        if (document.exists()) {
+                                                            serieNames = new ArrayList<String>();
+                                                            serieUrls = new ArrayList<String>();
+                                                            Map<String,Object> Series = document.getData();
+                                                            for (String name : Series.keySet()) {
+                                                                serieNames.add(name);
+                                                                serieUrls.add(Series.get(name).toString());
+                                                            }
+
+                                                            nbSeries = serieNames.size();
+                                                            int[] examstatus = new int[nbSeries];
+                                                            Log.d("BOOKS", "onComplete: "+ Arrays.toString(serieNames.toArray()));
+                                                            for(int i = 0 ; i < nbSeries ; i++){
+                                                                String url = serieUrls.get(i);
+                                                                String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
+                                                                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+                                                                if(!file.exists()) examstatus[i] = 0;
+                                                                else examstatus[i] = 1;
+                                                            }
+
+
+                                                            MyAdapter adapter = new MyAdapter(ResourcesActivity.this,serieNames,serieUrls,examstatus);
+                                                            listView.setAdapter(adapter);
+                                                            listView.setVisibility(View.VISIBLE);
+
+                                                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                                @Override
+                                                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                                                    try {
+                                                                        String url = serieUrls.get(i);
+                                                                        DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
+                                                                        String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
+                                                                        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+                                                                        if(!file.exists()) {
+                                                                            dmr.setTitle(fileName);
+                                                                            dmr.setDescription("Some descrition about file"); //optional
+                                                                            dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                                                                            // dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+                                                                            dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                                                                            DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
+                                                                            manager.enqueue(dmr);
+                                                                            BroadcastReceiver onComplete=new BroadcastReceiver() {
+                                                                                public void onReceive(Context ctxt, Intent intent) {
+                                                                                    Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
+                                                                                    startActivity(intente);
+                                                                                }
+                                                                            };
+                                                                            //
+                                                                            registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+                                                                            String value = fileName;
+                                                                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                                                            outputStream.write(value.getBytes());
+                                                                            outputStream.close();
+                                                                        }
+                                                                        else {
+                                                                            Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
+                                                                            startActivity(intent);
+                                                                        }
+
+                                                                    } catch (FileNotFoundException e) {
+                                                                        e.printStackTrace();
+                                                                    } catch (IOException e) {
+                                                                        e.printStackTrace();
+                                                                    }
+
+
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                    }
+                                });
+                            }
+                        });
             }
         });
 
