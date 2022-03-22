@@ -29,6 +29,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CalenderActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -37,6 +38,7 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     private static LocalDate selectedDate;
     public static LocalDate today;
     public static LocalDate firstDay;
+    public static List<Integer> monthParticipation;
 
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -51,7 +53,9 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     public LocalDate getFistDay(){
         return firstDay;
     }
-
+    public List<Integer> getMonthParticipation(){
+        return monthParticipation;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,7 +85,7 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                                 initWidgets();
                                 selectedDate = LocalDate.now();
                                 today = selectedDate;
-                                setMonthView();
+                                setMonthViewAfterCheck();
                             }
                         }
                     }
@@ -124,6 +128,30 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
         calendarRecyclerView.setAdapter(calendarAdapter);
     }
 
+    public void setMonthViewAfterCheck(){
+        db.collection("users")
+                .document(mUser.getUid())
+                .collection("Participation")
+                .document("" + selectedDate.getYear() + "-" + selectedDate.getMonthValue())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                monthParticipation = (List<Integer>) document.get("mnthP");
+                                Log.d("ffg", "onComplete: " + monthParticipation);
+                                setMonthView();
+                            }else{
+                                monthParticipation=null;
+                                setMonthView();
+                            }
+                        }
+                    };
+                });
+    }
+
     private ArrayList<String> daysInMonthArray(LocalDate date)
     {
         ArrayList<String> daysInMonthArray = new ArrayList<>();
@@ -157,14 +185,15 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     public void previousMonthAction(View view)
     {
         selectedDate = selectedDate.minusMonths(1);
-        setMonthView();
+        setMonthViewAfterCheck();
     }
 
     public void nextMonthAction(View view)
     {
         selectedDate = selectedDate.plusMonths(1);
-        setMonthView();
+        setMonthViewAfterCheck();
     }
+
 
     @Override
     public void onItemClick(int position, String dayText)

@@ -25,11 +25,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
     private final ArrayList<String> daysOfMonth;
+    List<Integer> monthParticipation;
     private final OnItemListener onItemListener;
     private static Context context;
     CalenderActivity calender = new CalenderActivity();
@@ -46,6 +48,12 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     {
         this.daysOfMonth = daysOfMonth;
         this.onItemListener = onItemListener;
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        selectedDate = calender.getSelectedDate();
+        rand = new Random();
+        monthParticipation = calender.getMonthParticipation();
     }
 
     @NonNull
@@ -57,10 +65,6 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         //layoutParams.height = (int) (parent.getHeight() * 0.166666666);
         layoutParams.height = (int) (parent.getWidth() * 0.14285714285);//1/7
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-        db = FirebaseFirestore.getInstance();
-        rand = new Random();
         return new CalendarViewHolder(view, onItemListener);
     }
 
@@ -68,16 +72,45 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
-        selectedDate = calender.getSelectedDate();
+        //monthParticipation = calender.getMonthParticipation();
         holder.dayOfMonth.setText(daysOfMonth.get(position));
-        if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null){
-            selectedDate = selectedDate.withDayOfMonth(position-1);
+        if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null && monthParticipation!=null){
+            selectedDate = selectedDate.withDayOfMonth(Integer.valueOf(daysOfMonth.get(position)));
             //Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
             if (selectedDate.equals(today)) {
                 holder.dayOfMonth.setBackgroundResource(R.drawable.today);
             } else if (selectedDate.isBefore(today) && selectedDate.isAfter(firstDay.minusDays(1))) {
                 long diff = ChronoUnit.DAYS.between(firstDay, selectedDate);
-                db.collection("users")
+                Log.d("TAG", "onBindViewHolder: " + monthParticipation + " " + selectedDate.getDayOfMonth());
+
+                long day = selectedDate.getDayOfMonth();
+                if (monthParticipation.contains(day)) {
+                    holder.dayOfMonth.setBackgroundResource(R.drawable.success);
+                }else{
+                    rand_int = rand.nextInt(4);
+                    while(rand_int == prev_rand_int){
+                        rand_int = rand.nextInt(4);
+                    }
+                    //Log.d("RAAAAANDOM", selectedDate + "onComplete:"+ rand_int + " " + prev_rand_int);
+                    prev_rand_int = rand_int;
+                    if(rand_int==0) {
+                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
+                        //Log.d("RAAAAANDOM", "fail");
+                    }else if(rand_int==1) {
+                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail2);
+                        //Log.d("RAAAAANDOM", "fail2");
+                    }else if(rand_int==2) {
+                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail3);
+                        //Log.d("RAAAAANDOM", "fail3");
+                    }else if(rand_int==3){
+                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail4);
+                        //Log.d("RAAAAANDOM", "fail4");
+                    }
+
+                }
+
+                //old code
+                /*db.collection("users")
                         .document(mUser.getUid())
                         .collection("Participation")
                         .document(""+diff)
@@ -94,21 +127,26 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                         while(rand_int == prev_rand_int){
                                             rand_int = rand.nextInt(4);
                                         }
-                                        Log.d("RAAAAANDOM", "onComplete:"+ rand_int + " " + prev_rand_int);
+                                        //Log.d("RAAAAANDOM", selectedDate + "onComplete:"+ rand_int + " " + prev_rand_int);
                                         prev_rand_int = rand_int;
-                                        if(rand_int==0)
-                                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
-                                        else if(rand_int==1)
+                                        if(rand_int==0) {
+                                            holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
+                                            //Log.d("RAAAAANDOM", "fail");
+                                        }else if(rand_int==1) {
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail2);
-                                        else if(rand_int==2)
+                                            //Log.d("RAAAAANDOM", "fail2");
+                                        }else if(rand_int==2) {
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail3);
-                                        else
+                                            //Log.d("RAAAAANDOM", "fail3");
+                                        }else if(rand_int==3){
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail4);
+                                            //Log.d("RAAAAANDOM", "fail4");
+                                        }
 
                                     }
                                 }
                             }
-                        });
+                        });*/
 
             } else {
                 holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0x00000000));
