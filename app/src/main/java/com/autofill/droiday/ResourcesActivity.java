@@ -122,24 +122,26 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                         try {
-                                                            String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
-                                                            DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
+                                                            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+                                                            if(file.exists()) {
+                                                                String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                                                                DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
 
-                                                            String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
+                                                                String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
 
-                                                            dmr.setTitle(fileName);
-                                                            dmr.setDescription("Some descrition about file"); //optional
-                                                            dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                                                            dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                                            dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-                                                            DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
-                                                            manager.enqueue(dmr);
+                                                                dmr.setTitle(fileName);
+                                                                dmr.setDescription("Some descrition about file"); //optional
+                                                                dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                                                                dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                                                dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                                                                DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
+                                                                manager.enqueue(dmr);
 
-                                                            String value = fileName;
-                                                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                                                            outputStream.write(value.getBytes());
-                                                            outputStream.close();
-
+                                                                String value = fileName;
+                                                                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                                                outputStream.write(value.getBytes());
+                                                                outputStream.close();
+                                                            }
                                                         } catch (FileNotFoundException e) {
                                                             e.printStackTrace();
                                                         } catch (IOException e) {
