@@ -78,15 +78,15 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 firstDay = LocalDate.parse(document.getData().get("first_day").toString());
+                                initWidgets();
+                                selectedDate = LocalDate.now();
+                                today = selectedDate;
+                                setMonthView();
                             }
                         }
                     }
                 });
 
-        initWidgets();
-        selectedDate = LocalDate.now();
-        today = selectedDate;
-        setMonthView();
 
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
