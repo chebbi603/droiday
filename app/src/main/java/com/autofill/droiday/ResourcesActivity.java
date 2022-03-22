@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +37,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import android.app.DownloadManager;
 
 
 public class ResourcesActivity extends AppCompatActivity {
@@ -115,6 +118,11 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                         try {
+                                                            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                                                            Uri uri = Uri.parse("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf");
+                                                            DownloadManager.Request request = new DownloadManager.Request(uri);
+                                                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                                                            long reference = manager.enqueue(request);
                                                             String value = "dos_spo.pdf";
                                                             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                                                             outputStream.write(value.getBytes());
@@ -189,7 +197,7 @@ public class ResourcesActivity extends AppCompatActivity {
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(cal_but.getX() + 77);
+                indic.setX((cal_but.getX()+cal_but.getWidth())/2);
                 Intent intent = new Intent(ResourcesActivity.this, CalenderActivity.class);
                 startActivity(intent);
             }
@@ -198,14 +206,14 @@ public class ResourcesActivity extends AppCompatActivity {
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(home_but.getX()+77);
+                indic.setX((home_but.getX()+home_but.getWidth())/2);
             }
         });
 
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(games_but.getX()+77);
+                indic.setX((games_but.getX()+games_but.getWidth())/2);
             }
         });
     }
