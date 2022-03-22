@@ -19,6 +19,8 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/calendar_icon.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/designlineblue.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/designlineyellow.xml" value="0.2865" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/dropdown.xml" value="0.302" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/drp_bck.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail.xml" value="0.179" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail2.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail3.xml" value="0.2865" />
@@ -47,7 +49,9 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/calendar_cell.xml" value="0.3374094202898551" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/dropdown.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/row.xml" value="0.3374094202898551" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/spinner.xml" value="0.346875" />
       </map>
     </option>
   </component>

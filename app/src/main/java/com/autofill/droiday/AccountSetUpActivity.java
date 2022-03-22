@@ -63,8 +63,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
 
         today = LocalDate.now();
 
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,Levels);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter aa = new ArrayAdapter(this,R.layout.spinner,Levels);
+        aa.setDropDownViewResource(R.layout.dropdown);
 
         LvlChoice.setAdapter(aa);
 
