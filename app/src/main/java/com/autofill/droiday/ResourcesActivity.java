@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -132,24 +134,33 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                 dmr.setTitle(fileName);
                                                                 dmr.setDescription("Some descrition about file"); //optional
                                                                 dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                                                                dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                                                //dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                                                                 dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                                                                 DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
                                                                 manager.enqueue(dmr);
-
+                                                                BroadcastReceiver onComplete=new BroadcastReceiver() {
+                                                                    public void onReceive(Context ctxt, Intent intent) {
+                                                                        Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
+                                                                        startActivity(intente);
+                                                                    }
+                                                                };
+                                                                registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
                                                                 String value = fileName;
                                                                 outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                                                                 outputStream.write(value.getBytes());
                                                                 outputStream.close();
                                                             }
+                                                           else {
+                                                                Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
+                                                                startActivity(intent);
+                                                            }
+
                                                         } catch (FileNotFoundException e) {
                                                             e.printStackTrace();
                                                         } catch (IOException e) {
                                                             e.printStackTrace();
                                                         }
 
-                                                        Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                        startActivity(intent);
 
                                                     }
                                                 });
