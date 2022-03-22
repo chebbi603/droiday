@@ -94,7 +94,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                         while(rand_int == prev_rand_int){
                                             rand_int = rand.nextInt(4);
                                         }
-                                        //Log.d("RAAAAANDOM", "onComplete:"+ rand_int + " " + prev_rand_int);
+                                        Log.d("RAAAAANDOM", "onComplete:"+ rand_int + " " + prev_rand_int);
                                         prev_rand_int = rand_int;
                                         if(rand_int==0)
                                         holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
@@ -102,7 +102,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail2);
                                         else if(rand_int==2)
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail3);
-                                        else if(rand_int==3)
+                                        else
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail4);
 
                                     }
