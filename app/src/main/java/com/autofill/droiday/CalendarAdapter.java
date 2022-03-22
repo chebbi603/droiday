@@ -39,6 +39,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
+    Random rand;
+    int rand_int, prev_rand_int=0;
 
     public CalendarAdapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener)
     {
@@ -58,6 +60,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+        rand = new Random();
         return new CalendarViewHolder(view, onItemListener);
     }
 
@@ -69,7 +72,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         holder.dayOfMonth.setText(daysOfMonth.get(position));
         if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null){
             selectedDate = selectedDate.withDayOfMonth(position-1);
-            Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
+            //Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
             if (selectedDate.equals(today)) {
                 holder.dayOfMonth.setBackgroundResource(R.drawable.today);
             } else if (selectedDate.isBefore(today) && selectedDate.isAfter(firstDay.minusDays(1))) {
@@ -87,8 +90,12 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                     if (document.exists()) {
                                         holder.dayOfMonth.setBackgroundResource(R.drawable.success);
                                     }else{
-                                        Random rand = new Random();
-                                        int rand_int = rand.nextInt(4);
+                                        rand_int = rand.nextInt(4);
+                                        while(rand_int == prev_rand_int){
+                                            rand_int = rand.nextInt(4);
+                                        }
+                                        Log.d("RAAAAANDOM", "onComplete:"+ rand_int + " " + prev_rand_int);
+                                        prev_rand_int = rand_int;
                                         if(rand_int==0)
                                         holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
                                         else if(rand_int==1)
