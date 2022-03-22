@@ -82,22 +82,16 @@ public class HomePage extends AppCompatActivity {
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(cal_but.getX() + 11);
                 Intent intent = new Intent(HomePage.this, CalenderActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
-            }
-        });
-        home_but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                indic.setX(home_but.getX()+11);
             }
         });
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(games_but.getX()+11);
                 Intent intent = new Intent(HomePage.this, ResourcesActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
         });
