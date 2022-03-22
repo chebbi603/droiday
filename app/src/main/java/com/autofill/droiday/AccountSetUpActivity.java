@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -103,7 +104,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                     user.put("level", position);
                     user.put("avatar", "0");
                     user.put("xp", "0");
-                    user.put("first_day",today);
+                    user.put("first_day", ""+today);
 
                     // Add a new document with a generated ID
                     DocumentReference doc = db.collection("users").document(mUser.getUid());
