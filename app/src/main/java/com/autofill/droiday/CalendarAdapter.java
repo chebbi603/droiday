@@ -128,6 +128,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 
                 }
 
+                //old code
                 /*db.collection("users")
                         .document(mUser.getUid())
                         .collection("Participation")
