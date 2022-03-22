@@ -95,7 +95,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail2);
                                         else if(rand_int==2)
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail3);
-                                        if(rand_int==3)
+                                        else if(rand_int==3)
                                             holder.dayOfMonth.setBackgroundResource(R.drawable.fail4);
 
                                     }

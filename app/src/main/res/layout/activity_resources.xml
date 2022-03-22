@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back3"
     tools:context=".ResourcesActivity">
     <ImageView
         android:id="@+id/home_but"
@@ -60,7 +61,8 @@
         android:id="@+id/title_res"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/lato_bold"
         android:text="Resources :"
         android:textColor="#1A1545"
@@ -161,14 +163,14 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:cacheColorHint="#00FFFFFF"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         android:elevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cal_but"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_res"
-        android:divider="@null"
-        android:descendantFocusability="blocksDescendants"
-        android:dividerHeight="0dp"
         tools:foregroundGravity="center">
 
 
@@ -176,10 +178,11 @@
 
     <Button
         android:id="@+id/return_btn"
-        android:layout_width="32dp"
-        android:layout_height="47dp"
-        android:text="R"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/title_res"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/title_res"
         tools:ignore="TouchTargetSizeCheck" />
 

@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -196,8 +197,11 @@ public class ResourcesActivity extends AppCompatActivity {
                                             dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                                             DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
                                             manager.enqueue(dmr);
+                                            bookstatus[i] = 1;
                                             BroadcastReceiver onComplete=new BroadcastReceiver() {
                                                 public void onReceive(Context ctxt, Intent intent) {
+                                                    MyAdapter adaptera = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
+                                                    listView.setAdapter(adaptera);
                                                     Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
                                                     startActivity(intente);
                                                 }
@@ -439,8 +443,11 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                             dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                                                                             DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
                                                                             manager.enqueue(dmr);
+                                                                            examstatus[i] = 1;
                                                                             BroadcastReceiver onComplete=new BroadcastReceiver() {
                                                                                 public void onReceive(Context ctxt, Intent intent) {
+                                                                                    MyAdapter adapter = new MyAdapter(ResourcesActivity.this,serieNames,serieUrls,examstatus);
+                                                                                    listView.setAdapter(adapter);
                                                                                     Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
                                                                                     startActivity(intente);
                                                                                 }
@@ -527,8 +534,14 @@ public class ResourcesActivity extends AppCompatActivity {
             TextView myTitle = row.findViewById(R.id.title);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myTitle.setText(rTitle.get(position));
-            if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
-            else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
+            if(rStatus[position] == 1) {
+                myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+                myTitle.setTextColor(Color.WHITE);
+            }
+            else {
+                myBack.setBackground(getDrawable(R.drawable.grey_but_download));
+                myTitle.setTextColor(Color.rgb(15,53,103));
+            }
             myTitle.setTypeface(latobold);
             myTitle.setX(myBack.getX() + 8);
             return row;

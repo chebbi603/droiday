@@ -3,9 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/back3"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cal_back"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
     <ImageView
         android:id="@+id/home_but2"
         android:layout_width="wrap_content"
@@ -46,6 +55,7 @@
 
     <TextView
         android:id="@+id/textView2"
+        android:fontFamily="@font/lato_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -58,16 +68,18 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <Button
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:text="@string/back"
+            android:background="#00ffffff"/>
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/arrow"
             android:onClick="previousMonthAction"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -77,35 +89,43 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:fontFamily="@font/lato_bold"
             android:text="Feb 2021"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/arrow"
+            android:rotation="180"
             android:onClick="nextMonthAction"
-            android:text="@string/forward"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SUN"
+            android:fontFamily="@font/lato"
+            android:text="Sun"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -113,7 +133,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MON"
+            android:fontFamily="@font/lato"
+            android:text="Mon"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -121,7 +142,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TUE"
+            android:fontFamily="@font/lato"
+            android:text="Tue"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -129,7 +151,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WED"
+            android:fontFamily="@font/lato"
+            android:text="Wed"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -137,7 +160,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="THUR"
+            android:fontFamily="@font/lato"
+            android:text="Thu"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -145,7 +169,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FRI"
+            android:fontFamily="@font/lato"
+            android:text="Fri"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -153,7 +178,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SAT"
+            android:fontFamily="@font/lato"
+            android:text="Sat"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -163,9 +189,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="188dp"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toTopOf="@+id/cal_but2"
         app:layout_constraintEnd_toEndOf="parent"
