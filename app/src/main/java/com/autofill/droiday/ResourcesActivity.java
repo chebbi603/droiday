@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -127,6 +129,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                                                             outputStream.write(value.getBytes());
                                                             outputStream.close();
+
                                                         } catch (FileNotFoundException e) {
                                                             e.printStackTrace();
                                                         } catch (IOException e) {
