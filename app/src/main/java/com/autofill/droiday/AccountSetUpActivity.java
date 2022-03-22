@@ -25,6 +25,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
+    public  LocalDate today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+
+        today = LocalDate.now();
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,Levels);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -99,6 +103,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                     user.put("level", position);
                     user.put("avatar", "0");
                     user.put("xp", "0");
+                    user.put("first_day",today);
 
                     // Add a new document with a generated ID
                     DocumentReference doc = db.collection("users").document(mUser.getUid());
