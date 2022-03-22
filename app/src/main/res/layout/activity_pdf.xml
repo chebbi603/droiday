@@ -14,6 +14,7 @@
         android:layout_height="0dp"
         android:layout_below="@+id/tv_header"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +36,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <ImageView
+        android:id="@+id/home_but3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_but3"
+        app:layout_constraintEnd_toStartOf="@+id/cal_but3"
+        app:srcCompat="@drawable/home_icon" />
+
+    <ImageView
+        android:id="@+id/cal_but3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/calendar_icon" />
+
+    <ImageView
+        android:id="@+id/games_but3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_but3"
+        app:layout_constraintStart_toEndOf="@+id/cal_but3"
+        app:srcCompat="@drawable/game_icon" />
+
+    <ImageView
+        android:id="@+id/indic3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/games_but3"
+        app:layout_constraintStart_toStartOf="@+id/games_but3"
+        app:layout_constraintTop_toBottomOf="@+id/games_but3"
+        app:srcCompat="@drawable/indicator" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

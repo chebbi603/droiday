@@ -2,9 +2,12 @@ package com.autofill.droiday;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.barteksc.pdfviewer.PDFView;
@@ -55,7 +58,33 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), SAMPLE_FILE);
         pdfView= (PDFView)findViewById(R.id.pdfView);
         titlepdf.setText(SAMPLE_FILE);
+        ImageView home_but = (ImageView) findViewById(R.id.home_but);
+        ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
+        ImageView games_but = (ImageView) findViewById(R.id.games_but);
         if(!SAMPLE_FILE.equals("null"))displayFromAsset(SAMPLE_FILE,file);
+        cal_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PdfActivity.this, CalenderActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        home_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PdfActivity.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
+
+        games_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PdfActivity.this, ResourcesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
         private void displayFromAsset(String assetFileName,File file) {
             pdfFileName = assetFileName;

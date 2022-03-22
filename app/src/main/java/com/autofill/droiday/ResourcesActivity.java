@@ -487,7 +487,6 @@ public class ResourcesActivity extends AppCompatActivity {
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX((cal_but.getX()+cal_but.getWidth())/2);
                 Intent intent = new Intent(ResourcesActivity.this, CalenderActivity.class);
                 startActivity(intent);
             }
@@ -496,7 +495,6 @@ public class ResourcesActivity extends AppCompatActivity {
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX((home_but.getX()+home_but.getWidth())/2);
                 Intent intent = new Intent(ResourcesActivity.this, HomePage.class);
                 startActivity(intent);
             }
