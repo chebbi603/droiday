@@ -52,7 +52,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
         }
         pdfView= (PDFView)findViewById(R.id.pdfView);
         titlepdf.setText(SAMPLE_FILE);
-        if(!SAMPLE_FILE.equals("null"))displayFromAsset(SAMPLE_FILE);
+        if(!SAMPLE_FILE.equals("null"))displayFromAsset("/storage/emulated/0/Download/"+SAMPLE_FILE);
     }
         private void displayFromAsset(String assetFileName) {
             pdfFileName = assetFileName;

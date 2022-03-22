@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -120,12 +122,20 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                         try {
-                                                            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                                                            Uri uri = Uri.parse("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf");
-                                                            DownloadManager.Request request = new DownloadManager.Request(uri);
-                                                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-                                                            long reference = manager.enqueue(request);
-                                                            String value = "dos_spo.pdf";
+                                                            String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                                                            DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
+
+                                                            String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
+
+                                                            dmr.setTitle(fileName);
+                                                            dmr.setDescription("Some descrition about file"); //optional
+                                                            dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                                                            dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                                            dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                                                            DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
+                                                            manager.enqueue(dmr);
+
+                                                            String value = fileName;
                                                             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                                                             outputStream.write(value.getBytes());
                                                             outputStream.close();
