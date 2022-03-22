@@ -1,20 +1,22 @@
 package com.autofill.droiday;
 
-import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.resources.MaterialResources;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,6 +30,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
     private final ArrayList<String> daysOfMonth;
     private final OnItemListener onItemListener;
+    private static Context context;
     CalenderActivity calender = new CalenderActivity();
     private LocalDate today = calender.getToday();
     private LocalDate firstDay = calender.getFistDay();
@@ -57,6 +60,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         return new CalendarViewHolder(view, onItemListener);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         selectedDate = calender.getSelectedDate();
@@ -64,9 +69,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null){
             selectedDate = selectedDate.withDayOfMonth(position-1);
             Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
-            Context context = calender.getBaseContext();
             if (selectedDate.equals(today)) {
-                holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.grey_but_download));
+                holder.dayOfMonth.setBackgroundResource(R.drawable.today);
             } else if (selectedDate.isBefore(today) && selectedDate.isAfter(firstDay.minusDays(1))) {
                 long diff = ChronoUnit.DAYS.between(firstDay, selectedDate);
                 db.collection("users")
@@ -80,10 +84,9 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                 if (task.isSuccessful()) {
                                     DocumentSnapshot document = task.getResult();
                                     if (document.exists()) {
-                                        holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.success));
+                                        holder.dayOfMonth.setBackgroundResource(R.drawable.success);
                                     }else{
-
-                                        holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.fail));
+                                        holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
                                     }
                                 }
                             }

@@ -140,7 +140,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                 dmr.setTitle(fileName);
                                                                 dmr.setDescription("Some descrition about file"); //optional
                                                                 dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                                                                dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+                                                               // dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
                                                                 dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                                                                 DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
                                                                 manager.enqueue(dmr);
