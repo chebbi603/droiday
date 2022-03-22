@@ -147,6 +147,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_res"
         android:divider="@null"
+        android:descendantFocusability="blocksDescendants"
         android:dividerHeight="0dp"
         tools:foregroundGravity="center">
 

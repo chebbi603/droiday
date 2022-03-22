@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ResourcesActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".CalenderActivity"></activity>
-        <activity android:name=".AccountSetUpActivity"></activity>
+        <activity
+            android:name=".PdfActivity"
+            android:exported="false" />
+        <activity android:name=".ResourcesActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".CalenderActivity" />
+        <activity android:name=".AccountSetUpActivity" />
         <activity
             android:name=".GoogleSignInActivity"
             android:exported="false" />
