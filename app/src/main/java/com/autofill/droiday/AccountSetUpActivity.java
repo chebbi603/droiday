@@ -2,16 +2,23 @@ package com.autofill.droiday;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +33,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,12 +57,16 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_set_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintcolor);
         email = getIntent().getStringExtra("key_email");
         password = getIntent().getStringExtra("key_password");
         FirstName = findViewById(R.id.inpFirstName);
         LastName = findViewById(R.id.inpLastName);
         SetUpBtn = findViewById(R.id.SetUpBtn);
+        TextView title = findViewById(R.id.titleinstance);
+        TextView desc = findViewById(R.id.desc);
+        ImageView line = findViewById(R.id.imageView2);
+
         Spinner LvlChoice = findViewById(R.id.lvlChoice);
         LvlChoice.setOnItemSelectedListener(this);
         db = FirebaseFirestore.getInstance();
@@ -63,79 +75,107 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
 
         today = LocalDate.now();
 
+        Animation fadeout = AnimationUtils.loadAnimation(this,R.anim.fade_out);
+        Animation fadein = AnimationUtils.loadAnimation(this,R.anim.fade_in);
         ArrayAdapter aa = new ArrayAdapter(this,R.layout.spinner,Levels);
         aa.setDropDownViewResource(R.layout.dropdown);
-
         LvlChoice.setAdapter(aa);
+
+        constraintLayout.setBackgroundColor(Color.rgb(254,234,148));
+        FirstName.setVisibility(View.VISIBLE);
+        LastName.setVisibility(View.VISIBLE);
+        LvlChoice.setVisibility(View.INVISIBLE);
+        title.setTextColor(Color.rgb(215,138,73));
+        desc.setText("Please provide us with your\nfull name");
+        line.setBackground(getDrawable(R.drawable.designlineyellow));
+        final int[] isTrue = {0};
 
         SetUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firstname = FirstName.getText().toString();
-                lastname = LastName.getText().toString();
-                if(firstname.isEmpty()) {
-                    FirstName.setError("Invalid Username");
-                }else if(firstname.isEmpty()) {
-                    FirstName.setError("Invalid Username");
-                }else if (position>0){
-                    //Capitalize The Names
-                    firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
-                    lastname = lastname.substring(0, 1).toUpperCase() + lastname.substring(1);
+                if(isTrue[0] == 0) {
+                    firstname = FirstName.getText().toString();
+                    lastname = LastName.getText().toString();
+                    if (firstname.isEmpty()) {
+                        FirstName.setError("Invalid Username");
+                    } else if (lastname.isEmpty()) {
+                        FirstName.setError("Invalid Username");
+                    }else{
+                        isTrue[0]++;
+                        FirstName.startAnimation(fadeout);
+                        LastName.startAnimation(fadeout);
+                        FirstName.setVisibility(View.INVISIBLE);
+                        LastName.setVisibility(View.INVISIBLE);
+                        LvlChoice.startAnimation(fadein);
+                        LvlChoice.setVisibility(View.VISIBLE);
+                        title.setTextColor(Color.rgb(45,124,225));
+                        constraintLayout.setBackgroundColor(Color.rgb(205,225,252));
+                        desc.setText("Select your class");
+                        line.setBackground(getDrawable(R.drawable.designlineblue));
 
-                    //Update Username and Profile Picture
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(firstname)
-                            //.setPhotoUri()
-                            .build();
-                    mUser.updateProfile(profileUpdates)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    //Toast.makeText(AccountSetUpActivity.this, "Name Updated To"+firstname, Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                    }
+                }
+                else if(isTrue[0]==1){
+                    if (position>0){
+                        //Capitalize The Names
+                        firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
+                        lastname = lastname.substring(0, 1).toUpperCase() + lastname.substring(1);
 
-                    // Create a new user with a first and last name
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("first", firstname);
-                    user.put("last", lastname);
-                    user.put("level", position);
-                    user.put("avatar", "0");
-                    user.put("xp", "0");
-                    user.put("first_day", ""+today);
-
-                    // Add a new document with a generated ID
-                    DocumentReference doc = db.collection("users").document(mUser.getUid());
-                    doc.set(user);
-
-                    //create Participation
-                    Map<String, Object> part = new HashMap<>();
-                    doc.collection("Participation").document("-1").set(part);
-
-                    //Sign Out
-                    if(email!=null && password!=null ) {
-                        FirebaseAuth.getInstance().signOut();
-
-                        //Sign In Again
-                        mAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(AccountSetUpActivity.this, new OnCompleteListener<AuthResult>() {
+                        //Update Username and Profile Picture
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(firstname)
+                                //.setPhotoUri()
+                                .build();
+                        mUser.updateProfile(profileUpdates)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                    public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            // Sign in success, update UI with the signed-in user's information
-                                            mUser = mAuth.getCurrentUser();
-                                            //Go to MainActivity
-                                            updateUI(mUser);
-                                        } else {
-                                            // If sign in fails, display a message to the user.
-                                            Toast.makeText(AccountSetUpActivity.this, "Authentication failed.",
-                                                    Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(AccountSetUpActivity.this, "Name Updated To"+firstname, Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
-                    }else{updateUI(mUser);}
+
+                        // Create a new user with a first and last name
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("first", firstname);
+                        user.put("last", lastname);
+                        user.put("level", position);
+                        user.put("avatar", "0");
+                        user.put("xp", "0");
+                        user.put("first_day", ""+today);
+
+                        // Add a new document with a generated ID
+                        DocumentReference doc = db.collection("users").document(mUser.getUid());
+                        doc.set(user);
+
+                        //create Participation
+                        Map<String, Object> part = new HashMap<>();
+                        doc.collection("Participation").document("-1").set(part);
+
+                        //Sign Out
+                        if(email!=null && password!=null ) {
+                            FirebaseAuth.getInstance().signOut();
+
+                            //Sign In Again
+                            mAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(AccountSetUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                // Sign in success, update UI with the signed-in user's information
+                                                mUser = mAuth.getCurrentUser();
+                                                //Go to MainActivity
+                                                updateUI(mUser);
+                                            } else {
+                                                // If sign in fails, display a message to the user.
+                                                Toast.makeText(AccountSetUpActivity.this, "Authentication failed.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }else{updateUI(mUser);}
+                    }
                 }
             }
         });
