@@ -278,7 +278,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                             @Override
                                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                 String test = Tests.get(i);
-                                                title.setText("Examens " + test +" de :"+ subject);
+                                                //title.setText("Examens " + test +" de :"+ subject);
                                                 listView.setVisibility(View.INVISIBLE);
                                                 docRef.collection("Devoirs")
                                                     .document(subject)

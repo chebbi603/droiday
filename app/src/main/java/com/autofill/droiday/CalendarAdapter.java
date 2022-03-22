@@ -81,7 +81,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                 holder.dayOfMonth.setBackgroundResource(R.drawable.today);
             } else if (selectedDate.isBefore(today) && selectedDate.isAfter(firstDay.minusDays(1))) {
                 long diff = ChronoUnit.DAYS.between(firstDay, selectedDate);
-                Log.d("TAG", "onBindViewHolder: " + monthParticipation + " " + selectedDate.getDayOfMonth());
+                //Log.d("TAG", "onBindViewHolder: " + monthParticipation + " " + selectedDate.getDayOfMonth());
 
                 long day = selectedDate.getDayOfMonth();
                 if (monthParticipation.contains(day)) {

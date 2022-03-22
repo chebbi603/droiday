@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity{
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                intent = new Intent( LoginActivity.this,MainActivity.class);
+                                intent = new Intent( LoginActivity.this,HomePage.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "exists", Toast.LENGTH_SHORT).show();
