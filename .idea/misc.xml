@@ -15,6 +15,7 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/calendar_icon.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/designlineblue.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/designlineyellow.xml" value="0.2865" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail.xml" value="0.179" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/fb_btn.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/field.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/g_button.xml" value="0.2865" />
@@ -22,9 +23,11 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/grey_but_download.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/home_icon.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/indicator.xml" value="0.2865" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/succ.xml" value="0.179" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_blue.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_green.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_yellow.xml" value="0.2865" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/today.xml" value="0.179" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/whitebtn.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_home.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_login.xml" value="0.23958333333333334" />

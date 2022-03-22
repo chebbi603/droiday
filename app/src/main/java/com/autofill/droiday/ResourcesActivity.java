@@ -115,18 +115,24 @@ public class ResourcesActivity extends AppCompatActivity {
                                                 }
                                                 nbBooks = bookNames.size();
                                                 int[] bookstatus = new int[nbBooks];
-                                                System.out.println(nbBooks);
-                                                System.out.println('\n' + bookNames.get(0));
                                                 Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
+                                                for(int i = 0 ; i < nbBooks ; i++){
+                                                    String url = bookUrls.get(i);
+                                                    String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
+                                                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+                                                    if(!file.exists()) bookstatus[i] = 0;
+                                                    else bookstatus[i] = 1;
+                                                }
                                                 MyAdapter adapter = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
                                                 listView.setAdapter(adapter);
+
 
                                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                         try {
 
-                                                            String url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                                                            String url = bookUrls.get(i);
                                                             DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
                                                             String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
                                                             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
@@ -134,7 +140,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                 dmr.setTitle(fileName);
                                                                 dmr.setDescription("Some descrition about file"); //optional
                                                                 dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                                                                //dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                                                dmr.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
                                                                 dmr.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                                                                 DownloadManager manager = (DownloadManager) ResourcesActivity.this.getSystemService(Context.DOWNLOAD_SERVICE);
                                                                 manager.enqueue(dmr);
@@ -268,9 +274,8 @@ public class ResourcesActivity extends AppCompatActivity {
             TextView myTitle = row.findViewById(R.id.title);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myTitle.setText(rTitle.get(position));
-            //if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
-            //else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
-            myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            if(rStatus[position] == 1) myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            else myBack.setBackground(getDrawable(R.drawable.grey_but_download));
             myTitle.setTypeface(latobold);
             myTitle.setX(myBack.getX() + 8);
             return row;
