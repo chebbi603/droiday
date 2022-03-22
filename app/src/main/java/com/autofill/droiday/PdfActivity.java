@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
@@ -29,6 +31,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf);
+        TextView titlepdf = (TextView) findViewById(R.id.tv_header);
         try {
             FileInputStream in = openFileInput(filename);
             InputStreamReader inputStreamReader = new InputStreamReader(in);
@@ -48,6 +51,7 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             e.printStackTrace();
         }
         pdfView= (PDFView)findViewById(R.id.pdfView);
+        titlepdf.setText(SAMPLE_FILE);
         if(!SAMPLE_FILE.equals("null"))displayFromAsset(SAMPLE_FILE);
     }
         private void displayFromAsset(String assetFileName) {

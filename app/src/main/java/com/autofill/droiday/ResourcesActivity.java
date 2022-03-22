@@ -189,7 +189,7 @@ public class ResourcesActivity extends AppCompatActivity {
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(cal_but.getX() + 40);
+                indic.setX(cal_but.getX() + 77);
                 Intent intent = new Intent(ResourcesActivity.this, CalenderActivity.class);
                 startActivity(intent);
             }
@@ -198,14 +198,14 @@ public class ResourcesActivity extends AppCompatActivity {
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(home_but.getX()+40);
+                indic.setX(home_but.getX()+77);
             }
         });
 
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                indic.setX(games_but.getX()+40);
+                indic.setX(games_but.getX()+77);
             }
         });
     }
