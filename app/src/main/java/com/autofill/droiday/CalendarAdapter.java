@@ -1,5 +1,8 @@
 package com.autofill.droiday;
 
+import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
+
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,8 +64,9 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         if (!daysOfMonth.get(position).equals("") && firstDay!= null && selectedDate!=null){
             selectedDate = selectedDate.withDayOfMonth(position-1);
             Log.d("TAAAAG", ""+ selectedDate + " *** " + today);
+            Context context = calender.getBaseContext();
             if (selectedDate.equals(today)) {
-                holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xff03a9f4));
+                holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.grey_but_download));
             } else if (selectedDate.isBefore(today) && selectedDate.isAfter(firstDay.minusDays(1))) {
                 long diff = ChronoUnit.DAYS.between(firstDay, selectedDate);
                 db.collection("users")
@@ -75,9 +80,10 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                 if (task.isSuccessful()) {
                                     DocumentSnapshot document = task.getResult();
                                     if (document.exists()) {
-                                        holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xffaef5c8));
+                                        holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.success));
                                     }else{
-                                        holder.dayOfMonth.setBackgroundTintList(ColorStateList.valueOf(0xfff5aec8));
+
+                                        holder.dayOfMonth.setBackground(getDrawable(context, R.drawable.fail));
                                     }
                                 }
                             }

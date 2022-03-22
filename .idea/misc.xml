@@ -24,17 +24,20 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/home_icon.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/indicator.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/succ.xml" value="0.179" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/success.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_blue.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_green.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_yellow.xml" value="0.2865" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/today.xml" value="0.179" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/whitebtn.xml" value="0.2865" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_calender.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_home.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_login.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_main.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_pdf.xml" value="0.3374094202898551" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/calendar_cell.xml" value="0.3374094202898551" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/row.xml" value="0.3374094202898551" />
       </map>
     </option>

@@ -150,6 +150,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                         startActivity(intente);
                                                                     }
                                                                 };
+                                                                //
                                                                 registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
                                                                 String value = fileName;
                                                                 outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
