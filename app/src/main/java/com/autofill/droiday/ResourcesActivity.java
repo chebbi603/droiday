@@ -118,6 +118,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                 Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
                                                 MyAdapter adapter = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
                                                 listView.setAdapter(adapter);
+
                                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                     @Override
                                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -127,7 +128,7 @@ public class ResourcesActivity extends AppCompatActivity {
                                                             DownloadManager.Request dmr = new DownloadManager.Request(Uri.parse(url));
                                                             String fileName = URLUtil.guessFileName(url, null, MimeTypeMap.getFileExtensionFromUrl(url));
                                                             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
-                                                            if(file.exists()) {
+                                                            if(!file.exists()) {
                                                                 dmr.setTitle(fileName);
                                                                 dmr.setDescription("Some descrition about file"); //optional
                                                                 dmr.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);

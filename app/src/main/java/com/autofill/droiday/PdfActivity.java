@@ -3,6 +3,7 @@ package com.autofill.droiday;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.shockwave.pdfium.PdfDocument;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -50,14 +52,15 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             SAMPLE_FILE = "null";
             e.printStackTrace();
         }
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), SAMPLE_FILE);
         pdfView= (PDFView)findViewById(R.id.pdfView);
         titlepdf.setText(SAMPLE_FILE);
-        if(!SAMPLE_FILE.equals("null"))displayFromAsset("/storage/emulated/0/Download/"+SAMPLE_FILE);
+        if(!SAMPLE_FILE.equals("null"))displayFromAsset(SAMPLE_FILE,file);
     }
-        private void displayFromAsset(String assetFileName) {
+        private void displayFromAsset(String assetFileName,File file) {
             pdfFileName = assetFileName;
 
-            pdfView.fromAsset(SAMPLE_FILE)
+            pdfView.fromFile(file)
                     .defaultPage(pageNumber)
                     .enableSwipe(true)
 
