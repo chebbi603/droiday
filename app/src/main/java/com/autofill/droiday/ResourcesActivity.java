@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,6 +30,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +46,8 @@ public class ResourcesActivity extends AppCompatActivity {
     FirebaseFirestore db;
     String lvl;
     int nbBooks;
+    String filename = "file.mt";
+    FileOutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +108,25 @@ public class ResourcesActivity extends AppCompatActivity {
                                                 Log.d("BOOKS", "onComplete: "+ Arrays.toString(bookNames.toArray()));
                                                 MyAdapter adapter = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
                                                 listView.setAdapter(adapter);
+                                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                    @Override
+                                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                                        try {
+                                                            String value = "dos_spo.pdf";
+                                                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                                            outputStream.write(value.getBytes());
+                                                            outputStream.close();
+                                                        } catch (FileNotFoundException e) {
+                                                            e.printStackTrace();
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
+                                                        }
+
+                                                        Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
+                                                        startActivity(intent);
+
+                                                    }
+                                                });
                                             }
                                         });
                             }
@@ -153,6 +178,8 @@ public class ResourcesActivity extends AppCompatActivity {
                 exam.setVisibility(View.INVISIBLE);
                 series.setVisibility(View.INVISIBLE);
                 return_btn.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
+                startActivity(intent);
             }
         });
 
