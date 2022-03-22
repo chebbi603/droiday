@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Random;
 
 class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
@@ -86,7 +87,17 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
                                     if (document.exists()) {
                                         holder.dayOfMonth.setBackgroundResource(R.drawable.success);
                                     }else{
+                                        Random rand = new Random();
+                                        int rand_int = rand.nextInt(4);
+                                        if(rand_int==0)
                                         holder.dayOfMonth.setBackgroundResource(R.drawable.fail);
+                                        else if(rand_int==1)
+                                            holder.dayOfMonth.setBackgroundResource(R.drawable.fail2);
+                                        else if(rand_int==2)
+                                            holder.dayOfMonth.setBackgroundResource(R.drawable.fail3);
+                                        if(rand_int==3)
+                                            holder.dayOfMonth.setBackgroundResource(R.drawable.fail4);
+
                                     }
                                 }
                             }
