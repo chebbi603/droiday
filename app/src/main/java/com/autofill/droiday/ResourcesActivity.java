@@ -215,6 +215,10 @@ public class ResourcesActivity extends AppCompatActivity {
                                             outputStream.close();
                                         }
                                         else {
+                                            String value = fileName;
+                                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                            outputStream.write(value.getBytes());
+                                            outputStream.close();
                                             Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
                                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                             startActivity(intent);
@@ -340,6 +344,10 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                                 outputStream.close();
                                                                             }
                                                                             else {
+                                                                                String value = fileName;
+                                                                                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                                                                outputStream.write(value.getBytes());
+                                                                                outputStream.close();
                                                                                 Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
                                                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                 startActivity(intent);
@@ -465,6 +473,10 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                             outputStream.close();
                                                                         }
                                                                         else {
+                                                                            String value = fileName;
+                                                                            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                                                                            outputStream.write(value.getBytes());
+                                                                            outputStream.close();
                                                                             Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
                                                                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                             startActivity(intent);

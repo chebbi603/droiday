@@ -58,9 +58,9 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), SAMPLE_FILE);
         pdfView= (PDFView)findViewById(R.id.pdfView);
         titlepdf.setText(SAMPLE_FILE);
-        ImageView home_but = (ImageView) findViewById(R.id.home_but);
-        ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
-        ImageView games_but = (ImageView) findViewById(R.id.games_but);
+        ImageView home_but = (ImageView) findViewById(R.id.home_but3);
+        ImageView cal_but = (ImageView) findViewById(R.id.cal_but3);
+        ImageView games_but = (ImageView) findViewById(R.id.games_but3);
         if(!SAMPLE_FILE.equals("null"))displayFromAsset(SAMPLE_FILE,file);
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
