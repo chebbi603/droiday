@@ -230,8 +230,8 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     {
         if(!dayText.equals(""))
         {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            //String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
+            //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             LocalDate clickedDate = selectedDate.withDayOfMonth(Integer.valueOf(dayText));
             long day = Integer.valueOf(dayText);
             if (!monthParticipation.contains(day) && clickedDate.isAfter(firstDay.minusDays(1)) && clickedDate.isBefore(today.plusDays(1))) {
