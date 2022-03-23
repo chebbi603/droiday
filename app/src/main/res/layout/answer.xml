@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/backimgQuiz"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:elevation="5dp"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -107,139 +107,151 @@ public class ChallengeActivity extends AppCompatActivity {
         dateClicked = LocalDate.parse(extras.getString("dateClicked"));
 
         db.collection("challenges")
-                .document(extras.getString("dateClicked"))
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
+            .document(extras.getString("dateClicked"))
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
 
-                                //Getting the challenge type (key)
-                                type = "";
-                                for (String elem : document.getData().keySet()){
-                                    type = elem;
-                                }
+                            //Getting the challenge type (key)
+                            type = "";
+                            for (String elem : document.getData().keySet()){
+                                type = elem;
+                            }
 
-                                //Set the Quiz List
-                                if(type.equals("quiz")){
-                                    Quiz = document.getData().get(type).toString();
-                                    Log.d("quizText", "Question: "+Quiz);
-                                    String Q[] = Quiz.split("&");
-                                    String Subject = Q[0];
-                                    for(int i=1;i<Q.length ;i++) {
-                                        String A[] = Q[i].split("#");
-                                        String questionString = A[0];
-                                        List<String> answers = new ArrayList<>();
-                                        for (int j = 1; j < A.length - 1; j++) {
-                                            answers.add(A[j]);
+                            //Set the Quiz List
+                            if(type.equals("quiz")){
+                                Quiz = document.getData().get(type).toString();
+                                Log.d("quizText", "Question: "+Quiz);
+                                String Q[] = Quiz.split("&");
+                                String Subject = Q[0];
+                                //Set the alignment
+                                String AlignText = Q[1];
+                                if(AlignText.equals("left ")){
+                                    QuestionText.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+                                }else QuestionText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                                for(int i=2;i<Q.length ;i++) {
+                                    String A[] = Q[i].split("#");
+                                    String questionString = A[0];
+                                    List<String> answers = new ArrayList<>();
+                                    for (int j = 1; j < A.length - 1; j++) {
+                                        answers.add(A[j]);
+                                    }
+                                    String rAnsText ="";
+                                    for(int k=0;k<A[A.length-1].length();k++){
+                                        if(A[A.length-1].charAt(k) != ' '){
+                                            rAnsText += A[A.length-1].charAt(k);
                                         }
-                                        String rAnsText ="";
-                                        for(int k=0;k<A[A.length-1].length();k++){
-                                            if(A[A.length-1].charAt(k) != ' '){
-                                                rAnsText += A[A.length-1].charAt(k);
+                                    }
+                                    int rightAnswer = Integer.valueOf(rAnsText);
+                                    Log.d("quiz", "Question: "+questionString);
+                                    Log.d("quiz", "answers: "+answers);
+                                    Log.d("quiz", "right Answer: " + rightAnswer);
+                                    Question question = new Question(questionString, answers, rightAnswer);
+                                    quizList.add(question);
+                                }//List Finished
+
+                                //Show first question
+                                SubjectTitle.setText(Subject);
+                                QuestionText.setText(quizList.get(currentQuestion).question().replaceAll("@",System.getProperty("line.separator")));
+                                adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
+                                listView.setAdapter(adapter);
+
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                        Choice = i;
+
+                                        //update Checkmark
+                                        int checkS[] = new int[quizList.get(currentQuestion).answers().size()];
+                                        checkS[i]=1;
+                                        adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), checkS);
+                                        listView.setAdapter(adapter);
+                                    }
+                                });
+
+                                SubmitBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(Choice >-1 && BtnOn){
+                                            //Disable Submit Button until next Question is on screen
+                                            BtnOn = false;
+
+                                            //Evaluate
+                                            if (Choice == quizList.get(currentQuestion).rightAnswer()) {
+                                                TotalXp += 10;
+                                                ValidationText.setText("Correct");
+                                                ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
+                                                correctMp.start();
+                                                nbCorrectAnswers++;
+                                            }else{
+                                                ValidationText.setText("Incorrect");
+                                                ValidationText.setTextColor(ColorStateList.valueOf(0xffff0000));
+                                                wrongMp.start();
                                             }
-                                        }
-                                        int rightAnswer = Integer.valueOf(rAnsText);
-                                        Log.d("quiz", "Question: "+questionString);
-                                        Log.d("quiz", "answers: "+answers);
-                                        Log.d("quiz", "right Answer: " + rightAnswer);
-                                        Question question = new Question(questionString, answers, rightAnswer);
-                                        quizList.add(question);
-                                    }//List Finished
+                                            ValidationText.setVisibility(View.VISIBLE);
+                                            listView.setVisibility(View.INVISIBLE);
+                                            QuestionText.setVisibility(View.INVISIBLE);
+                                            XpCounter.setText("XP : " + TotalXp);
 
-                                    //Show first question
-                                    SubjectTitle.setText(Subject);
-                                    QuestionText.setText(quizList.get(currentQuestion).question().replaceAll("@",System.getProperty("line.separator")));
-                                    adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
-                                    listView.setAdapter(adapter);
+                                            final Handler handler = new Handler(Looper.getMainLooper());
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    if (currentQuestion < quizList.size()-1) {
+                                                        Choice = -1;
 
-                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                            Choice = i;
+                                                        //Move on to the next question
+                                                        currentQuestion++;
+                                                        QuestionText.setText(quizList.get(currentQuestion).question());
+                                                        adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
+                                                        listView.setAdapter(adapter);
 
-                                            //update Checkmark
-                                            int checkS[] = new int[quizList.get(currentQuestion).answers().size()];
-                                            checkS[i]=1;
-                                            adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), checkS);
-                                            listView.setAdapter(adapter);
-                                        }
-                                    });
-
-                                    SubmitBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            if(Choice >-1 && BtnOn){
-                                                //Disable Submit Button until next Question is on screen
-                                                BtnOn = false;
-
-                                                //Evaluate
-                                                if (Choice == quizList.get(currentQuestion).rightAnswer()) {
-                                                    TotalXp += 10;
-                                                    ValidationText.setText("Correct");
-                                                    ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
-                                                    correctMp.start();
-                                                    nbCorrectAnswers++;
-                                                }else{
-                                                    ValidationText.setText("Incorrect");
-                                                    ValidationText.setTextColor(ColorStateList.valueOf(0xffff0000));
-                                                    wrongMp.start();
-                                                }
-                                                ValidationText.setVisibility(View.VISIBLE);
-                                                listView.setVisibility(View.INVISIBLE);
-                                                QuestionText.setVisibility(View.INVISIBLE);
-                                                XpCounter.setText("XP : " + TotalXp);
-
-                                                final Handler handler = new Handler(Looper.getMainLooper());
-                                                handler.postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        if (currentQuestion < quizList.size()-1) {
-                                                            Choice = -1;
-
-                                                            //Move on to the next question
-                                                            currentQuestion++;
-                                                            QuestionText.setText(quizList.get(currentQuestion).question());
-                                                            adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
-                                                            listView.setAdapter(adapter);
-
-                                                            ValidationText.setVisibility(View.INVISIBLE);
-                                                            listView.setVisibility(View.VISIBLE);
-                                                            QuestionText.setVisibility(View.VISIBLE);
-                                                        }else{
-                                                            ValidationText.setVisibility(View.INVISIBLE);
+                                                        ValidationText.setVisibility(View.INVISIBLE);
+                                                        listView.setVisibility(View.VISIBLE);
+                                                        QuestionText.setVisibility(View.VISIBLE);
+                                                    }else{
+                                                        ValidationText.setVisibility(View.INVISIBLE);
+                                                        if(nbCorrectAnswers == quizList.size()){
+                                                            ValidationText.setText("Perfect");
+                                                            ValidationText.setTextSize(30);
+                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
+                                                        }else {
                                                             ValidationText.setText("You got " + nbCorrectAnswers + " questions out of " +quizList.size() + " right");
-                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xffffffff));
-                                                            handler.postDelayed(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    ValidationText.setVisibility(View.VISIBLE);
-                                                                    SubmitBtn.setVisibility(View.INVISIBLE);
-                                                                    XpCounter.setVisibility(View.INVISIBLE);
-                                                                    handler.postDelayed(new Runnable() {
-                                                                        @Override
-                                                                        public void run() {
-                                                                            UpdateDB_and_Leave();
-                                                                        }
-                                                                    }, 2000);
-                                                                }
-                                                            }, 500);
+                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xff000000));
                                                         }
-
-                                                        //Enable Submit Button again
-                                                        BtnOn = true;
+                                                        handler.postDelayed(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                ValidationText.setVisibility(View.VISIBLE);
+                                                                SubmitBtn.setVisibility(View.INVISIBLE);
+                                                                XpCounter.setVisibility(View.INVISIBLE);
+                                                                handler.postDelayed(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        UpdateDB_and_Leave();
+                                                                    }
+                                                                }, 2000);
+                                                            }
+                                                        }, 500);
                                                     }
-                                                }, 2000);
-                                            }
+
+                                                    //Enable Submit Button again
+                                                    BtnOn = true;
+                                                }
+                                            }, 2000);
                                         }
-                                    });
-                                }
+                                    }
+                                });
                             }
                         }
                     }
-                });
+                }
+            });
 
     }
     class AnswerAdapter extends ArrayAdapter<String> {
@@ -253,7 +265,6 @@ public class ChallengeActivity extends AppCompatActivity {
             this.context = c;
             this.rText = text;
             this.rCheckStatus = checkStatus;
-
         }
 
         @NonNull

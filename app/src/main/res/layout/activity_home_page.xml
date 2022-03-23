@@ -108,4 +108,33 @@
         app:layout_constraintStart_toStartOf="@+id/books_btn"
         app:layout_constraintTop_toTopOf="@+id/series_btn" />
 
+    <ImageView
+        android:id="@+id/AvatarImg"
+        android:layout_width="126dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/xpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/UserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/AvatarImg"
+        tools:layout_editor_absoluteX="56dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

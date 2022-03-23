@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
@@ -18,14 +21,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
+
+import java.net.URL;
 
 public class HomePage extends AppCompatActivity {
 
-    /*Button calenderBtn;
     String name;
     int xp;
     TextView UserName, xpText;
-    ImageView ImageView;*/
+    ImageView avatarImage;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -37,10 +42,9 @@ public class HomePage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         db = FirebaseFirestore.getInstance();
-        //calenderBtn = findViewById(R.id.CalenderBtn);
-        //UserName = findViewById(R.id.UserName);
-        //xpText = findViewById(R.id.xpText);
-        //ImageView = findViewById(R.id.avatarImage);
+        UserName = findViewById(R.id.UserName);
+        xpText = findViewById(R.id.xpText);
+        avatarImage = findViewById(R.id.AvatarImg);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         //UserName.setText("");
@@ -49,7 +53,7 @@ public class HomePage extends AppCompatActivity {
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
-        /*
+
         db.collection("users")
                 .document(mUser.getUid())
                 .get()
@@ -63,9 +67,12 @@ public class HomePage extends AppCompatActivity {
                                 xp = Integer.valueOf(document.getData().get("xp").toString());
                                 UserName.setText(name);
                                 xpText.setText("XP :"+xp);
+                                Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
+                                //Picasso.get().load(mUser.getPhotoUrl().toString()).into(avatarImage);
+                                /*
                                 if(Integer.valueOf(document.getData().get("avatar").toString()) == 0) {
-                                    ImageView.setImageResource(R.drawable.avatar);
-                                }
+                                    avatarImage.setImageResource(R.drawable.avatar);
+                                }*/
                                 //Toast.makeText(MainActivity.this, "name = "+document.getData().get("first").toString(), Toast.LENGTH_SHORT).show();
                                 //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                             } else {
@@ -77,7 +84,7 @@ public class HomePage extends AppCompatActivity {
                             //Log.d(TAG, "get failed with ", task.getException());
                         }
                     }
-                });*/
+                });
 
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
