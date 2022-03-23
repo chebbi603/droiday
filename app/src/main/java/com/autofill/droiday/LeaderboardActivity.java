@@ -84,7 +84,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             ImageView myBack = answer.findViewById(R.id.backgroundLeader);
             TextView myName = answer.findViewById(R.id.LeaderName);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
-            myBack.setBackground(getDrawable(R.drawable.tab_red));
+            myBack.setBackground(getDrawable(R.drawable.redtitle));
             myName.setTypeface(latobold);
             myName.setText(rText.get(position));
 
