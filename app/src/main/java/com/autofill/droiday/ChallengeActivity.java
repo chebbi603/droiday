@@ -249,7 +249,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                                                     public void run() {
                                                                         UpdateDB_and_Leave();
                                                                     }
-                                                                }, 2000);
+                                                                }, 5000);
                                                             }
                                                         }, 500);
                                                     }
@@ -257,7 +257,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                                     //Enable Submit Button again
                                                     BtnOn = true;
                                                 }
-                                            }, 2000);
+                                            }, 3000);
                                         }
                                     }
                                 });
