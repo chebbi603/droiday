@@ -57,6 +57,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_set_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         ConstraintLayout const1 = findViewById(R.id.const1);
         ConstraintLayout const2 = findViewById(R.id.const2);
         email = getIntent().getStringExtra("key_email");
