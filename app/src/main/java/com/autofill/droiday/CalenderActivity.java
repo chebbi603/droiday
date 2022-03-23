@@ -40,6 +40,7 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     public static LocalDate firstDay;
     public static List<Integer> monthParticipation;
 
+
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -206,7 +207,7 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
             long day = Integer.valueOf(dayText);
             if (!monthParticipation.contains(day) && clickedDate.isAfter(firstDay.minusDays(1)) && clickedDate.isBefore(today.plusDays(1))) {
                 Intent intent = new Intent(CalenderActivity.this, ChallengeActivity.class);
-                intent.putExtra("key","value");
+                intent.putExtra("dateClicked","" + clickedDate);
                 startActivity(intent);
             }
         }

@@ -52,7 +52,7 @@ import android.app.DownloadManager;
 
 public class ResourcesActivity extends AppCompatActivity {
 
-    ListView listView, listViewDevoirs;
+    ListView listView;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -87,6 +87,7 @@ public class ResourcesActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+
         //Initializing Views
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
@@ -98,7 +99,6 @@ public class ResourcesActivity extends AppCompatActivity {
         Button series = (Button) findViewById(R.id.series_btn);
         Button return_btn = (Button) findViewById(R.id.return_btn);
         listView = (ListView) findViewById(R.id.listview);
-        listViewDevoirs = (ListView) findViewById(R.id.listviewDevoirs);
 
         title.setText("");
         manuels.setVisibility(View.VISIBLE);
@@ -106,7 +106,6 @@ public class ResourcesActivity extends AppCompatActivity {
         series.setVisibility(View.VISIBLE);
         return_btn.setVisibility(View.INVISIBLE);
         listView.setVisibility(View.INVISIBLE);
-        listViewDevoirs.setVisibility(View.INVISIBLE);
 
         db.collection("users")
                 .document(mUser.getUid())

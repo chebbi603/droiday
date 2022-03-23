@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
 
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
+        tools:layout_editor_absoluteX="-155dp"
+        tools:layout_editor_absoluteY="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-155dp"
-        android:descendantFocusability="blocksDescendants"
-        tools:layout_editor_absoluteY="16dp">
+        android:descendantFocusability="blocksDescendants">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,7 +18,7 @@
             android:descendantFocusability="blocksDescendants">
 
             <ImageView
-                android:id="@+id/backimg"
+                android:id="@+id/backimgQuiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="5dp"
@@ -29,21 +27,36 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/blue_but_done" />
 
+            <ImageView
+                android:id="@+id/AnswerCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="-40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="5dp"
+                android:scaleType="fitStart"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/backimgQuiz"
+                app:layout_constraintStart_toStartOf="@+id/backimgQuiz"
+                app:layout_constraintTop_toTopOf="@+id/backimgQuiz"
+                app:srcCompat="@drawable/success" />
+
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/AnswerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="62dp"
                 android:elevation="5dp"
                 android:text="Job Interview"
-                android:textColor="#FFF"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/backimg"
-                app:layout_constraintStart_toStartOf="@+id/backimg"
-                app:layout_constraintTop_toTopOf="@+id/backimg" />
+                app:layout_constraintBottom_toBottomOf="@+id/backimgQuiz"
+                app:layout_constraintStart_toStartOf="@+id/backimgQuiz"
+                app:layout_constraintTop_toTopOf="@+id/backimgQuiz" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/AnswerButton"
                 android:layout_width="87dp"
                 android:layout_height="23dp"
                 android:background="@color/white"
@@ -51,11 +64,10 @@
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/backimg" />
+                app:layout_constraintTop_toBottomOf="@+id/backimgQuiz" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
