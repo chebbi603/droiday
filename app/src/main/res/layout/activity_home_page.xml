@@ -110,8 +110,8 @@
 
     <ImageView
         android:id="@+id/AvatarImg"
-        android:layout_width="126dp"
-        android:layout_height="102dp"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,12 +129,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:text="Welcome"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/AvatarImg"
+        app:layout_constraintTop_toTopOf="@+id/AvatarImg" />
+
+    <TextView
         android:id="@+id/UserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/AvatarImg"
-        tools:layout_editor_absoluteX="56dp" />
+        app:layout_constraintEnd_toEndOf="@+id/welcomeText"
+        app:layout_constraintStart_toStartOf="@+id/welcomeText"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

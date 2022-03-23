@@ -3,9 +3,16 @@ package com.autofill.droiday;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,9 +28,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
 
@@ -31,9 +43,12 @@ public class HomePage extends AppCompatActivity {
     int xp;
     TextView UserName, xpText;
     ImageView avatarImage;
+    Button leaderboard;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
+    private Target mTarget;
+    Picasso picasso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +62,7 @@ public class HomePage extends AppCompatActivity {
         avatarImage = findViewById(R.id.AvatarImg);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        leaderboard = findViewById(R.id.books_btn);
         //UserName.setText("");
 
         ImageView indic  = (ImageView) findViewById(R.id.indic);
@@ -63,18 +79,15 @@ public class HomePage extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                name = ""+document.getData().get("first");
+                                name = "" + document.getData().get("first");
                                 xp = Integer.valueOf(document.getData().get("xp").toString());
                                 UserName.setText(name);
                                 xpText.setText("XP :"+xp);
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
-                                //Picasso.get().load(mUser.getPhotoUrl().toString()).into(avatarImage);
-                                /*
-                                if(Integer.valueOf(document.getData().get("avatar").toString()) == 0) {
-                                    avatarImage.setImageResource(R.drawable.avatar);
-                                }*/
-                                //Toast.makeText(MainActivity.this, "name = "+document.getData().get("first").toString(), Toast.LENGTH_SHORT).show();
-                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                loadImage(mUser.getPhotoUrl().toString());
+
+
+
                             } else {
                                 //Toast.makeText(MainActivity.this, "Document Not Found", Toast.LENGTH_SHORT).show();
                                 //Log.d(TAG, "No such document");
@@ -85,6 +98,27 @@ public class HomePage extends AppCompatActivity {
                         }
                     }
                 });
+
+        leaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePage.this, LeaderboardActivity.class);
+                startActivity(intent);
+                /*db.collection("users")
+                        .orderBy("xp", Query.Direction.DESCENDING)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Log.d("leader", "onComplete: " + document.getData().get("first").toString());
+                                    }
+                                }
+                            }
+                        });*/
+            }
+        });
 
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,5 +137,50 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+    }
+    public Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
+    }
+
+    void loadImage(String url) {
+
+        mTarget = new Target() {
+            @Override
+            public void onBitmapLoaded (Bitmap bitmap, Picasso.LoadedFrom from){
+                bitmap = getCroppedBitmap(bitmap);
+                avatarImage.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        };
+
+        picasso.get()
+                .load(url)
+                .into(mTarget);
     }
 }
