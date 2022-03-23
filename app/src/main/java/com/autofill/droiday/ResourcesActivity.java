@@ -96,9 +96,9 @@ public class ResourcesActivity extends AppCompatActivity {
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
         TextView title = (TextView) findViewById(R.id.title_res);
-        Button manuels = (Button) findViewById(R.id.books_btn);
+        Button manuels = (Button) findViewById(R.id.btn2);
         Button exam = (Button) findViewById(R.id.exams_btn);
-        Button series = (Button) findViewById(R.id.series_btn);
+        Button series = (Button) findViewById(R.id.btn3);
         Button return_btn = (Button) findViewById(R.id.return_btn);
         listView = (ListView) findViewById(R.id.listview);
 

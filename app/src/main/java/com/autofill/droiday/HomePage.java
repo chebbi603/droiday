@@ -3,10 +3,8 @@ package com.autofill.droiday;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -17,7 +15,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,14 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
-import java.net.URL;
-import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
 
@@ -48,6 +39,7 @@ public class HomePage extends AppCompatActivity {
     FirebaseUser mUser;
     FirebaseFirestore db;
     private Target mTarget;
+    TextView title;
     Picasso picasso;
 
     @Override
@@ -62,13 +54,15 @@ public class HomePage extends AppCompatActivity {
         avatarImage = findViewById(R.id.AvatarImg);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        leaderboard = findViewById(R.id.books_btn);
+        leaderboard = findViewById(R.id.btn2);
+        title = findViewById(R.id.title_home);
         //UserName.setText("");
-
+        String text = "<font color = #0F3567 >We have got\nValuable</font><font color = #2D7CE1>resources</font> <font color = #0F3567 >to\nshare with you !</font> ";
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
+        title.setText(text);
 
         db.collection("users")
                 .document(mUser.getUid())

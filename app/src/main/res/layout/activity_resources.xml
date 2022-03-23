@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/indicator" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -86,10 +86,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/series_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
 
     <Button
-        android:id="@+id/books_btn"
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/series_btn"
+        android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -122,7 +122,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/books_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <TextView
         android:id="@+id/textView6"
@@ -133,8 +133,8 @@
         android:text="Find all the assets you need"
         android:textColor="#182137"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/text1"
+        app:layout_constraintTop_toBottomOf="@+id/text1" />
 
     <ListView
         android:id="@+id/listview"
