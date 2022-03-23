@@ -18,15 +18,13 @@
             android:descendantFocusability="blocksDescendants">
 
             <ImageView
-                android:id="@+id/backimgQuiz"
+                android:id="@+id/backimgquizz"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:elevation="5dp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/blue_but_done" />
+                app:srcCompat="@drawable/ckeckboxon" />
 
 
             <TextView
@@ -38,17 +36,17 @@
                 android:text="Job Interview"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/backimgQuiz"
-                app:layout_constraintStart_toStartOf="@+id/backimgQuiz"
-                app:layout_constraintTop_toTopOf="@+id/backimgQuiz" />
+                app:layout_constraintBottom_toBottomOf="@+id/backimgquizz"
+                app:layout_constraintStart_toStartOf="@+id/backimgquizz"
+                app:layout_constraintTop_toTopOf="@+id/backimgquizz" />
 
             <RadioButton
                 android:id="@+id/AnswerCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/backimgQuiz"
-                app:layout_constraintStart_toStartOf="@+id/backimgQuiz"
+                app:layout_constraintBottom_toBottomOf="@+id/backimgquizz"
+                app:layout_constraintStart_toStartOf="@+id/backimgquizz"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

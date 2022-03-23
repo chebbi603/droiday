@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,6 +86,7 @@ public class ChallengeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
 
+        LottieAnimationView lottie = findViewById(R.id.lottie2);
         listView = (ListView) findViewById(R.id.listviewQuiz);
         SubjectTitle = findViewById(R.id.subjectTitle);
         QuestionText = findViewById(R.id.questionText);
@@ -100,7 +102,7 @@ public class ChallengeActivity extends AppCompatActivity {
         correctMp = MediaPlayer.create(this, R.raw.correct);
         wrongMp =  MediaPlayer.create(this, R.raw.wrong);
 
-        XpCounter.setText("XP : 0");
+        XpCounter.setText("0");
 
         //Get dateClicked from prev Activity
         Bundle extras = getIntent().getExtras();
@@ -184,19 +186,24 @@ public class ChallengeActivity extends AppCompatActivity {
                                             //Evaluate
                                             if (Choice == quizList.get(currentQuestion).rightAnswer()) {
                                                 TotalXp += 10;
-                                                ValidationText.setText("Correct");
-                                                ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
+                                                ValidationText.setText("Correct Answer");
+                                                lottie.setAnimation("welldone.json");
+                                                lottie.playAnimation();
+                                                //ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
                                                 correctMp.start();
                                                 nbCorrectAnswers++;
                                             }else{
-                                                ValidationText.setText("Incorrect");
-                                                ValidationText.setTextColor(ColorStateList.valueOf(0xffff0000));
+                                                ValidationText.setText("Incorrect Answer");
+                                                lottie.setAnimation("wrong.json");
+                                                lottie.playAnimation();
+                                                //ValidationText.setTextColor(ColorStateList.valueOf(0xffff0000));
                                                 wrongMp.start();
                                             }
+                                            lottie.setVisibility(View.VISIBLE);
                                             ValidationText.setVisibility(View.VISIBLE);
                                             listView.setVisibility(View.INVISIBLE);
                                             QuestionText.setVisibility(View.INVISIBLE);
-                                            XpCounter.setText("XP : " + TotalXp);
+                                            XpCounter.setText(""+TotalXp);
 
                                             final Handler handler = new Handler(Looper.getMainLooper());
                                             handler.postDelayed(new Runnable() {
@@ -212,22 +219,29 @@ public class ChallengeActivity extends AppCompatActivity {
                                                         listView.setAdapter(adapter);
 
                                                         ValidationText.setVisibility(View.INVISIBLE);
+                                                        lottie.setVisibility(View.INVISIBLE);
                                                         listView.setVisibility(View.VISIBLE);
                                                         QuestionText.setVisibility(View.VISIBLE);
                                                     }else{
                                                         ValidationText.setVisibility(View.INVISIBLE);
+                                                        lottie.setVisibility(View.INVISIBLE);
                                                         if(nbCorrectAnswers == quizList.size()){
-                                                            ValidationText.setText("Perfect");
-                                                            ValidationText.setTextSize(30);
-                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
+                                                            ValidationText.setText("All answers are correct !");
+                                                            //ValidationText.setTextSize(30);
+                                                            lottie.setAnimation("amazing.json");
+                                                            lottie.playAnimation();
+                                                            //ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
                                                         }else {
                                                             ValidationText.setText("You got " + nbCorrectAnswers + " questions out of " +quizList.size() + " right");
-                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xff000000));
+                                                            lottie.setAnimation("welldone.json");
+                                                            lottie.playAnimation();
+                                                            //ValidationText.setTextColor(ColorStateList.valueOf(0xff000000));
                                                         }
                                                         handler.postDelayed(new Runnable() {
                                                             @Override
                                                             public void run() {
                                                                 ValidationText.setVisibility(View.VISIBLE);
+                                                                lottie.setVisibility(View.VISIBLE);
                                                                 SubmitBtn.setVisibility(View.INVISIBLE);
                                                                 XpCounter.setVisibility(View.INVISIBLE);
                                                                 handler.postDelayed(new Runnable() {
@@ -272,25 +286,28 @@ public class ChallengeActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             @SuppressLint("ViewHolder") View answer = layoutInflater.inflate(R.layout.answer, parent, false);
-            ImageView myBack = answer.findViewById(R.id.backimgQuiz);
+            ImageView myBack = answer.findViewById(R.id.backimgquizz);
             TextView myText = answer.findViewById(R.id.AnswerText);
             RadioButton check = answer.findViewById(R.id.AnswerCheck);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
-            myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            Typeface lato = ResourcesCompat.getFont(context, R.font.lato);
+            myBack.setBackground(getDrawable(R.drawable.ckeckboxon));
             //check.setBackground(getDrawable(R.drawable.success));
             //check.setScaleType(ImageView.ScaleType.FIT_START);
             check.setClickable(false);
-            myBack.setVisibility(View.INVISIBLE);
             myText.setText(rText.get(position));
             if(rCheckStatus[position] == 1) {
                 //check.setVisibility(View.VISIBLE);
                 check.setChecked(true);
+                myBack.setBackground(getDrawable(R.drawable.checkboxselected));
+                myText.setTypeface(latobold);
             }
             else {
                 //check.setVisibility(View.INVISIBLE);
                 check.setChecked(false);
+                myBack.setBackground(getDrawable(R.drawable.ckeckboxon));
+                myText.setTypeface(lato);
             }
-            myText.setTypeface(latobold);
             return answer;
         }
     }
