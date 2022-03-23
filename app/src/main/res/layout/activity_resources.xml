@@ -74,7 +74,7 @@
         android:id="@+id/exams_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/tab_green"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -84,16 +84,16 @@
         android:textAllCaps="false"
         android:textColor="#126016"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cal_but"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/series_btn" />
 
     <Button
         android:id="@+id/books_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/tab_blue"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/tab_red"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
         android:paddingBottom="40dp"
@@ -102,15 +102,15 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/series_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn" />
 
     <Button
         android:id="@+id/series_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/tab_yellow"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -120,9 +120,9 @@
         android:textAllCaps="false"
         android:textColor="#5A3814"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/exams_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/books_btn" />
 
     <TextView
         android:id="@+id/textView6"

@@ -47,9 +47,9 @@
                 android:layout_width="87dp"
                 android:layout_height="23dp"
                 android:background="@color/white"
-                android:visibility="invisible"
                 android:text="Button"
                 android:textColor="#FFFFFF"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/backimg" />
