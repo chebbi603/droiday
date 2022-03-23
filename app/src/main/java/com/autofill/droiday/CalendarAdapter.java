@@ -39,7 +39,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     private LocalDate firstDay = calender.getFistDay();
     private LocalDate selectedDate;
     private FirebaseAuth mAuth;
-    FirebaseUser mUser;
+    private FirebaseUser mUser;
     FirebaseFirestore db;
     Random rand;
     int rand_int, prev_rand_int=0;

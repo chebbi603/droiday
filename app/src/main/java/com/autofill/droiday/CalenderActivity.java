@@ -29,7 +29,9 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalenderActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -86,12 +88,12 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                                 initWidgets();
                                 selectedDate = LocalDate.now();
                                 today = selectedDate;
-                                setMonthViewAfterCheck();
+                                //setMonthViewAfterCheck();
+                                checkMonthParticipation();
                             }
                         }
                     }
                 });
-
 
         home_but.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +112,33 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
                 startActivity(intent);
             }
         });
+    }
+
+    private void checkMonthParticipation(){
+        db.collection("users")
+                .document(mUser.getUid())
+                .collection("Participation")
+                .document("" + selectedDate.getYear() + "-" + selectedDate.getMonthValue())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (!document.exists()) {
+                                List<Integer> a = new ArrayList<>();
+                                a.add(-1);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("mnthP", a);
+                                db.collection("users").document(mUser.getUid()).collection("Participation")
+                                        .document("" + selectedDate.getYear() + "-" + selectedDate.getMonthValue())
+                                        .set(map);
+                                setMonthViewAfterCheck();
+                            }else setMonthViewAfterCheck();
+                        }
+                    }
+                });
+
     }
 
     private void initWidgets()
@@ -186,13 +215,13 @@ public class CalenderActivity extends AppCompatActivity implements CalendarAdapt
     public void previousMonthAction(View view)
     {
         selectedDate = selectedDate.minusMonths(1);
-        setMonthViewAfterCheck();
+        checkMonthParticipation();
     }
 
     public void nextMonthAction(View view)
     {
         selectedDate = selectedDate.plusMonths(1);
-        setMonthViewAfterCheck();
+        checkMonthParticipation();
     }
 
 
