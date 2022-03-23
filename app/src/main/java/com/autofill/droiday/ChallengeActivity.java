@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -57,6 +58,8 @@ public class ChallengeActivity extends AppCompatActivity {
     int nbCorrectAnswers = 0;
     List<Question> quizList = new ArrayList<>();
     List<Integer> monthParticipation;
+    MediaPlayer correctMp = new MediaPlayer();
+    MediaPlayer wrongMp = new MediaPlayer();
 
     public class Question
     {
@@ -93,6 +96,8 @@ public class ChallengeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+        correctMp = MediaPlayer.create(this, R.raw.correct);
+        wrongMp =  MediaPlayer.create(this, R.raw.wrong);
 
         XpCounter.setText("XP : 0");
 
@@ -173,11 +178,12 @@ public class ChallengeActivity extends AppCompatActivity {
                                                 if (Choice == quizList.get(currentQuestion).rightAnswer()) {
                                                     TotalXp += 10;
                                                     ValidationText.setText("Correct");
+                                                    correctMp.start();
                                                     nbCorrectAnswers++;
                                                 }else{
                                                     ValidationText.setText("Incorrect");
+                                                    wrongMp.start();
                                                 }
-
                                                 ValidationText.setVisibility(View.VISIBLE);
                                                 listView.setVisibility(View.INVISIBLE);
                                                 QuestionText.setVisibility(View.INVISIBLE);
