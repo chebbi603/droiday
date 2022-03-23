@@ -18,17 +18,17 @@
             android:descendantFocusability="blocksDescendants">
 
             <ImageView
-                android:id="@+id/backimgquizz"
+                android:id="@+id/backgroundLeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
+                android:background="@drawable/tab_red"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/tab_red" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
-                android:id="@+id/AnswerText"
+                android:id="@+id/LeaderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -36,9 +36,22 @@
                 android:text="Job Interview"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/backimgquizz"
-                app:layout_constraintStart_toStartOf="@+id/backimgquizz"
-                app:layout_constraintTop_toTopOf="@+id/backimgquizz" />
+                app:layout_constraintBottom_toBottomOf="@+id/backgroundLeader"
+                app:layout_constraintStart_toStartOf="@+id/backgroundLeader"
+                app:layout_constraintTop_toTopOf="@+id/backgroundLeader" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:text="Job Interview"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/backgroundLeader"
+                app:layout_constraintEnd_toEndOf="@+id/backgroundLeader"
+                app:layout_constraintStart_toEndOf="@+id/LeaderName"
+                app:layout_constraintTop_toTopOf="@+id/backgroundLeader" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

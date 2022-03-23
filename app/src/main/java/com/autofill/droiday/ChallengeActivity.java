@@ -8,8 +8,6 @@ import androidx.core.content.res.ResourcesCompat;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -37,7 +35,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
