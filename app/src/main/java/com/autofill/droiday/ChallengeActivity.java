@@ -78,11 +78,9 @@ public class ChallengeActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
+        //Get date click from prev Activity
         Bundle extras = getIntent().getExtras();
-        /* (extras != null) {
-            dateClicked = LocalDate.parse(extras.getString("dateClicked"));
-        }*/
-        Log.d("TAG", "Daaaaaaaaaaaaaaaate" + extras.getString("dateClicked"));
+
         db.collection("challenges")
                 .document(extras.getString("dateClicked"))
                 .get()
@@ -93,12 +91,13 @@ public class ChallengeActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
 
-                                //geting the key
+                                //Getting the challenge type (key)
                                 String type = "";
                                 for (String elem : document.getData().keySet()){
                                     type = elem;
                                 }
-                                Log.d("TAG", "onComplete: " + type);
+
+                                //Set the Quiz List
                                 if(type.equals("quiz")){
                                     Quiz = document.getData().get(type).toString();
                                     Log.d("quizText", "Question: "+Quiz);
@@ -124,24 +123,32 @@ public class ChallengeActivity extends AppCompatActivity {
                                         Question question = new Question(questionString, answers, rightAnswer);
                                         quizList.add(question);
                                     }
+
+                                    //Show first question
                                     SubjectTitle.setText(Subject);
                                     QuestionText.setText(quizList.get(currentQuestion).question());
                                     AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
                                     listView.setAdapter(adapter);
+
                                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                             Choice = i;
+
+                                            //update Checkmark
                                             int checkS[] = new int[quizList.get(currentQuestion).answers().size()];
                                             checkS[i]=1;
                                             AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), checkS);
                                             listView.setAdapter(adapter);
                                         }
                                     });
+
                                     SubmitBtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
                                             if(Choice >-1){
+
+                                                //Evaluate and Move on the next question
                                                 Log.d("result", "onClick: " + (Choice==quizList.get(currentQuestion).rightAnswer()));
                                                 Choice=-1;
                                                 currentQuestion++;
