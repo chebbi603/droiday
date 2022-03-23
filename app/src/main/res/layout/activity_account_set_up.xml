@@ -9,107 +9,182 @@
     tools:context=".AccountSetUpActivity">
 
 
-    <EditText
-        android:id="@+id/inpFirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="256dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/field"
-        android:ems="10"
-        android:fontFamily="@font/lato_bold"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        android:paddingLeft="30dp"
-        android:textColor="#000000"
-        android:textColorHint="#000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const1"
+        android:background="#FEEA94"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/inpLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/field"
-        android:ems="10"
-        android:fontFamily="@font/lato_bold"
-        android:hint="Last Name"
-        android:inputType="textPersonName"
-        android:paddingLeft="30dp"
-        android:textColor="#000000"
-        android:textColorHint="#000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpFirstName" />
+        <EditText
+            android:id="@+id/inpFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:background="@drawable/field"
+            android:ems="10"
+            android:fontFamily="@font/lato_bold"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="#000000"
+            android:textColorHint="#000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/lvlChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/dropdown"
-        android:dropDownWidth="wrap_content"
-        android:popupBackground="#FFF"
-        android:spinnerMode="dropdown"
-        android:textAlignment="center"
-        android:textColor="#FFF"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/inpLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/field"
+            android:ems="10"
+            android:fontFamily="@font/lato_bold"
+            android:hint="Last Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="#000000"
+            android:textColorHint="#000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inpFirstName" />
+
+        <Button
+            android:id="@+id/SetUpBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/whitebtn"
+            android:fontFamily="@font/lato_bold"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inpLastName"
+            app:srcCompat="@drawable/designlineyellow" />
+
+        <TextView
+            android:id="@+id/titleinstance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Just a few steps!"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato"
+            android:text="Provide us with your name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleinstance" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <Button
-        android:id="@+id/SetUpBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/whitebtn"
-        android:fontFamily="@font/lato_bold"
-        android:textAllCaps="false"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inpLastName"
-        app:srcCompat="@drawable/designlineyellow" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const2"
+        android:layout_width="match_parent"
+        android:background="#CDE1FC"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/titleinstance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Just a few steps!"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        <TextView
+            android:id="@+id/welcome_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Welcome "
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/lato"
-        android:text="Provide us with your name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleinstance" />
+        <TextView
+            android:id="@+id/titleinstance2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Just a few steps!"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_msg" />
+
+        <TextView
+            android:id="@+id/desc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/lato"
+            android:text="Provide us with your name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleinstance2" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/desc2"
+            app:srcCompat="@drawable/designlineblue" />
+
+        <Spinner
+            android:id="@+id/lvlChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="@drawable/dropdown"
+            android:dropDownWidth="wrap_content"
+            android:popupBackground="#FFF"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <Button
+            android:id="@+id/SetUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/whitebtn"
+            android:fontFamily="@font/lato_bold"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

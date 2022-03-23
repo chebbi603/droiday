@@ -42,7 +42,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
 
     String[] Levels = { "1ere" , "2eme", "3eme", "4eme", "5eme", "6eme", "7eme", "8eme", "9eme"};
     EditText FirstName, LastName;
-    Button SetUpBtn;
+    Button SetUpBtn , SetUpBtn1;
     String firstname, lastname;
     String email = "";
     String password = "";
@@ -57,15 +57,19 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_set_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintcolor);
+        ConstraintLayout const1 = findViewById(R.id.const1);
+        ConstraintLayout const2 = findViewById(R.id.const2);
         email = getIntent().getStringExtra("key_email");
         password = getIntent().getStringExtra("key_password");
         FirstName = findViewById(R.id.inpFirstName);
         LastName = findViewById(R.id.inpLastName);
         SetUpBtn = findViewById(R.id.SetUpBtn);
+        SetUpBtn1 = findViewById(R.id.SetUpBtn1);
         TextView title = findViewById(R.id.titleinstance);
         TextView desc = findViewById(R.id.desc);
-        ImageView line = findViewById(R.id.imageView2);
+        TextView title2 = findViewById(R.id.titleinstance2);
+        TextView desc2 = findViewById(R.id.desc2);
+        TextView welcome = findViewById(R.id.welcome_msg);
 
         Spinner LvlChoice = findViewById(R.id.lvlChoice);
         LvlChoice.setOnItemSelectedListener(this);
@@ -81,25 +85,37 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         aa.setDropDownViewResource(R.layout.dropdown);
         LvlChoice.setAdapter(aa);
 
-        constraintLayout.setBackgroundColor(Color.rgb(254,234,148));
-        FirstName.setVisibility(View.VISIBLE);
-        LastName.setVisibility(View.VISIBLE);
-        LvlChoice.setVisibility(View.INVISIBLE);
+        const1.setVisibility(View.VISIBLE);
+        const2.setVisibility(View.INVISIBLE);
+        const1.setBackgroundColor(Color.rgb(254,234,148));
         title.setTextColor(Color.rgb(215,138,73));
-        desc.setText("Please provide us with your\nfull name");
-        line.setBackground(getDrawable(R.drawable.designlineyellow));
+        desc.setText("Please provide us with your full name");
+        title2.setTextColor(Color.rgb(45,124,225));
         final int[] isTrue = {0};
 
+        SetUpBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firstname = FirstName.getText().toString();
+                lastname = LastName.getText().toString();
+                const1.startAnimation(fadeout);
+                const1.setVisibility(View.INVISIBLE);
+                const2.startAnimation(fadein);
+                const2.setVisibility(View.VISIBLE);
+                desc2.setText("Select your class from the dropdown below");
+                welcome.setText("Welcome "+ firstname + " !");
+            }
+        });
         SetUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isTrue[0] == 0) {
-                    firstname = FirstName.getText().toString();
-                    lastname = LastName.getText().toString();
+
+
                     if (firstname.isEmpty()) {
                         FirstName.setError("Invalid Username");
                     } else if (lastname.isEmpty()) {
                         FirstName.setError("Invalid Username");
+                        /*
                     }else{
                         isTrue[0]++;
                         FirstName.startAnimation(fadeout);
@@ -113,10 +129,9 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         desc.setText("Select your class");
                         line.setBackground(getDrawable(R.drawable.designlineblue));
 
-                    }
+                    */
                 }
-                else if(isTrue[0]==1){
-                    if (position>0){
+                if (position>0){
                         //Capitalize The Names
                         firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
                         lastname = lastname.substring(0, 1).toUpperCase() + lastname.substring(1);
@@ -175,8 +190,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                                         }
                                     });
                         }else{updateUI(mUser);}
-                    }
                 }
+
             }
         });
 

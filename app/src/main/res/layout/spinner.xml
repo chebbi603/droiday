@@ -5,7 +5,7 @@
     android:background="@drawable/dropdown"
     android:fontFamily="@font/lato_bold"
     android:textColor="#fff"
-    android:text ="Select"
+    android:text ="Select your class"
     android:paddingLeft="30dp"
     android:paddingTop = "16dp"
     android:textSize="18sp">
