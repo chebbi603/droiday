@@ -10,4 +10,21 @@
     <path
         android:fillColor="#FFCDE1FC"
         android:pathData="M117.7 615.93a332 196-15 1 0 101.45 378.64 332 196-15 1 0-101.46-378.64z"/>
+    <path
+        android:strokeColor="#FFFF5977"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M64 647.26c-1.22-4.36-25.78-39.37-21.95-25.06 3.83 14.31 24.91 48.67 5.05 26.59-19.86-22.09-31-50.78-23.17-26.59 7.84 24.2 2.1 45.84-9.93 21.21"/>
+    <path
+        android:strokeColor="#FF00CCBD"
+        android:strokeWidth="4.12"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M393.65 623.33c0-10.13-8.2-18.33-18.32-18.33-10.13 0-18.33 8.2-18.33 18.33 0 10.12 8.2 18.32 18.33 18.32h18.32"/>
+    <path
+        android:strokeColor="#FF00CCBD"
+        android:strokeWidth="4.12"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M430.14 659.9c0-10.08-8.17-18.25-18.24-18.25h-18.25"/>
 </vector>
