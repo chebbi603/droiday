@@ -12,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -62,7 +63,7 @@ public class HomePage extends AppCompatActivity {
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
-        title.setText(text);
+        title.setText(Html.fromHtml(text));
 
         db.collection("users")
                 .document(mUser.getUid())
@@ -76,7 +77,7 @@ public class HomePage extends AppCompatActivity {
                                 name = "" + document.getData().get("first");
                                 xp = Integer.valueOf(document.getData().get("xp").toString());
                                 UserName.setText(name);
-                                xpText.setText("XP :"+xp);
+                                xpText.setText(""+xp);
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
