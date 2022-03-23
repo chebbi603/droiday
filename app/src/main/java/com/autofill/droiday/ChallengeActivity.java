@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -36,11 +37,14 @@ public class ChallengeActivity extends AppCompatActivity {
 
     ListView listView;
     TextView SubjectTitle, QuestionText;
+    Button SubmitBtn;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
     LocalDate dateClicked;
     String Quiz;
+    int currentQuestion = 0;
+    int Choice =-1;
     List<Question> quizList = new ArrayList<>();
 
     public class Question
@@ -69,6 +73,7 @@ public class ChallengeActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listviewQuiz);
         SubjectTitle = findViewById(R.id.subjectTitle);
         QuestionText = findViewById(R.id.questionText);
+        SubmitBtn = findViewById(R.id.SubmitBtn);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
@@ -119,16 +124,31 @@ public class ChallengeActivity extends AppCompatActivity {
                                         Question question = new Question(questionString, answers, rightAnswer);
                                         quizList.add(question);
                                     }
-                                    QuestionText.setText(quizList.get(0).question());
-                                    AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(0).answers(), new int[quizList.get(0).answers().size()]);
+                                    SubjectTitle.setText(Subject);
+                                    QuestionText.setText(quizList.get(currentQuestion).question());
+                                    AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
                                     listView.setAdapter(adapter);
                                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                            int checkS[] = new int[quizList.get(0).answers().size()];
+                                            Choice = i;
+                                            int checkS[] = new int[quizList.get(currentQuestion).answers().size()];
                                             checkS[i]=1;
-                                            AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(0).answers(), checkS);
-                                            listView.setAdapter(adapter);//
+                                            AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), checkS);
+                                            listView.setAdapter(adapter);
+                                        }
+                                    });
+                                    SubmitBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            if(Choice >-1){
+                                                Log.d("result", "onClick: " + (Choice==quizList.get(currentQuestion).rightAnswer()));
+                                                Choice=-1;
+                                                currentQuestion++;
+                                                QuestionText.setText(quizList.get(currentQuestion).question());
+                                                AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
+                                                listView.setAdapter(adapter);
+                                            }
                                         }
                                     });
                                 }
@@ -136,6 +156,7 @@ public class ChallengeActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
     class AnswerAdapter extends ArrayAdapter<String> {
 
@@ -160,6 +181,10 @@ public class ChallengeActivity extends AppCompatActivity {
             TextView myText = answer.findViewById(R.id.AnswerText);
             ImageView check = answer.findViewById(R.id.AnswerCheck);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
+            myBack.setBackground(getDrawable(R.drawable.blue_but_done));
+            check.setBackground(getDrawable(R.drawable.success));
+            check.setScaleType(ImageView.ScaleType.FIT_START);
+            myBack.setVisibility(View.INVISIBLE);
             myText.setText(rText.get(position));
             if(rCheckStatus[position] == 1) {
                 check.setVisibility(View.VISIBLE);
@@ -168,7 +193,6 @@ public class ChallengeActivity extends AppCompatActivity {
                 check.setVisibility(View.INVISIBLE);
             }
             myText.setTypeface(latobold);
-            myText.setX(myBack.getX() + 8);
             return answer;
         }
     }
