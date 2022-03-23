@@ -242,7 +242,6 @@ public class ChallengeActivity extends AppCompatActivity {
                                                                 ValidationText.setVisibility(View.VISIBLE);
                                                                 lottie.setVisibility(View.VISIBLE);
                                                                 SubmitBtn.setVisibility(View.INVISIBLE);
-                                                                XpCounter.setVisibility(View.INVISIBLE);
                                                                 handler.postDelayed(new Runnable() {
                                                                     @Override
                                                                     public void run() {
