@@ -36,7 +36,7 @@ import java.util.List;
 public class ChallengeActivity extends AppCompatActivity {
 
     ListView listView;
-    TextView SubjectTitle, QuestionText;
+    TextView SubjectTitle, QuestionText, XpCounter;
     Button SubmitBtn;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -45,6 +45,7 @@ public class ChallengeActivity extends AppCompatActivity {
     String Quiz;
     int currentQuestion = 0;
     int Choice =-1;
+    int TotalXp = 0;
     List<Question> quizList = new ArrayList<>();
 
     public class Question
@@ -73,10 +74,14 @@ public class ChallengeActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listviewQuiz);
         SubjectTitle = findViewById(R.id.subjectTitle);
         QuestionText = findViewById(R.id.questionText);
+        XpCounter = findViewById(R.id.XpCounter);
         SubmitBtn = findViewById(R.id.SubmitBtn);
+
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+
+        XpCounter.setText("XP : 0");
 
         //Get date click from prev Activity
         Bundle extras = getIntent().getExtras();
@@ -122,7 +127,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                         Log.d("quiz", "right Answer: " + rightAnswer);
                                         Question question = new Question(questionString, answers, rightAnswer);
                                         quizList.add(question);
-                                    }
+                                    }//List Finished
 
                                     //Show first question
                                     SubjectTitle.setText(Subject);
@@ -149,8 +154,11 @@ public class ChallengeActivity extends AppCompatActivity {
                                             if(Choice >-1){
 
                                                 //Evaluate and Move on the next question
-                                                Log.d("result", "onClick: " + (Choice==quizList.get(currentQuestion).rightAnswer()));
-                                                Choice=-1;
+                                                if(Choice==quizList.get(currentQuestion).rightAnswer()){
+                                                    TotalXp += 10;
+                                                }
+                                                XpCounter.setText("XP : "+TotalXp);
+                                                Choice = -1;
                                                 currentQuestion++;
                                                 QuestionText.setText(quizList.get(currentQuestion).question());
                                                 AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
