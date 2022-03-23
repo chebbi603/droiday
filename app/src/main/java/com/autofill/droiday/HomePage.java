@@ -12,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -65,12 +66,12 @@ public class HomePage extends AppCompatActivity {
         leaderboard = findViewById(R.id.btn2);
         title = findViewById(R.id.title_home);
         //UserName.setText("");
-        String text = "<font color = #0F3567 >We have got\nValuable</font><font color = #2D7CE1>resources</font> <font color = #0F3567 >to\nshare with you !</font> ";
+        String text = "<font color = #0F3567 >We have got <br/>valuable</font><font color = #2D7CE1> resources</font> <font color = #0F3567 >to <br/>share with you !</font> ";
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
-        title.setText(text);
+        title.setText(Html.fromHtml(text));
 
         db.collection("users")
                 .document(mUser.getUid())
@@ -84,7 +85,7 @@ public class HomePage extends AppCompatActivity {
                                 name = "" + document.getData().get("first");
                                 xp = Integer.valueOf(document.getData().get("xp").toString());
                                 UserName.setText(name);
-                                xpText.setText("XP :"+xp);
+                                xpText.setText(""+xp);
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
