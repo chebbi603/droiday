@@ -74,7 +74,7 @@
         android:id="@+id/exams_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/tab_green"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -110,7 +110,7 @@
         android:id="@+id/series_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/tab_yellow"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -140,7 +140,7 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:cacheColorHint="#00FFFFFF"
         android:descendantFocusability="blocksDescendants"
@@ -150,7 +150,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cal_but"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn"
         tools:foregroundGravity="center">
 
 
