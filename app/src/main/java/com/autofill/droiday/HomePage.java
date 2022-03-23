@@ -28,6 +28,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class HomePage extends AppCompatActivity {
 
     String name;
@@ -41,6 +47,8 @@ public class HomePage extends AppCompatActivity {
     private Target mTarget;
     TextView title;
     Picasso picasso;
+    LocalDate today = LocalDate.now();
+    List<Integer> monthParticipation = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +88,6 @@ public class HomePage extends AppCompatActivity {
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
-
-
                             } else {
                                 //Toast.makeText(MainActivity.this, "Document Not Found", Toast.LENGTH_SHORT).show();
                                 //Log.d(TAG, "No such document");
@@ -92,6 +98,34 @@ public class HomePage extends AppCompatActivity {
                         }
                     }
                 });
+        db.collection("users")
+            .document(mUser.getUid())
+            .collection("Participation")
+            .document("" + today.getYear() + "-" + today.getMonthValue())
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            monthParticipation = (List<Integer>) document.get("mnthP");
+                            //Log.d("ffg", "onComplete: " + monthParticipation);
+                        }else{
+                            monthParticipation = new ArrayList<>();
+                            monthParticipation.add(-1);
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("mnthP", monthParticipation);
+                            db.collection("users").document(mUser.getUid()).collection("Participation")
+                                    .document("" + today.getYear() + "-" + today.getMonthValue())
+                                    .set(map);
+                        }
+                        long todayDayOfMonth = Integer.valueOf(today.getDayOfMonth());
+                        //monthParticipation.contains(todayDayOfMonth)
+                    }
+                };
+            });
+
 
         leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
