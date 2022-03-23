@@ -128,7 +128,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                             int checkS[] = new int[quizList.get(0).answers().size()];
                                             checkS[i]=1;
                                             AnswerAdapter adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(0).answers(), checkS);
-                                            listView.setAdapter(adapter);
+                                            listView.setAdapter(adapter);//
                                         }
                                     });
                                 }
