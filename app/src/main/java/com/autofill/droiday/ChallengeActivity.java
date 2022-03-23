@@ -8,6 +8,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -150,7 +151,7 @@ public class ChallengeActivity extends AppCompatActivity {
 
                                     //Show first question
                                     SubjectTitle.setText(Subject);
-                                    QuestionText.setText(quizList.get(currentQuestion).question());
+                                    QuestionText.setText(quizList.get(currentQuestion).question().replaceAll("@",System.getProperty("line.separator")));
                                     adapter = new AnswerAdapter(ChallengeActivity.this, quizList.get(currentQuestion).answers(), new int[quizList.get(currentQuestion).answers().size()]);
                                     listView.setAdapter(adapter);
 
@@ -178,10 +179,12 @@ public class ChallengeActivity extends AppCompatActivity {
                                                 if (Choice == quizList.get(currentQuestion).rightAnswer()) {
                                                     TotalXp += 10;
                                                     ValidationText.setText("Correct");
+                                                    ValidationText.setTextColor(ColorStateList.valueOf(0xff228b22));
                                                     correctMp.start();
                                                     nbCorrectAnswers++;
                                                 }else{
                                                     ValidationText.setText("Incorrect");
+                                                    ValidationText.setTextColor(ColorStateList.valueOf(0xffff0000));
                                                     wrongMp.start();
                                                 }
                                                 ValidationText.setVisibility(View.VISIBLE);
@@ -208,6 +211,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                                         }else{
                                                             ValidationText.setVisibility(View.INVISIBLE);
                                                             ValidationText.setText("You got " + nbCorrectAnswers + " questions out of " +quizList.size() + " right");
+                                                            ValidationText.setTextColor(ColorStateList.valueOf(0xffffffff));
                                                             handler.postDelayed(new Runnable() {
                                                                 @Override
                                                                 public void run() {
@@ -259,18 +263,21 @@ public class ChallengeActivity extends AppCompatActivity {
             @SuppressLint("ViewHolder") View answer = layoutInflater.inflate(R.layout.answer, parent, false);
             ImageView myBack = answer.findViewById(R.id.backimgQuiz);
             TextView myText = answer.findViewById(R.id.AnswerText);
-            ImageView check = answer.findViewById(R.id.AnswerCheck);
+            RadioButton check = answer.findViewById(R.id.AnswerCheck);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myBack.setBackground(getDrawable(R.drawable.blue_but_done));
-            check.setBackground(getDrawable(R.drawable.success));
-            check.setScaleType(ImageView.ScaleType.FIT_START);
+            //check.setBackground(getDrawable(R.drawable.success));
+            //check.setScaleType(ImageView.ScaleType.FIT_START);
+            check.setClickable(false);
             myBack.setVisibility(View.INVISIBLE);
             myText.setText(rText.get(position));
             if(rCheckStatus[position] == 1) {
-                check.setVisibility(View.VISIBLE);
+                //check.setVisibility(View.VISIBLE);
+                check.setChecked(true);
             }
             else {
-                check.setVisibility(View.INVISIBLE);
+                //check.setVisibility(View.INVISIBLE);
+                check.setChecked(false);
             }
             myText.setTypeface(latobold);
             return answer;
