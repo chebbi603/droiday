@@ -83,11 +83,13 @@ public class LeaderboardActivity extends AppCompatActivity {
             @SuppressLint("ViewHolder") View answer = layoutInflater.inflate(R.layout.leaderboard_row, parent, false);
             ImageView myBack = answer.findViewById(R.id.backgroundLeader);
             TextView myName = answer.findViewById(R.id.LeaderName);
+            TextView myScore = answer.findViewById(R.id.score);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myBack.setBackground(getDrawable(R.drawable.redtitle));
             myName.setTypeface(latobold);
+            myScore.setTypeface(latobold);
             myName.setText(rText.get(position));
-
+            myScore.setText(rScore.get(position));
             return answer;
         }
     }
