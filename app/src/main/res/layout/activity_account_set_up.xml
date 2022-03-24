@@ -104,63 +104,40 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
         <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="62dp"
-            tools:layout_editor_absoluteY="189dp" >
+            android:id="@+id/radioGroup"
+            android:layout_width="109dp"
+            android:layout_height="74dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41000003">
 
             <RadioButton
                 android:id="@+id/Student"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="Student"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/Teacher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Teacher"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/inpLastName3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/field"
-            android:ems="10"
-            android:fontFamily="@font/lato_bold"
-            android:hint="Last Name"
-            android:inputType="textPersonName"
-            android:paddingLeft="30dp"
-            android:textColorHint="#000"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inpFirstName2" />
-
-        <EditText
-            android:id="@+id/inpFirstName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/field"
-            android:ems="10"
-            android:fontFamily="@font/lato_bold"
-            android:hint="First Name"
-            android:inputType="textPersonName"
-            android:paddingLeft="30dp"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Button
-            android:id="@+id/setUpBtn"
+            android:id="@+id/SetUpBtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -178,10 +155,10 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inpLastName3"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
             app:srcCompat="@drawable/designlineyellow" />
 
         <TextView

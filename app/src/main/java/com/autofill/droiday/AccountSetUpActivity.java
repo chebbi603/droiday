@@ -17,6 +17,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,11 +43,13 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
 
     String[] Levels = { "1ere" , "2eme", "3eme", "4eme", "5eme", "6eme", "7eme", "8eme", "9eme"};
     EditText FirstName, LastName;
-    Button SetUpBtn , SetUpBtn1;
+    Button SetUpBtn , SetUpBtn1, SetUpBtn2;
+    RadioButton Teacher, Student;
     String firstname, lastname;
     String email = "";
     String password = "";
     int position = -1;
+    int radio = 0;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -60,16 +63,22 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
 
         ConstraintLayout const1 = findViewById(R.id.const1);
         ConstraintLayout const2 = findViewById(R.id.const2);
+        ConstraintLayout const3 = findViewById(R.id.const3);
         email = getIntent().getStringExtra("key_email");
         password = getIntent().getStringExtra("key_password");
         FirstName = findViewById(R.id.inpFirstName);
         LastName = findViewById(R.id.inpLastName);
         SetUpBtn = findViewById(R.id.SetUpBtn);
         SetUpBtn1 = findViewById(R.id.SetUpBtn1);
+        SetUpBtn2 = findViewById(R.id.SetUpBtn2);
+        Student = findViewById(R.id.Student);
+        Teacher = findViewById(R.id.Teacher);
         TextView title = findViewById(R.id.titleinstance);
         TextView desc = findViewById(R.id.desc);
         TextView title2 = findViewById(R.id.titleinstance2);
         TextView desc2 = findViewById(R.id.desc2);
+        TextView title3 = findViewById(R.id.titleinstance3);
+        TextView desc3 = findViewById(R.id.desc3);
         TextView welcome = findViewById(R.id.welcome_msg);
 
         Spinner LvlChoice = findViewById(R.id.lvlChoice);
@@ -99,24 +108,45 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
             public void onClick(View view) {
                 firstname = FirstName.getText().toString();
                 lastname = LastName.getText().toString();
-                const1.startAnimation(fadeout);
-                const1.setVisibility(View.INVISIBLE);
-                const2.startAnimation(fadein);
-                const2.setVisibility(View.VISIBLE);
-                desc2.setText("Select your class from the dropdown below");
-                welcome.setText("Welcome "+ firstname + " !");
+                if (firstname.isEmpty()) {
+                    FirstName.setError("Invalid Username");
+                } else if (lastname.isEmpty()) {
+                    LastName.setError("Invalid Username");
+                }else {
+                    const1.startAnimation(fadeout);
+                    const1.setVisibility(View.INVISIBLE);
+                    const3.startAnimation(fadein);
+                    const3.setVisibility(View.VISIBLE);
+
+                }
             }
         });
+
+        SetUpBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Student.isChecked() || Teacher.isChecked()){
+                    if(Teacher.isChecked()) radio = 1;
+                    const1.startAnimation(fadeout);
+                    const1.setVisibility(View.INVISIBLE);
+                    const2.startAnimation(fadein);
+                    const2.setVisibility(View.VISIBLE);
+                    desc2.setText("Select your class from the dropdown below");
+                    welcome.setText("Welcome " + firstname + " !");
+                }
+            }
+        });
+
         SetUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                    if (firstname.isEmpty()) {
+                   /* if (firstname.isEmpty()) {
                         FirstName.setError("Invalid Username");
                     } else if (lastname.isEmpty()) {
                         FirstName.setError("Invalid Username");
-                        /*
+
                     }else{
                         isTrue[0]++;
                         FirstName.startAnimation(fadeout);
@@ -130,8 +160,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         desc.setText("Select your class");
                         line.setBackground(getDrawable(R.drawable.designlineblue));
 
-                    */
-                }
+
+                }*/
                 if (position>0){
                         //Capitalize The Names
                         firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
@@ -151,14 +181,15 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                                         }
                                     }
                                 });
-
+                        String UserType = "Teacher";
                         // Create a new user with a first and last name
                         Map<String, Object> user = new HashMap<>();
                         user.put("first", firstname);
                         user.put("last", lastname);
                         user.put("level", position);
                         user.put("avatar", "0");
-                        user.put("xp", "0");
+                        user.put("type", UserType);
+                        user.put("xp", 0);
                         user.put("first_day", ""+today);
 
                         // Add a new document with a generated ID
