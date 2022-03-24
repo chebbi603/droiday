@@ -101,6 +101,7 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
 
         Const1.setVisibility(View.VISIBLE);
         Const2.setVisibility(View.INVISIBLE);
+        QuestionTitle.setText("Question N°1");
 
         questionIndex=0;
         nbAnswers = 0;
@@ -158,6 +159,7 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
                 }else{
                     Subject = SubjectName.getText().toString();
                     nbQuestions = Integer.valueOf(nbOfQuestions.getText().toString());
+
                     Const1.setVisibility(View.INVISIBLE);
                     Const2.setVisibility(View.VISIBLE);
 
@@ -178,7 +180,9 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
                     QuestionText.setError("Enter Question");
                 }else if(RightAnswer.getText().toString().isEmpty()){
                     RightAnswer.setError("Provide Right Answer");
-                } else if (nbAnswers !=0){
+                }else if(Integer.valueOf(RightAnswer.getText().toString())>nbAnswers){
+                    RightAnswer.setError("Enter Valid Number");
+                }else if (nbAnswers !=0){
                     Answers = new ArrayList<>();
                     boolean check = true;
                     for (int i = 0; i < nbAnswers; i++) {
@@ -197,6 +201,7 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
                         }
                         Finalstring += question + "#" + (Integer.valueOf(RightAnswer.getText().toString())-1);
                         questionIndex++;
+
                         if(questionIndex == nbQuestions){
                             //out
                             Log.d("question", Finalstring);
@@ -225,6 +230,7 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
 
                         }else{
                             //Next Question
+                            QuestionTitle.setText("Question N°" + (questionIndex+1));
                             QuestionText.setText("");
                             RightAnswer.setText("");
                             nbAnswers = 0;

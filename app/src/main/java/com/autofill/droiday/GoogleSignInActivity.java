@@ -141,7 +141,7 @@ public class GoogleSignInActivity extends LoginActivity {
                                 }
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                StyleableToast.makeText(GoogleSignInActivity.this, "exists", Toast.LENGTH_SHORT,R.style.mytoast).show();
+                                //StyleableToast.makeText(GoogleSignInActivity.this, "exists", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }else{
                                 intent = new Intent( GoogleSignInActivity.this,AccountSetUpActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
