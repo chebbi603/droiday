@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -328,9 +329,38 @@ public class ChallengeActivity extends AppCompatActivity {
                                 db.collection("users").document(mUser.getUid()).collection("Participation")
                                         .document("" + dateClicked.getYear() + "-" + dateClicked.getMonthValue())
                                         .set(map);
-                                Intent intent = new Intent(ChallengeActivity.this, CalenderActivity.class);
-                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                                startActivity(intent);
+                                db.collection("users")
+                                        .document(mUser.getUid())
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    DocumentSnapshot document = task.getResult();
+                                                    if (document.exists()) {
+                                                        int userXp = Integer.valueOf(document.getData().get("xp").toString());
+                                                        Map<String, Object> user = new HashMap<>();
+                                                        user.put("xp", userXp + TotalXp);
+                                                        user.put("first", document.getData().get("first").toString());
+                                                        user.put("last", document.getData().get("last").toString());
+                                                        user.put("avatar", document.getData().get("avatar").toString());
+                                                        user.put("type", document.getData().get("type").toString());
+                                                        user.put("level", document.getData().get("level").toString());
+                                                        user.put("first_day", document.getData().get("first_day").toString());
+                                                        //
+                                                        // Add a new document with a generated ID
+                                                        DocumentReference doc = db.collection("users").document(mUser.getUid());
+                                                        doc.set(user);
+
+                                                        Intent intent = new Intent(ChallengeActivity.this, CalenderActivity.class);
+                                                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                                        startActivity(intent);
+                                                    }else{
+
+                                                    }
+                                                }
+                                            };
+                                        });
                             }else{
 
                             }
