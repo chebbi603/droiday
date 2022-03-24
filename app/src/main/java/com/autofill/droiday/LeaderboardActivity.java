@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -51,6 +52,10 @@ public class LeaderboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leaderboard);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ImageView home_but = (ImageView) findViewById(R.id.home_but);
+        ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
+        ImageView games_but = (ImageView) findViewById(R.id.games_but);
+
         listView = findViewById(R.id.listview);
 
         mAuth = FirebaseAuth.getInstance();
@@ -77,6 +82,30 @@ public class LeaderboardActivity extends AppCompatActivity {
                         }
                     }
                 });
+        home_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LeaderboardActivity.this, HomePage.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivity(intent);
+            }
+        });
+        cal_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LeaderboardActivity.this, CalenderActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivity(intent);
+            }
+        });
+        games_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LeaderboardActivity.this, ResourcesActivity.class);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivity(intent);
+            }
+        });
     }
     class LeaderboardAdapter extends ArrayAdapter<String> {
 
