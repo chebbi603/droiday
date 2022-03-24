@@ -332,6 +332,7 @@ public class ChallengeActivity extends AppCompatActivity {
                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 startActivity(intent);
                             }else{
+
                             }
                         }
                     };
