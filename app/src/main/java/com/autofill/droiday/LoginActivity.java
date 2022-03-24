@@ -147,15 +147,14 @@ public class LoginActivity extends AppCompatActivity{
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Log.d("TAAAG", "onComplete: "+document.getData().get("type").toString());
                                 if(document.getData().get("type").equals("teacher")){
                                     intent = new Intent( LoginActivity.this,TeacherHomePage.class);
                                 }else{
                                     intent = new Intent( LoginActivity.this,HomePage.class);
                                 }
-                                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                                //startActivity(intent);
-                                //Toast.makeText(LoginActivity.this, "exists", Toast.LENGTH_SHORT).show();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                Toast.makeText(LoginActivity.this, "exists", Toast.LENGTH_SHORT).show();
                             }else{
                                 intent = new Intent( LoginActivity.this,AccountSetUpActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
