@@ -229,8 +229,6 @@ public class ResourcesActivity extends AppCompatActivity {
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
-
-
                                 }
                             });
                         }
