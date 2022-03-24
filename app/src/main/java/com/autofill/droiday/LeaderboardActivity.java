@@ -101,9 +101,9 @@ public class LeaderboardActivity extends AppCompatActivity {
             TextView myName = answer.findViewById(R.id.LeaderName);
             TextView myScore = answer.findViewById(R.id.score);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
-            myBack.setBackground(getDrawable(R.drawable.redtitle));
+            myBack.setBackground(getDrawable(R.drawable.them_leader));
             if(rMe.get(position) == 1){
-                myBack.setBackgroundTintList(ColorStateList.valueOf(0xff00ffff));
+                myBack.setBackground(getDrawable(R.drawable.me_leader));
             }
             myName.setTypeface(latobold);
             myScore.setTypeface(latobold);

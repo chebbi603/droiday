@@ -78,11 +78,6 @@ public class HomePage extends AppCompatActivity {
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
 
-        ConstraintLayout constraint = findViewById(R.id.parent);
-        ConstraintSet constraintSet = new ConstraintSet();
-        constraintSet.clone(constraint);
-        constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.notif,ConstraintSet.BOTTOM,32);
-        constraintSet.applyTo(constraint);
         title.setText(Html.fromHtml(text));
 
         db.collection("users")
@@ -137,19 +132,9 @@ public class HomePage extends AppCompatActivity {
                         long todayDayOfMonth = Integer.valueOf(today.getDayOfMonth());
                         if(!monthParticipation.contains(todayDayOfMonth)){
                             notif.setVisibility(View.VISIBLE);
-                            ConstraintLayout constraint = findViewById(R.id.parent);
-                            ConstraintSet constraintSet = new ConstraintSet();
-                            constraintSet.clone(constraint);
-                            constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.notif,ConstraintSet.BOTTOM,40);
-                            constraintSet.applyTo(constraint);
                         }
                         else{
                             notif.setVisibility(View.INVISIBLE);
-                            ConstraintLayout constraint = findViewById(R.id.parent);
-                            ConstraintSet constraintSet = new ConstraintSet();
-                            constraintSet.clone(constraint);
-                            constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.parent,ConstraintSet.TOP,72);
-                            constraintSet.applyTo(constraint);
                         }
                         //monthParticipation.contains(todayDayOfMonth)
                     }
