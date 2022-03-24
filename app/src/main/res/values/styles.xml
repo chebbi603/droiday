@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="mytoast">
+        <item name="stTextBold">false</item>
+        <item name="stTextColor">#fff</item>
+        <item name="stFont">@font/lato_bold</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#1877F2</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">0dp</item>
+        <item name="stStrokeColor">#fff</item>
+        <item name="stLength">LONG</item>
+        <item name="stRadius">40dp</item>
+    </style>
+
+</resources>

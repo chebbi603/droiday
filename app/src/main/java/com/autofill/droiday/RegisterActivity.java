@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class RegisterActivity extends AppCompatActivity {
 
     TextView HasAcc;
@@ -82,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     //progressDialog.dismiss();
-                                    Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT,R.style.mytoast).show();
                                     mUser = mAuth.getCurrentUser();
                                     /*UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(username)
@@ -120,8 +122,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     if((task.getException() instanceof FirebaseAuthUserCollisionException)) {
                                         EmailText.setError("Email Already In Use");
                                     }else{
-                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(RegisterActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT,R.style.mytoast).show();
                                     }
                                 }
                             }

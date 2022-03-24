@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back4"
     tools:context=".ChallengeSubmitActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,8 +124,14 @@
             android:id="@+id/Submit_Answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/blubtnquiz"
+            android:text="Soumettre"
+            android:fontFamily="@font/lato_bold"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:layout_marginBottom="24dp"
-            android:text="Submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

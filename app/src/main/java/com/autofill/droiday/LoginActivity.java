@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class LoginActivity extends AppCompatActivity{
 
     Intent intent;
@@ -83,7 +85,7 @@ public class LoginActivity extends AppCompatActivity{
                                         // Sign in success, update UI with the signed-in user's information
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         updateUI(user);
-                                        Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT,R.style.mytoast).show();
                                     } else {
                                         progressDialog.dismiss();
                                         if(task.getException() instanceof FirebaseAuthInvalidUserException){
@@ -92,8 +94,8 @@ public class LoginActivity extends AppCompatActivity{
                                             PasswordText.setError("Invalid Password");
                                         }else {
                                             // If sign in fails, display a message to the user.
-                                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                                    Toast.LENGTH_SHORT).show();
+                                            StyleableToast.makeText(LoginActivity.this, "Authentication failed.",
+                                                    Toast.LENGTH_SHORT,R.style.mytoast).show();
                                         }
                                     }
                                 }
@@ -154,12 +156,12 @@ public class LoginActivity extends AppCompatActivity{
                                 }
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(LoginActivity.this, "exists", Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(LoginActivity.this, "exists", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }else{
                                 intent = new Intent( LoginActivity.this,AccountSetUpActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(LoginActivity.this, "doesn't exist", Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(LoginActivity.this, "doesn't exist", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }
                         }
                     }

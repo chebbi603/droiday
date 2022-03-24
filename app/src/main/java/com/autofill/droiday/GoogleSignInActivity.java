@@ -26,6 +26,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
  */
@@ -92,7 +94,7 @@ public class GoogleSignInActivity extends LoginActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT,R.style.mytoast).show();
                 progressDialog.dismiss();
                 finish();
             }
@@ -110,11 +112,11 @@ public class GoogleSignInActivity extends LoginActivity {
                         Log.d(TAG, "signInWithCredential:success");
                         progressDialog.dismiss();
                         mUser = mAuth.getCurrentUser();
-                        Toast.makeText(GoogleSignInActivity.this, "Signed In as "+mUser.getDisplayName(), Toast.LENGTH_SHORT).show();
+                        StyleableToast.makeText(GoogleSignInActivity.this, "Signed In as "+mUser.getDisplayName(), Toast.LENGTH_SHORT,R.style.mytoast).show();
                         updateUI(mUser);
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(GoogleSignInActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
+                        StyleableToast.makeText(GoogleSignInActivity.this, ""+task.getException(), Toast.LENGTH_SHORT,R.style.mytoast).show();
                         progressDialog.dismiss();
                         finish();
                     }
@@ -139,12 +141,12 @@ public class GoogleSignInActivity extends LoginActivity {
                                 }
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(GoogleSignInActivity.this, "exists", Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(GoogleSignInActivity.this, "exists", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }else{
                                 intent = new Intent( GoogleSignInActivity.this,AccountSetUpActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(GoogleSignInActivity.this, "doesn't exist", Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(GoogleSignInActivity.this, "doesn't exist", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }
                         }
                     }
