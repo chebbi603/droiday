@@ -50,7 +50,6 @@ import java.util.Map;
 
 import android.app.DownloadManager;
 
-
 public class ResourcesActivity extends AppCompatActivity {
 
     ListView listView;
@@ -64,12 +63,12 @@ public class ResourcesActivity extends AppCompatActivity {
     DocumentReference docRef;
     List<String> bookNames, bookUrls, examNames, examUrls, serieNames, serieUrls, Subjects, Tests;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resources);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         bookNames = new ArrayList<String>();
         bookUrls = new ArrayList<String>();
         examNames = new ArrayList<String>();
@@ -565,6 +564,8 @@ public class ResourcesActivity extends AppCompatActivity {
             return row;
         }
     }
+
+
 
     class FolderAdapter extends ArrayAdapter<String> {
 
