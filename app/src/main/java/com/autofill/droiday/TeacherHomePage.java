@@ -3,6 +3,7 @@ package com.autofill.droiday;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,6 +13,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,7 +33,7 @@ public class TeacherHomePage extends AppCompatActivity {
     String name;
     TextView UserName;
     ImageView avatarImage;
-    Button btn2;
+    Button btn2,btn;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -51,6 +53,7 @@ public class TeacherHomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         btn2 = findViewById(R.id.TeacherBtn2);
+        btn = findViewById(R.id.btn);
         title = findViewById(R.id.title_homeTeacher);
 
 
@@ -64,20 +67,24 @@ public class TeacherHomePage extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 name = "" + document.getData().get("first");
-                                UserName.setText(name);
+                                UserName.setText("name");
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
                             } else {
-                                //Toast.makeText(MainActivity.this, "Document Not Found", Toast.LENGTH_SHORT).show();
-                                //Log.d(TAG, "No such document");
                             }
                         } else {
-                            //Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                            //Log.d(TAG, "get failed with ", task.getException());
                         }
                     }
                 });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherHomePage.this, ChallengeSubmitActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public Bitmap getCroppedBitmap(Bitmap bitmap) {

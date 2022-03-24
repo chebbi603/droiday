@@ -16,7 +16,7 @@
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
         android:paddingBottom="40dp"
-        android:text="Button"
+        android:text="Submit Your Challenge"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
