@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ChallengeSubmitActivity"
+            android:exported="false" />
+        <activity
             android:name=".TeacherHomePage"
             android:exported="false" />
         <activity
