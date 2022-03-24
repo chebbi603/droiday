@@ -44,7 +44,6 @@
             android:hint="Last Name"
             android:inputType="textPersonName"
             android:paddingLeft="30dp"
-            android:textColorHint="#000"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

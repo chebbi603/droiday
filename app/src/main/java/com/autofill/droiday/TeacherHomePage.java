@@ -42,7 +42,7 @@ public class TeacherHomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_teacher_home_page);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         db = FirebaseFirestore.getInstance();
@@ -64,7 +64,7 @@ public class TeacherHomePage extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 name = "" + document.getData().get("first");
-                                UserName.setText(name);
+                                UserName.setText("name");
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
