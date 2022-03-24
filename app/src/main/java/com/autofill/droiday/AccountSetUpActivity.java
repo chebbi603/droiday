@@ -215,8 +215,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                                 });
                     }else{updateUI(mUser);}
                 }else {
-                    const1.startAnimation(fadeout);
-                    const1.setVisibility(View.INVISIBLE);
+                    const3.startAnimation(fadeout);
+                    const3.setVisibility(View.INVISIBLE);
                     const2.startAnimation(fadein);
                     const2.setVisibility(View.VISIBLE);
                     desc2.setText("Select your class from the dropdown below");
