@@ -8,6 +8,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -223,6 +224,8 @@ public class ChallengeSubmitActivity extends AppCompatActivity {
                                                     map.put("date", ""+lastChallenge.plusDays(1));
                                                     doc = db.collection("challenges").document("lastChallenge");
                                                     doc.set(map);
+                                                    Intent intent = new Intent(ChallengeSubmitActivity.this, TeacherHomePage.class);
+                                                    startActivity(intent);
                                                 }
                                             }
                                         }
