@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".ChallengeSubmitActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".TracksActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".ChallengeSubmitActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".TeacherHomePage"
             android:exported="false" />

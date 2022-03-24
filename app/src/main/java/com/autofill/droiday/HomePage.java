@@ -43,7 +43,7 @@ public class HomePage extends AppCompatActivity {
     int xp;
     TextView UserName, xpText;
     ImageView avatarImage;
-    Button leaderboard;
+    Button leaderboard, Tracks;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -66,6 +66,7 @@ public class HomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         leaderboard = findViewById(R.id.btn2);
+        Tracks = findViewById(R.id.btn1);
         TextView notif = findViewById(R.id.notif);
         title = findViewById(R.id.title_home);
         notif.setVisibility(View.INVISIBLE);
@@ -141,6 +142,15 @@ public class HomePage extends AppCompatActivity {
                 };
             });
 
+
+        Tracks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePage.this, TracksActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
 
         leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override

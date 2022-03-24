@@ -67,7 +67,7 @@ public class TeacherHomePage extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 name = "" + document.getData().get("first");
-                                UserName.setText("name");
+                                UserName.setText(name);
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 

@@ -60,24 +60,6 @@
         app:srcCompat="@drawable/indicator" />
 
     <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/tab_green"
-        android:fontFamily="@font/lato_bold"
-        android:paddingLeft="40dp"
-        android:paddingBottom="40dp"
-        android:text="Leaderboard"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="#126016"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,6 +76,24 @@
         app:layout_constraintBottom_toTopOf="@+id/btn2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/tab_green"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Leaderboard"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#126016"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
