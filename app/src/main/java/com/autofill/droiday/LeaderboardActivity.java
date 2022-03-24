@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -33,6 +36,9 @@ import java.util.List;
 public class LeaderboardActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+    FirebaseUser mUser;
+
     ListView listView;
     List<String> Names = new ArrayList<>();
     List<String> Scores = new ArrayList<>();
@@ -46,6 +52,8 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listview);
 
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
         db.collection("users")
@@ -55,12 +63,16 @@ public class LeaderboardActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<Integer> l = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Names.add(document.getData().get("first").toString() + " " +document.getData().get("last").toString());
                                 Scores.add(document.getData().get("xp").toString());
-                                adapter = new LeaderboardAdapter(LeaderboardActivity.this, Names, Scores);
-                                listView.setAdapter(adapter);
+                                if(document.getId().equals(mUser.getUid())){
+                                    l.add(1);
+                                }else l.add(0);
                             }
+                            adapter = new LeaderboardAdapter(LeaderboardActivity.this, Names, Scores, l);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });
@@ -70,12 +82,14 @@ public class LeaderboardActivity extends AppCompatActivity {
         Context context;
         List<String> rText;
         List<String> rScore;
+        List<Integer> rMe;
 
-        LeaderboardAdapter(Context c, List<String> text, List<String> score) {
+        LeaderboardAdapter(Context c, List<String> text, List<String> score, List<Integer> me) {
             super(c, R.layout.leaderboard_row, R.id.LeaderName, text);
             this.context = c;
             this.rText = text;
             this.rScore = score;
+            this.rMe = me;
         }
 
         @NonNull
@@ -88,6 +102,9 @@ public class LeaderboardActivity extends AppCompatActivity {
             TextView myScore = answer.findViewById(R.id.score);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
             myBack.setBackground(getDrawable(R.drawable.redtitle));
+            if(rMe.get(position) == 1){
+                myBack.setBackgroundTintList(ColorStateList.valueOf(0xff00ffff));
+            }
             myName.setTypeface(latobold);
             myScore.setTypeface(latobold);
             myName.setText(rText.get(position));
