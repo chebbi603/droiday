@@ -2,6 +2,8 @@ package com.autofill.droiday;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -64,13 +66,23 @@ public class HomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         leaderboard = findViewById(R.id.btn2);
+        TextView notif = findViewById(R.id.notif);
         title = findViewById(R.id.title_home);
+        notif.setVisibility(View.INVISIBLE);
+        TextView xpbar = findViewById(R.id.xpbar);
+
         //UserName.setText("");
         String text = "<font color = #0F3567 >We have got <br/>valuable</font><font color = #2D7CE1> resources</font> <font color = #0F3567 >to <br/>share with you !</font> ";
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
         ImageView games_but = (ImageView) findViewById(R.id.games_but);
+
+        ConstraintLayout constraint = findViewById(R.id.parent);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraint);
+        constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.notif,ConstraintSet.BOTTOM,32);
+        constraintSet.applyTo(constraint);
         title.setText(Html.fromHtml(text));
 
         db.collection("users")
@@ -99,6 +111,7 @@ public class HomePage extends AppCompatActivity {
                         }
                     }
                 });
+        long day;
         db.collection("users")
             .document(mUser.getUid())
             .collection("Participation")
@@ -122,6 +135,22 @@ public class HomePage extends AppCompatActivity {
                                     .set(map);
                         }
                         long todayDayOfMonth = Integer.valueOf(today.getDayOfMonth());
+                        if(!monthParticipation.contains(todayDayOfMonth)){
+                            notif.setVisibility(View.VISIBLE);
+                            ConstraintLayout constraint = findViewById(R.id.parent);
+                            ConstraintSet constraintSet = new ConstraintSet();
+                            constraintSet.clone(constraint);
+                            constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.notif,ConstraintSet.BOTTOM,40);
+                            constraintSet.applyTo(constraint);
+                        }
+                        else{
+                            notif.setVisibility(View.INVISIBLE);
+                            ConstraintLayout constraint = findViewById(R.id.parent);
+                            ConstraintSet constraintSet = new ConstraintSet();
+                            constraintSet.clone(constraint);
+                            constraintSet.connect(R.id.xpbar,ConstraintSet.TOP,R.id.parent,ConstraintSet.TOP,72);
+                            constraintSet.applyTo(constraint);
+                        }
                         //monthParticipation.contains(todayDayOfMonth)
                     }
                 };
