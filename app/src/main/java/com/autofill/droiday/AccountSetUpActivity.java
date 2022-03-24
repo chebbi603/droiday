@@ -223,7 +223,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         const1.setVisibility(View.INVISIBLE);
                         const2.startAnimation(fadein);
                         const2.setVisibility(View.VISIBLE);
-                        desc2.setText("Select your class from the dropdown below");
+                        //desc2.setText("Select your class from the dropdown below");
                         String text = "<font color = #0F3567 >Bienvenue </font>";
                         String text2 = "<font color = #2D7CE1>"+firstname+"</font>";
                         welcome.setText(Html.fromHtml(text+text2));

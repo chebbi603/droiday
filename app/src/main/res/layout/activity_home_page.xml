@@ -202,7 +202,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/lato"
-        android:text="Welcome"
+        android:text="Bienvenue"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/AvatarImg"
         app:layout_constraintTop_toTopOf="@+id/AvatarImg" />
