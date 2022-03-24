@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_home"
     tools:context=".TeacherHomePage">
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/tab_blue"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Button"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/TeacherBtn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/TeacherBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/tab_green"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Button"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#126016"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/tab_yellow"
+        android:fontFamily="@font/lato_bold"
+        android:paddingLeft="40dp"
+        android:paddingBottom="40dp"
+        android:text="Button"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#5A3814"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/title_homeTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="School is not \na problem anymore"
+        android:textColor="#2B2A47"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AvatarImgTeacher" />
+
+    <TextView
+        android:id="@+id/welcomeText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato"
+        android:text="Welcome"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/AvatarImgTeacher"
+        app:layout_constraintTop_toTopOf="@+id/AvatarImgTeacher" />
+
+    <ImageView
+        android:id="@+id/AvatarImgTeacher"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/UserNameTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="User"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeText2"
+        app:layout_constraintStart_toEndOf="@+id/AvatarImgTeacher"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
