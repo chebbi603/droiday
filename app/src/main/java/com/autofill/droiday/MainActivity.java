@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
 
-
         });
 
         fr.setOnClickListener(new View.OnClickListener() {

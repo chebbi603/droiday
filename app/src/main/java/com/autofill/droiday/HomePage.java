@@ -72,7 +72,7 @@ public class HomePage extends AppCompatActivity {
         TextView xpbar = findViewById(R.id.xpbar);
 
         //UserName.setText("");
-        String text = "<font color = #0F3567 >We have got <br/>valuable</font><font color = #2D7CE1> resources</font> <font color = #0F3567 >to <br/>share with you !</font> ";
+        String text = "<font color = #0F3567 >On met plusieurs <br/></font><font color = #2D7CE1> resources et documents </font> <font color = #0F3567 ><br/>à votre disposition !</font> ";
         ImageView indic  = (ImageView) findViewById(R.id.indic);
         ImageView home_but = (ImageView) findViewById(R.id.home_but);
         ImageView cal_but = (ImageView) findViewById(R.id.cal_but);
@@ -147,6 +147,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomePage.this, LeaderboardActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 /*db.collection("users")
                         .orderBy("xp", Query.Direction.DESCENDING)
                         .get()
@@ -167,16 +168,16 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomePage.this, CalenderActivity.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         games_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomePage.this, ResourcesActivity.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

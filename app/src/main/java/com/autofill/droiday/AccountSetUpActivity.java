@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -102,7 +103,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         const2.setVisibility(View.INVISIBLE);
         const1.setBackgroundColor(Color.rgb(254,234,148));
         title.setTextColor(Color.rgb(215,138,73));
-        desc.setText("Please provide us with your full name");
+        //desc.setText("Please provide us with your full name");
         title2.setTextColor(Color.rgb(45,124,225));
         final int[] isTrue = {0};
 
@@ -222,8 +223,10 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         const1.setVisibility(View.INVISIBLE);
                         const2.startAnimation(fadein);
                         const2.setVisibility(View.VISIBLE);
-                        desc2.setText("Select your class from the dropdown below");
-                        welcome.setText("Welcome " + firstname + " !");
+                        //desc2.setText("Select your class from the dropdown below");
+                        String text = "<font color = #0F3567 >Bienvenue </font>";
+                        String text2 = "<font color = #2D7CE1>"+firstname+"</font>";
+                        welcome.setText(Html.fromHtml(text+text2));
 
                     }
 

@@ -55,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent( RegisterActivity.this,LoginActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         Register.setOnClickListener(new View.OnClickListener() {

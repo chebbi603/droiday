@@ -203,8 +203,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                                     MyAdapter adaptera = new MyAdapter(ResourcesActivity.this,bookNames,bookUrls,bookstatus);
                                                     listView.setAdapter(adaptera);
                                                     Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                     startActivity(intente);
+                                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                 }
                                             };
                                             //
@@ -220,8 +220,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                             outputStream.write(value.getBytes());
                                             outputStream.close();
                                             Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                             startActivity(intent);
+                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                         }
 
                                     } catch (FileNotFoundException e) {
@@ -332,8 +332,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                                 BroadcastReceiver onComplete=new BroadcastReceiver() {
                                                                                     public void onReceive(Context ctxt, Intent intent) {
                                                                                         Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                                                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                         startActivity(intente);
+                                                                                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                     }
                                                                                 };
                                                                                 //
@@ -349,8 +349,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                                 outputStream.write(value.getBytes());
                                                                                 outputStream.close();
                                                                                 Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                 startActivity(intent);
+                                                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                             }
 
                                                                         } catch (FileNotFoundException e) {
@@ -461,8 +461,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                                     MyAdapter adapter = new MyAdapter(ResourcesActivity.this,serieNames,serieUrls,examstatus);
                                                                                     listView.setAdapter(adapter);
                                                                                     Intent intente = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                     startActivity(intente);
+                                                                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                                 }
                                                                             };
                                                                             //
@@ -478,8 +478,8 @@ public class ResourcesActivity extends AppCompatActivity {
                                                                             outputStream.write(value.getBytes());
                                                                             outputStream.close();
                                                                             Intent intent = new Intent(ResourcesActivity.this, PdfActivity.class);
-                                                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                             startActivity(intent);
+                                                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                         }
 
                                                                     } catch (FileNotFoundException e) {
@@ -506,8 +506,8 @@ public class ResourcesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ResourcesActivity.this, CalenderActivity.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -515,8 +515,8 @@ public class ResourcesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ResourcesActivity.this, HomePage.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

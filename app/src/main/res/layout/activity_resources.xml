@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/lato"
-        android:text="Find all the assets you need"
+        android:text="Trouver tous les documents dont vous avez besoin"
         android:textColor="#0F3567"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/text1"
