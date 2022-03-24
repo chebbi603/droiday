@@ -11,7 +11,6 @@
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_account_set_up.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_calender.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_challenge.xml" value="0.25" />
-        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_challenge_submit.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_home.xml" value="0.1265625" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_home_page.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_leaderboard.xml" value="0.27447916666666666" />
@@ -22,7 +21,6 @@
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.25" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_teacher_home_page.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/answer.xml" value="0.264" />
-        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/answer_to_submit.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/calendar_cell.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/leaderboard_row.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/row.xml" value="0.264" />
@@ -33,6 +31,7 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_main.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/leaderboard_row.xml" value="0.16869300911854104" />
       </map>
     </option>
   </component>

@@ -57,13 +57,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(language.equals("french")){
-            title.setText("ٍVotre parcours académique\nn'est plus un problème");
+            title.setText("Votre parcours académique\nn'est plus un problème");
             desc.setText("Rejoignez "+appname+" Maintenant \nPouvez vous remporter le défi?");
+            title.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            desc.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             getstarted.setText("Commencer");
         }
         if(language.equals("arabic")){
             title.setText("لن تقلق بشأن مشوارك التعليمي بعد الآن");
             desc.setText("إشترك الآن و استمتع بباقة من التحديات و مكتبة من الوثائق");
+            title.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            desc.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             getstarted.setText("فلنبدأ");
         }
 
