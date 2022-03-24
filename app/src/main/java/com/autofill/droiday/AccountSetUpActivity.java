@@ -181,7 +181,9 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                                         }
                                     }
                                 });
-                        String UserType = "Teacher";
+                        String UserType = "student";
+                        if (radio == 1) UserType ="teacher";
+
                         // Create a new user with a first and last name
                         Map<String, Object> user = new HashMap<>();
                         user.put("first", firstname);
@@ -238,7 +240,12 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         // TODO Auto-generated method stub
     }
     private void updateUI(FirebaseUser user) {
-        Intent intent =new Intent( AccountSetUpActivity.this,HomePage.class);
+        Intent intent;
+        if(radio == 0) {
+            intent = new Intent(AccountSetUpActivity.this, HomePage.class);
+        }else {
+            intent = new Intent(AccountSetUpActivity.this, TeacherHomePage.class);
+        }
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key_email", email);
         intent.putExtra("key_password", password);
