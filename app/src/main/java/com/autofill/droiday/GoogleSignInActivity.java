@@ -132,7 +132,11 @@ public class GoogleSignInActivity extends LoginActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                intent = new Intent( GoogleSignInActivity.this,HomePage.class);
+                                if(document.getData().get("type").equals("teacher")){
+                                    intent = new Intent( GoogleSignInActivity.this,TeacherHomePage.class);
+                                }else{
+                                    intent = new Intent( GoogleSignInActivity.this,HomePage.class);
+                                }
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 Toast.makeText(GoogleSignInActivity.this, "exists", Toast.LENGTH_SHORT).show();

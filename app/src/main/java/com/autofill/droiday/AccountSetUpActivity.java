@@ -156,71 +156,76 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         SetUpBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isStudent[0]|| isTeacher[0]){
-                    if(isTeacher[0]) radio = 1;
-                    firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
-                    lastname = lastname.substring(0, 1).toUpperCase() + lastname.substring(1);
+                if (isStudent[0] || isTeacher[0]) {
+                    if (isTeacher[0]) {
+                        radio = 1;
+                        firstname = firstname.substring(0, 1).toUpperCase() + firstname.substring(1);
+                        lastname = lastname.substring(0, 1).toUpperCase() + lastname.substring(1);
 
-                    //Update Username and Profile Picture
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(firstname)
-                            //.setPhotoUri()
-                            .build();
-                    mUser.updateProfile(profileUpdates)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        //Toast.makeText(AccountSetUpActivity.this, "Name Updated To"+firstname, Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-
-                    // Create a new user with a first and last name
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("first", firstname);
-                    user.put("last", lastname);
-                    user.put("avatar", "0");
-                    user.put("type", "teacher");
-                    user.put("xp", 0);
-                    //
-                    // Add a new document with a generated ID
-                    DocumentReference doc = db.collection("users").document(mUser.getUid());
-                    doc.set(user);
-
-                    //create Participation
-                    Map<String, Object> part = new HashMap<>();
-                    doc.collection("Participation").document("-1").set(part);
-
-                    //Sign Out
-                    if(email!=null && password!=null ) {
-                        FirebaseAuth.getInstance().signOut();
-
-                        //Sign In Again
-                        mAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(AccountSetUpActivity.this, new OnCompleteListener<AuthResult>() {
+                        //Update Username and Profile Picture
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(firstname)
+                                //.setPhotoUri()
+                                .build();
+                        mUser.updateProfile(profileUpdates)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                    public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            // Sign in success, update UI with the signed-in user's information
-                                            mUser = mAuth.getCurrentUser();
-                                            //Go to MainActivity
-                                            updateUI(mUser);
-                                        } else {
-                                            // If sign in fails, display a message to the user.
-                                            Toast.makeText(AccountSetUpActivity.this, "Authentication failed.",
-                                                    Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(AccountSetUpActivity.this, "Name Updated To"+firstname, Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
-                    }else{updateUI(mUser);}
-                }else {
-                    const3.startAnimation(fadeout);
-                    const3.setVisibility(View.INVISIBLE);
-                    const2.startAnimation(fadein);
-                    const2.setVisibility(View.VISIBLE);
-                    desc2.setText("Select your class from the dropdown below");
-                    welcome.setText("Welcome " + firstname + " !");
+
+                        // Create a new user with a first and last name
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("first", firstname);
+                        user.put("last", lastname);
+                        user.put("avatar", "0");
+                        user.put("type", "teacher");
+                        user.put("xp", 0);
+                        //
+                        // Add a new document with a generated ID
+                        DocumentReference doc = db.collection("users").document(mUser.getUid());
+                        doc.set(user);
+
+                        //create Participation
+                        Map<String, Object> part = new HashMap<>();
+                        doc.collection("Participation").document("-1").set(part);
+
+                        //Sign Out
+                        if (email != null && password != null) {
+                            FirebaseAuth.getInstance().signOut();
+
+                            //Sign In Again
+                            mAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(AccountSetUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                // Sign in success, update UI with the signed-in user's information
+                                                mUser = mAuth.getCurrentUser();
+                                                //Go to MainActivity
+                                                updateUI(mUser);
+                                            } else {
+                                                // If sign in fails, display a message to the user.
+                                                Toast.makeText(AccountSetUpActivity.this, "Authentication failed.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            updateUI(mUser);
+                        }
+                    } else {
+                        const1.startAnimation(fadeout);
+                        const1.setVisibility(View.INVISIBLE);
+                        const2.startAnimation(fadein);
+                        const2.setVisibility(View.VISIBLE);
+                        desc2.setText("Select your class from the dropdown below");
+                        welcome.setText("Welcome " + firstname + " !");
+
+                    }
 
                 }
             }
@@ -270,8 +275,8 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                                         }
                                     }
                                 });
-                        String UserType = "student";
-                        if (radio == 1) UserType ="teacher";
+                        /*String UserType = "student";
+                        if (radio == 1) UserType ="teacher";*/
 
                         // Create a new user with a first and last name
                         Map<String, Object> user = new HashMap<>();
@@ -279,7 +284,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         user.put("last", lastname);
                         user.put("level", position);
                         user.put("avatar", "0");
-                        user.put("type", UserType);
+                        user.put("type", "student");
                         user.put("xp", 0);
                         user.put("first_day", ""+today);
                         //
