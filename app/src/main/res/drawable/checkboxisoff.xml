@@ -8,7 +8,7 @@
         android:fillColor="#FFFFFCFC"
         android:pathData="M0 24c0-13.25 10.75-24 24-24h252c13.25 0 24 10.75 24 24v0c0 13.25-10.75 24-24 24h-252c-13.25 0-24-10.75-24-24z"/>
     <path
-        android:strokeColor="#FF154C93"
+        android:strokeColor="#FF00B844"
         android:strokeWidth="2"
         android:pathData="M33 12A12 12 0 1 0 33 36 12 12 0 1 0 33 12z"/>
 </vector>
