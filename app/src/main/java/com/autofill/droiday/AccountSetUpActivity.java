@@ -102,7 +102,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
         const2.setVisibility(View.INVISIBLE);
         const1.setBackgroundColor(Color.rgb(254,234,148));
         title.setTextColor(Color.rgb(215,138,73));
-        desc.setText("Please provide us with your full name");
+        //desc.setText("Please provide us with your full name");
         title2.setTextColor(Color.rgb(45,124,225));
         final int[] isTrue = {0};
 
