@@ -4,23 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back4"
+    android:background="@drawable/back5"
     tools:context=".ChallengeSubmitActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Constraint1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
+        android:background="@drawable/back6"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/SetUpText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Ajout d'un défi"
+            android:textColor="#2D7CE1"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/SubjectName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/field"
             android:ems="10"
-            android:hint="Subject"
+            android:hint="Matière"
+            android:fontFamily="@font/lato_bold"
+            android:paddingLeft="30dp"
+            android:textSize="20sp"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +52,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Number Of Questions"
+            android:hint="Nombre des questions"
+            android:background="@drawable/field"
+            android:fontFamily="@font/lato_bold"
+            android:paddingLeft="30dp"
+            android:textSize="20sp"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -43,51 +65,90 @@
 
         <Button
             android:id="@+id/Next"
+            android:background="@drawable/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="Continuer"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             android:layout_marginTop="24dp"
-            android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NbOfQuestions" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/SubjectName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/designlineblue" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Constraint2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/QuestionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato_bold"
             android:text="Question N°"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#0F3567"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textfiller" />
+
+        <TextView
+            android:id="@+id/textfiller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Ajouter une question"
+            android:textColor="#0F3567"
+            android:textSize="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/QuestionText"
             android:layout_width="0dp"
+            android:paddingTop="2dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
+            android:background="@drawable/questback"
             android:ems="10"
+            android:fontFamily="@font/lato_bold"
             android:gravity="start|top"
             android:hint="Question"
             android:inputType="textMultiLine"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/QuestionTitle" />
 
         <TextView
             android:id="@+id/AnswersTitle"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/lato_bold"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:textColor="#0F3567"
             android:layout_marginTop="16dp"
             android:text="Answers"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,15 +171,6 @@
 
         </ListView>
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="16dp"
-            android:text="+"
-            app:layout_constraintBottom_toTopOf="@+id/Submit_Answer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Submit_Answer"
@@ -138,6 +190,11 @@
 
         <EditText
             android:id="@+id/answer1"
+            android:background="@drawable/answback"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/lato"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -153,6 +210,11 @@
         <EditText
             android:id="@+id/answer2"
             android:layout_width="0dp"
+            android:background="@drawable/answback"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/lato"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
@@ -168,6 +230,12 @@
             android:id="@+id/answer3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/answback"
+
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/lato"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
@@ -183,6 +251,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:background="@drawable/answback"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/lato"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
@@ -196,13 +269,31 @@
             android:id="@+id/Right_Answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/smallfield"
             android:ems="10"
+            android:fontFamily="@font/lato_bold"
             android:hint="Right Answer"
             android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/addButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:paddingLeft="20dp"
+            android:textColor="#000"
+            app:layout_constraintBottom_toTopOf="@+id/Submit_Answer"
+            app:layout_constraintStart_toStartOf="@+id/Submit_Answer" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bc"
+            android:fontFamily="@font/lato_bold"
+            android:text="+"
+            android:textColor="#FFF"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/Right_Answer"
+            app:layout_constraintEnd_toEndOf="@+id/Submit_Answer"
+            app:layout_constraintTop_toTopOf="@+id/Right_Answer"
+            app:layout_constraintVertical_bias="1.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
