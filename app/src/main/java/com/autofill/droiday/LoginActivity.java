@@ -123,12 +123,14 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 startActivity(new Intent( LoginActivity.this,RegisterActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         ForgotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent( LoginActivity.this,PasswordResetActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

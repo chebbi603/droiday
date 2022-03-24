@@ -26,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class FacebookAuthActivity extends LoginActivity {
 
     CallbackManager callbackManager;
@@ -95,7 +97,7 @@ public class FacebookAuthActivity extends LoginActivity {
                             updateUI(mUser);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(FacebookAuthActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
+                            StyleableToast.makeText(FacebookAuthActivity.this, ""+task.getException(), Toast.LENGTH_SHORT,R.style.mytoast).show();
                         }
                     }
                 });
@@ -122,12 +124,14 @@ public class FacebookAuthActivity extends LoginActivity {
                                 }
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
+                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                 Toast.makeText(FacebookAuthActivity.this, "exists", Toast.LENGTH_SHORT).show();
                             }else{
                                 intent = new Intent( FacebookAuthActivity.this,AccountSetUpActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(FacebookAuthActivity.this, "doesn't exist", Toast.LENGTH_SHORT).show();
+                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                StyleableToast.makeText(FacebookAuthActivity.this, "doesn't exist", Toast.LENGTH_SHORT,R.style.mytoast).show();
                             }
                         }
                     }
