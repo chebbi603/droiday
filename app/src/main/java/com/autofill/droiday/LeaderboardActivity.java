@@ -8,6 +8,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,12 +99,35 @@ public class LeaderboardActivity extends AppCompatActivity {
             LayoutInflater layoutInflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             @SuppressLint("ViewHolder") View answer = layoutInflater.inflate(R.layout.leaderboard_row, parent, false);
             ImageView myBack = answer.findViewById(R.id.backgroundLeader);
+            ImageView myMedal = answer.findViewById(R.id.medal);
             TextView myName = answer.findViewById(R.id.LeaderName);
+            TextView rank = answer.findViewById(R.id.rank);
             TextView myScore = answer.findViewById(R.id.score);
             Typeface latobold = ResourcesCompat.getFont(context, R.font.lato_bold);
+            if(position == 0) {
+                myMedal.setBackground(getDrawable(R.drawable.gold_medal));
+                rank.setText("");
+            }
+            else if(position == 1){
+                myMedal.setBackground(getDrawable(R.drawable.silver_medal));
+                rank.setText("");
+            }
+            else if(position == 2) {
+                myMedal.setBackground(getDrawable(R.drawable.bronze_medal));
+                rank.setText("");
+            }
+            else {
+                myMedal.setBackground(getDrawable(R.drawable.no_medal));
+                int pos = position+1;
+                rank.setText(""+pos);
+            }
             myBack.setBackground(getDrawable(R.drawable.them_leader));
+            myName.setTextColor(Color.BLACK);
+            myScore.setTextColor(Color.BLACK);
             if(rMe.get(position) == 1){
                 myBack.setBackground(getDrawable(R.drawable.me_leader));
+                myName.setTextColor(Color.WHITE);
+                myScore.setTextColor(Color.WHITE);
             }
             myName.setTypeface(latobold);
             myScore.setTypeface(latobold);
