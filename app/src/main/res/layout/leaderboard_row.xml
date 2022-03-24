@@ -20,10 +20,10 @@
             <ImageView
                 android:id="@+id/backgroundLeader"
                 android:layout_width="0dp"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@drawable/redtitle"
+                android:background="@drawable/me_leader"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -33,13 +33,14 @@
                 android:id="@+id/LeaderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:elevation="5dp"
+                android:fontFamily="@font/lato_bold"
                 android:text="Job Interview"
-                android:textColor="#000000"
-                android:textSize="16sp"
+                android:textColor="#fff"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundLeader"
-                app:layout_constraintStart_toStartOf="@+id/backgroundLeader"
+                app:layout_constraintStart_toEndOf="@+id/medal"
                 app:layout_constraintTop_toTopOf="@+id/backgroundLeader" />
 
             <TextView
@@ -48,9 +49,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:elevation="5dp"
+                android:fontFamily="@font/lato_bold"
                 android:text="Job Interview"
-                android:textColor="#000000"
-                android:textSize="16sp"
+                android:textColor="#fff"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundLeader"
                 app:layout_constraintEnd_toEndOf="@+id/backgroundLeader"
                 app:layout_constraintTop_toTopOf="@+id/backgroundLeader" />
@@ -58,12 +60,34 @@
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="10dp"
                 android:text="Button"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="@+id/backgroundLeader"
                 app:layout_constraintStart_toStartOf="@+id/backgroundLeader"
                 app:layout_constraintTop_toBottomOf="@+id/backgroundLeader" />
+
+            <ImageView
+                android:id="@+id/medal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="@+id/backgroundLeader"
+                app:layout_constraintTop_toTopOf="@+id/rank"
+                app:srcCompat="@drawable/no_medal" />
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/lato_bold"
+                android:paddingTop="1dp"
+                android:text="1"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="@+id/medal"
+                app:layout_constraintStart_toStartOf="@+id/medal"
+                app:layout_constraintTop_toTopOf="@+id/backgroundLeader" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
