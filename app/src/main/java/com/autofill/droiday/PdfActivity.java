@@ -27,7 +27,7 @@ import java.util.List;
 
 public class PdfActivity extends AppCompatActivity implements OnPageChangeListener,OnLoadCompleteListener{
     private static final String TAG = MainActivity.class.getSimpleName();
-    public static  String SAMPLE_FILE = "dos_spo.pdf";
+    public static  String SAMPLE_FILE = "filler.pdf";
     PDFView pdfView;
     Integer pageNumber = 0;
     String pdfFileName;
@@ -69,8 +69,8 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, CalenderActivity.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -78,8 +78,8 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, HomePage.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -87,8 +87,8 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PdfActivity.this, ResourcesActivity.class);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }
