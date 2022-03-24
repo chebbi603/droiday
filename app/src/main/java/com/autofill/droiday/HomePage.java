@@ -94,8 +94,10 @@ public class HomePage extends AppCompatActivity {
                                 xp = Integer.valueOf(document.getData().get("xp").toString());
                                 UserName.setText(name);
                                 xpText.setText(""+xp);
-                                Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
-                                loadImage(mUser.getPhotoUrl().toString());
+                                try {
+                                    Log.d("URL log", "onComplete: " + mUser.getPhotoUrl().toString());
+                                    loadImage(mUser.getPhotoUrl().toString());
+                                }catch(Exception e){}
 
                             } else {
                                 //Toast.makeText(MainActivity.this, "Document Not Found", Toast.LENGTH_SHORT).show();

@@ -184,7 +184,7 @@ public class AccountSetUpActivity extends AppCompatActivity implements AdapterVi
                         user.put("last", lastname);
                         user.put("avatar", "0");
                         user.put("type", "teacher");
-                        user.put("xp", 0);
+                        user.put("rep", 0);
                         //
                         // Add a new document with a generated ID
                         DocumentReference doc = db.collection("users").document(mUser.getUid());
