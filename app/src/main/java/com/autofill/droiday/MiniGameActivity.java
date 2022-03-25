@@ -45,7 +45,7 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
     int topy,leftX,rightX,bottomY;
     List<Bounds> bnd = new ArrayList<>();
     List<ImageView> targets = new ArrayList<>();
-    int var[] = new int[4];
+    int var[] = new int[5];
 
     int dropArray[];
 
@@ -94,6 +94,7 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         targets.add((ImageView) findViewById(R.id.target2));
         targets.add((ImageView) findViewById(R.id.target3));
         targets.add((ImageView) findViewById(R.id.target4));
+        targets.add((ImageView) findViewById(R.id.target5));
 
         /*topy=imageDrop.getTop();
         leftX=imageDrop.getLeft();
@@ -118,10 +119,12 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                     Bounds b2= new Bounds(targets.get(1).getTop(), targets.get(1).getBottom(), targets.get(1).getLeft(), targets.get(1).getRight());
                     Bounds b3= new Bounds(targets.get(2).getTop(), targets.get(2).getBottom(), targets.get(2).getLeft(), targets.get(2).getRight());
                     Bounds b4= new Bounds(targets.get(3).getTop(), targets.get(3).getBottom(), targets.get(3).getLeft(), targets.get(3).getRight());
+                    Bounds b5= new Bounds(targets.get(4).getTop(), targets.get(4).getBottom(), targets.get(4).getLeft(), targets.get(4).getRight());
                     bnd.add(b1);
                     bnd.add(b2);
                     bnd.add(b3);
                     bnd.add(b4);
+                    bnd.add(b5);
 
                     System.err.println("Display If  Part ::->"+touchFlag);
                     switch (event.getActionMasked())
