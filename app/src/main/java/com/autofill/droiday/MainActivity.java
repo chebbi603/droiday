@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     FileOutputStream outputStream;
     String language = "french";
     String line;
-    String appname = "appname";
+    String appname = "smartMe";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
