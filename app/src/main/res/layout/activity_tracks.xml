@@ -60,10 +60,12 @@
                     android:id="@+id/Sientifique"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Sientifique"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#2B2A47"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Matières scientifiques"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,8 +83,14 @@
 
                         <Button
                             android:id="@+id/math"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="100dp"
                             android:text="Math" />
 
                         <Space
@@ -92,8 +100,13 @@
 
                         <Button
                             android:id="@+id/physics"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Physics" />
 
                         <Space
@@ -103,8 +116,13 @@
 
                         <Button
                             android:id="@+id/Tech"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Tech" />
 
                         <Space
@@ -114,8 +132,13 @@
 
                         <Button
                             android:id="@+id/button83"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
 
                         <Space
@@ -125,9 +148,13 @@
 
                         <Button
                             android:id="@+id/button93"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -136,10 +163,12 @@
                     android:id="@+id/sientifique"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="24dp"
                     android:text="jma3a lettre"
+                    android:textColor="#2B2A47"
+                    android:fontFamily="@font/lato_bold"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
@@ -157,8 +186,14 @@
 
                         <Button
                             android:id="@+id/english"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
                             android:text="englais" />
 
                         <Space
@@ -168,8 +203,13 @@
 
                         <Button
                             android:id="@+id/francais"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="francais" />
 
                         <Space
@@ -179,8 +219,13 @@
 
                         <Button
                             android:id="@+id/arabic"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Arabic" />
 
                         <Space
@@ -190,8 +235,13 @@
 
                         <Button
                             android:id="@+id/button82"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
 
                         <Space
@@ -201,9 +251,13 @@
 
                         <Button
                             android:id="@+id/button92"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -212,10 +266,12 @@
                     android:id="@+id/sientifique2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="24dp"
+                    android:textColor="#2B2A47"
+                    android:fontFamily="@font/lato_bold"
                     android:text="TextView"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView3" />
 
@@ -234,8 +290,14 @@
 
                         <Button
                             android:id="@+id/button5"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
                             android:text="Button" />
 
                         <Space
@@ -245,8 +307,13 @@
 
                         <Button
                             android:id="@+id/button6"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
 
                         <Space
@@ -256,8 +323,13 @@
 
                         <Button
                             android:id="@+id/button7"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
 
                         <Space
@@ -267,8 +339,13 @@
 
                         <Button
                             android:id="@+id/button8"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
 
                         <Space
@@ -278,12 +355,24 @@
 
                         <Button
                             android:id="@+id/button9"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:text="Button" />
                     </LinearLayout>
                 </HorizontalScrollView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
