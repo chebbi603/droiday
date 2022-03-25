@@ -2,7 +2,9 @@ package com.autofill.droiday;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -70,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
             desc.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             getstarted.setText("فلنبدأ");
         }
+
+
+        ActivityCompat.requestPermissions(MainActivity.this, new  String[]{Manifest.permission.MANAGE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+
 
 
         getstarted.setOnClickListener(new View.OnClickListener() {

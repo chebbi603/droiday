@@ -1,8 +1,12 @@
 package com.autofill.droiday;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -20,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
     String language = "french";
     boolean isOpened = false;
     String line;
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +66,6 @@ public class SplashActivity extends AppCompatActivity {
             isOpened = false;
             e.printStackTrace();
         }
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

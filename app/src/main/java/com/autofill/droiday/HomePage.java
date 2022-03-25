@@ -43,7 +43,7 @@ public class HomePage extends AppCompatActivity {
     int xp;
     TextView UserName, xpText;
     ImageView avatarImage;
-    Button leaderboard, Tracks;
+    Button leaderboard, Tracks , calendar;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -65,6 +65,7 @@ public class HomePage extends AppCompatActivity {
         avatarImage = findViewById(R.id.AvatarImg);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        calendar = findViewById(R.id.btn3);
         leaderboard = findViewById(R.id.btn2);
         Tracks = findViewById(R.id.btn1);
         TextView notif = findViewById(R.id.notif);
@@ -175,7 +176,14 @@ public class HomePage extends AppCompatActivity {
                         });*/
             }
         });
-
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePage.this, CalenderActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
         cal_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
