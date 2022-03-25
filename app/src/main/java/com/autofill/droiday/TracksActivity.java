@@ -18,16 +18,16 @@ public class TracksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracks);
 
-        coding = findViewById(R.id.math2);
+        //coding = findViewById(R.id.math2);
         school = findViewById(R.id.school);
         extra = findViewById(R.id.extracurricular);
         english = findViewById(R.id.english);
         SubjectScroll = findViewById(R.id.SubjectScroll);
-        ExtraScroll = findViewById(R.id.ExtraScroll);
+        //ExtraScroll = findViewById(R.id.ExtraScroll);
         Tracks = findViewById(R.id.Tracks);
 
         SubjectScroll.setVisibility(View.VISIBLE);
-        ExtraScroll.setVisibility(View.INVISIBLE);
+        //ExtraScroll.setVisibility(View.INVISIBLE);
         Tracks.setVisibility(View.INVISIBLE);
 
         english.setOnClickListener(new View.OnClickListener() {
@@ -46,14 +46,18 @@ public class TracksActivity extends AppCompatActivity {
                 Tracks.setVisibility(View.INVISIBLE);
             }
         });
+
         extra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SubjectScroll.setVisibility(View.INVISIBLE);
+                /*SubjectScroll.setVisibility(View.INVISIBLE);
                 ExtraScroll.setVisibility(View.VISIBLE);
-                Tracks.setVisibility(View.INVISIBLE);
+                Tracks.setVisibility(View.INVISIBLE);*/
+                Intent intent = new Intent(TracksActivity.this, MiniGameActivity.class);
+                startActivity(intent);
             }
         });
+
         coding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
