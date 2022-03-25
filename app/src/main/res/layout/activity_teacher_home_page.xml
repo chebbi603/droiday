@@ -7,6 +7,35 @@
     android:background="@drawable/back_home"
     tools:context=".TeacherHomePage">
 
+    <TextView
+        android:id="@+id/xpbar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/xp"
+        android:fontFamily="@font/lato_bold"
+        android:paddingTop="0.5dp"
+        android:text="REP"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/repText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:text="10"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/xpbar2"
+        app:layout_constraintEnd_toEndOf="@+id/xpbar2"
+        app:layout_constraintStart_toStartOf="@+id/xpbar2" />
+
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
@@ -16,7 +45,7 @@
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
         android:paddingBottom="40dp"
-        android:text="Submit Your Challenges"
+        android:text="Soumettre vos défis"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="#864C00"
@@ -35,17 +64,17 @@
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
         android:paddingBottom="40dp"
-        android:text="Submit your Ressources"
+        android:text="Soumettre vos Ressources"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="#126016"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn5"
+        app:layout_constraintBottom_toTopOf="@+id/TeacherLB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn5"
+        android:id="@+id/TeacherLB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
@@ -82,7 +111,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/lato"
-        android:text="Welcome"
+        android:text="Bienvenue"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/AvatarImgTeacher"
         app:layout_constraintTop_toTopOf="@+id/AvatarImgTeacher" />

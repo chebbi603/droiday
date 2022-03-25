@@ -31,9 +31,10 @@ import com.squareup.picasso.Target;
 public class TeacherHomePage extends AppCompatActivity {
 
     String name;
-    TextView UserName;
+    int rep;
+    TextView UserName, repText;
     ImageView avatarImage;
-    Button btn2,btn;
+    Button btn2,btn , TeacherLB;
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
     FirebaseFirestore db;
@@ -49,11 +50,13 @@ public class TeacherHomePage extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         UserName = findViewById(R.id.UserNameTeacher);
+        repText = findViewById(R.id.repText);
         avatarImage = findViewById(R.id.AvatarImgTeacher);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         btn2 = findViewById(R.id.TeacherBtn2);
         btn = findViewById(R.id.btn);
+        TeacherLB = findViewById(R.id.TeacherLB);
         title = findViewById(R.id.title_homeTeacher);
 
 
@@ -67,7 +70,9 @@ public class TeacherHomePage extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 name = "" + document.getData().get("first");
+                                rep = Integer.valueOf(document.getData().get("rep").toString());
                                 UserName.setText(name);
+                                repText.setText(""+rep);
                                 Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
                                 loadImage(mUser.getPhotoUrl().toString());
 
@@ -77,6 +82,13 @@ public class TeacherHomePage extends AppCompatActivity {
                         }
                     }
                 });
+        TeacherLB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherHomePage.this, TeacherLeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

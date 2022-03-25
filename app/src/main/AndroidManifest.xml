@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".TeacherLeaderboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".MiniGameActivity"
             android:exported="false" />
         <activity

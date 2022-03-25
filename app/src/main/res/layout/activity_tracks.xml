@@ -669,7 +669,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/code"
+                            android:id="@+id/code2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginStart="20dp"
@@ -687,7 +687,7 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/physics5"
+                            android:id="@+id/code"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_weight="1"

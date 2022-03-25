@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_trophy"
+    tools:context=".LeaderboardActivity">
+
+    <TextView
+        android:id="@+id/textx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Leaderboard"
+        android:textColor="#0F3567"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato"
+        android:text="Earn more REP to compete for higher ranks!"
+        android:textColor="#0F3567"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textx"
+        app:layout_constraintTop_toBottomOf="@+id/textx" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:cacheColorHint="#00FFFFFF"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:foregroundGravity="center">
+
+
+    </ListView>
+</androidx.constraintlayout.widget.ConstraintLayout>
