@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MiniGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".TracksActivity"
             android:exported="false" />
         <activity
