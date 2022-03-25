@@ -16,6 +16,7 @@
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_leaderboard.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_mini_game.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_password_reset.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.25" />
@@ -29,25 +30,14 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/answback.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/back5.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/back6.xml" value="0.302" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/back_splash.xml" value="0.2475" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/back_trophy.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/bc.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/blubtnquiz.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/blue_btn_no_arrow.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/blue_but_done.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/btnredbig.xml" value="0.302" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/cal_back.xml" value="0.302" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/chrometab.xml" value="0.2475" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/chrometabopen.xml" value="0.2475" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/lang_btn.xml" value="0.22" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/pin.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/questback.xml" value="0.302" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/smallfield.xml" value="0.302" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/subbtn.xml" value="0.2475" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tab_light_blue.xml" value="0.302" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/trackdone.xml" value="0.2475" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/tracklocked.xml" value="0.2475" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/drawable/trackundone.xml" value="0.2475" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_account_set_up.xml" value="0.33" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_calender.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_challenge.xml" value="0.16869300911854104" />
@@ -60,9 +50,7 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_pdf.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_splash.xml" value="0.33" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_teacher_home_page.xml" value="0.346875" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_tracks.xml" value="0.33" />
+        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_tracks.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/leaderboard_row.xml" value="0.16869300911854104" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.302" />
       </map>

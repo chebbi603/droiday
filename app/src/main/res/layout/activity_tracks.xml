@@ -7,30 +7,62 @@
     android:layout_height="match_parent"
     tools:context=".TracksActivity">
 
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/SubjectScroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/school2"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:background="@drawable/chrometabopen"
+            android:fontFamily="@font/lato_bold"
+            android:text="Scolaire"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/extracurricular2"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:background="@drawable/chrometabopen"
+            android:backgroundTint="#F1EBEB"
+            android:fontFamily="@font/lato_bold"
+            android:text="Périscolaire"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+    </TableRow>
+
     <Button
         android:id="@+id/extracurricular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:paddingBottom="8dp"
-        android:text="Button"
-        android:fontFamily="@font/lato_bold"
-        android:textAllCaps="false"
         android:background="@drawable/chrometab"
-        android:visibility="visible"
+        android:fontFamily="@font/lato_bold"
+        android:paddingBottom="8dp"
+        android:text="Périscolaire"
+        android:textAllCaps="false"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/SubjectScroll"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/school"
         android:layout_width="wrap_content"
-        android:fontFamily="@font/lato_bold"
-        android:textAllCaps="false"
-        android:background="@drawable/chrometabopen"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="Button"
-        android:visibility="visible"
+        android:background="@drawable/chrometabopen"
+        android:fontFamily="@font/lato_bold"
+        android:text="Scolaire"
+        android:textAllCaps="false"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/SubjectScroll"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -39,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:textColor="#2B2A47"
                     android:fontFamily="@font/lato_bold"
                     android:text="Matières scientifiques"
+                    android:textColor="#2B2A47"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -74,6 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
+                    android:scrollbars="none"
                     app:layout_constraintTop_toBottomOf="@+id/Sientifique">
 
                     <LinearLayout
@@ -83,15 +116,15 @@
 
                         <Button
                             android:id="@+id/math"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
                             android:background="@drawable/subbtn"
                             android:fontFamily="@font/lato_bold"
-                            android:layout_width="100dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_height="100dp"
-                            android:text="Math" />
+                            android:text="Math"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -100,14 +133,14 @@
 
                         <Button
                             android:id="@+id/physics"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Physics" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Physique"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -116,14 +149,14 @@
 
                         <Button
                             android:id="@+id/Tech"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Tech" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Technique"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -131,15 +164,15 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/button83"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
+                            android:id="@+id/SVT"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="SVT"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -147,15 +180,15 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/button93"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
+                            android:id="@+id/Info"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Info"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -163,11 +196,11 @@
                     android:id="@+id/sientifique"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginStart="24dp"
-                    android:text="jma3a lettre"
-                    android:textColor="#2B2A47"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/lato_bold"
+                    android:text="Matières littéraires"
+                    android:textColor="#2B2A47"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
@@ -177,6 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
+                    android:scrollbars="none"
                     app:layout_constraintTop_toBottomOf="@+id/sientifique">
 
                     <LinearLayout
@@ -186,15 +220,15 @@
 
                         <Button
                             android:id="@+id/english"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginStart="20dp"
-                            android:text="englais" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="English"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -203,14 +237,14 @@
 
                         <Button
                             android:id="@+id/francais"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="francais" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Français"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -219,14 +253,14 @@
 
                         <Button
                             android:id="@+id/arabic"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Arabic" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="العربية"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -235,14 +269,14 @@
 
                         <Button
                             android:id="@+id/button82"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Matière"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -251,14 +285,14 @@
 
                         <Button
                             android:id="@+id/button92"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Matière"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -266,11 +300,11 @@
                     android:id="@+id/sientifique2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginStart="24dp"
-                    android:textColor="#2B2A47"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="TextView"
+                    android:text="Autres matières"
+                    android:textColor="#2B2A47"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView3" />
@@ -281,6 +315,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
+                    android:scrollbars="none"
                     app:layout_constraintTop_toBottomOf="@+id/sientifique2">
 
                     <LinearLayout
@@ -289,16 +324,16 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/button5"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
+                            android:id="@+id/Histoire"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginStart="20dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Histoire"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -306,15 +341,15 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/button6"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
+                            android:id="@+id/Geographie"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Geographie"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -322,15 +357,15 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/button7"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
+                            android:id="@+id/EdC"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Ed. Civique"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -339,14 +374,14 @@
 
                         <Button
                             android:id="@+id/button8"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
                             android:background="@drawable/subbtn"
                             android:fontFamily="@font/lato_bold"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:text="Button" />
+                            android:text="Matière"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
 
                         <Space
                             android:layout_width="20dp"
@@ -355,14 +390,14 @@
 
                         <Button
                             android:id="@+id/button9"
-                            android:textAllCaps="false"
-                            android:textColor="#FFF"
-                            android:textSize="18sp"
-                            android:background="@drawable/subbtn"
-                            android:fontFamily="@font/lato_bold"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="Button" />
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Matière"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -370,9 +405,370 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/ExtraScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <HorizontalScrollView
+                    android:id="@+id/Astronomy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    app:layout_constraintTop_toBottomOf="@+id/sientifique4">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/math6"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Astronomie"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="17sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/physics6"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Chimie"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/tech5"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/SVT3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/info3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/Technologie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Technologie"
+                    android:textColor="#2B2A47"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <HorizontalScrollView
+
+                    android:id="@+id/other"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    app:layout_constraintTop_toBottomOf="@+id/sientifique5">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/math7"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/physics7"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/tech6"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/SVT4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/info4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/sientifique4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Science"
+                    android:textColor="#2B2A47"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Computer" />
+
+                <HorizontalScrollView
+                    android:id="@+id/Computer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    app:layout_constraintTop_toBottomOf="@+id/Technologie">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/code"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Coding"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/physics5"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Visual Coding"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="16sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/tech4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/SVT2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/info2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/subbtn"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Extra"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/sientifique5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Categorie"
+                    android:textColor="#2B2A47"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Astronomy" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    tools:layout_editor_absoluteY="471dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -384,12 +780,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
-        android:visibility="invisible"
+        android:scrollbars="none"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#ffffff"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout

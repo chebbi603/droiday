@@ -26,8 +26,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-public class MiniGameActivity extends AppCompatActivity implements OnTouchListener {
-
+public class MiniGameActivity extends Activity implements OnTouchListener {
+    /** Called when the activity is first created. */
     private View selected_item = null;
     private int offset_x = 0;
     private int offset_y = 0;
@@ -49,33 +49,37 @@ public class MiniGameActivity extends AppCompatActivity implements OnTouchListen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mini_game);
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
-        imageDrop = (ImageView) findViewById(R.id.ImgDrop);
-        image1 = (ImageView) findViewById(R.id.img);
-        image2 = (ImageView) findViewById(R.id.img2);
-        container.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                if (touchFlag == true) {
-                    System.err.println("Display If  Part ::->" + touchFlag);
-                    switch (event.getActionMasked()) {
-                        case MotionEvent.ACTION_DOWN:
+        imageDrop=(ImageView) findViewById(R.id.ImgDrop);
+        image1=(ImageView) findViewById(R.id.img);
+        image2=(ImageView) findViewById(R.id.img2);
+        container.setOnTouchListener(new View.OnTouchListener()
+        {
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if(touchFlag==true)
+                {
+                    System.err.println("Display If  Part ::->"+touchFlag);
+                    switch (event.getActionMasked())
+                    {
+                        case MotionEvent.ACTION_DOWN :
 
-                            topy = imageDrop.getTop();
-                            leftX = imageDrop.getLeft();
-                            rightX = imageDrop.getRight();
-                            bottomY = imageDrop.getBottom();
-                            System.err.println("Display Top-->" + topy);
-                            System.err.println("Display Left-->" + leftX);
-                            System.err.println("Display Right-->" + rightX);
-                            System.err.println("Display Bottom-->" + bottomY);
+                            topy=imageDrop.getTop();
+                            leftX=imageDrop.getLeft();
+                            rightX=imageDrop.getRight();
+                            bottomY=imageDrop.getBottom();
+                            System.err.println("Display Top-->"+topy);
+                            System.err.println("Display Left-->"+leftX);
+                            System.err.println("Display Right-->"+rightX);
+                            System.err.println("Display Bottom-->"+bottomY);
 
 
                             //opRect.
                             break;
                         case MotionEvent.ACTION_MOVE:
-                            crashX = (int) event.getX();
-                            crashY = (int) event.getY();
-                            System.err.println("Display Here X Value-->" + crashX);
-                            System.err.println("Display Here Y Value-->" + crashY);
+                            crashX=(int) event.getX();
+                            crashY=(int) event.getY();
+                            System.err.println("Display Here X Value-->"+crashX);
+                            System.err.println("Display Here Y Value-->"+crashY);
 
                             int x = (int) event.getX() - offset_x;
                             int y = (int) event.getY() - offset_y;
@@ -87,15 +91,16 @@ public class MiniGameActivity extends AppCompatActivity implements OnTouchListen
                                 x = w;
                             if (y > h)
                                 y = h;
-                            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+                            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(  RelativeLayout.LayoutParams.WRAP_CONTENT,   RelativeLayout.LayoutParams.WRAP_CONTENT));
                             lp.setMargins(x, y, 0, 0);
 
                             //Drop Image Here
-                            if (crashX > leftX && crashX < rightX && crashY > topy && crashY < bottomY) {
-                                Drawable temp = selected_item.getBackground();
+                            if(crashX > leftX && crashX < rightX && crashY > topy && crashY < bottomY )
+                            {
+                                Drawable temp=selected_item.getBackground();
                                 imageDrop.setBackgroundDrawable(temp);
                                 imageDrop.bringToFront();
-                                dropFlag = true;
+                                dropFlag=true;
                                 selected_item.setVisibility(View.INVISIBLE);
                             }
                             //Drop Image Here
@@ -103,14 +108,49 @@ public class MiniGameActivity extends AppCompatActivity implements OnTouchListen
                             break;
                         case MotionEvent.ACTION_UP:
                             //
-                            touchFlag = false;
-                            if (dropFlag == true) {
-                                dropFlag = false;
-                            } else {
+                            touchFlag=false;
+                            if(dropFlag==true)
+                            {
+                                dropFlag=false;
+                            }
+                            else
+                            {
                                 selected_item.setLayoutParams(imageParams);
                             }
+                            break;
+                        default:
+                            break;
                     }
+                }else
+                {
+                    System.err.println("Display Else Part ::->"+touchFlag);
                 }
+                return true;
             }
         });
+
+        image1.setOnTouchListener(this);
+        image2.setOnTouchListener(this);
     }
+
+    public boolean onTouch(View v, MotionEvent event)
+    {
+        switch (event.getActionMasked())
+        {
+            case MotionEvent.ACTION_DOWN:
+                touchFlag=true;
+                offset_x = (int) event.getX();
+                offset_y = (int) event.getY();
+                selected_item = v;
+                imageParams=v.getLayoutParams();
+                break;
+            case MotionEvent.ACTION_UP:
+                selected_item=null;
+                touchFlag=false;
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+}
