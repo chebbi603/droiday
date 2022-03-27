@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/btn1"
+        android:background="@drawable/btn2"
         android:fontFamily="@font/lato_bold"
         android:text="Get started"
         android:textAlignment="center"
@@ -89,6 +89,20 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/getstarted"
         app:layout_constraintStart_toEndOf="@+id/fr"
+        app:layout_constraintTop_toTopOf="@+id/getstarted" />
+
+    <Button
+        android:id="@+id/eng"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/lang_btn"
+        android:fontFamily="@font/lato_bold"
+        android:text="En"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/getstarted"
+        app:layout_constraintStart_toEndOf="@+id/ar"
         app:layout_constraintTop_toTopOf="@+id/getstarted" />
 
 
