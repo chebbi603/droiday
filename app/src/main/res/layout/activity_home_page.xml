@@ -21,13 +21,12 @@
         android:id="@+id/title_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:fontFamily="@font/lato_bold"
         android:text="School is not \na problem anymore"
         android:textColor="#2B2A47"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn1"
         app:layout_constraintTop_toBottomOf="@+id/AvatarImg" />
 
     <ImageView
@@ -100,7 +99,7 @@
         android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/tab_yellow"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -110,7 +109,7 @@
         android:textAllCaps="false"
         android:textColor="#5A3814"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cal_but"
+        app:layout_constraintBottom_toTopOf="@+id/notif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -164,9 +163,9 @@
     <ImageView
         android:id="@+id/AvatarImg"
         android:layout_width="76dp"
-        android:layout_height="62dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/avatar" />
@@ -188,7 +187,6 @@
         android:id="@+id/xpbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/xp"
         android:fontFamily="@font/lato_bold"
@@ -197,15 +195,15 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notif" />
+        app:layout_constraintBottom_toBottomOf="@+id/AvatarImg"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:fontFamily="@font/lato"
         android:text="Bienvenue"
         android:textStyle="bold"
@@ -228,8 +226,7 @@
         android:id="@+id/notif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/btnredbig"
         android:fontFamily="@font/lato_bold"
         android:paddingTop="6dp"
@@ -237,7 +234,8 @@
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/cal_but"
+        app:layout_constraintEnd_toEndOf="@+id/btn3"
+        app:layout_constraintStart_toStartOf="@+id/btn3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

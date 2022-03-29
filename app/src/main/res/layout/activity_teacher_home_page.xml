@@ -77,7 +77,7 @@
         android:id="@+id/TeacherLB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/tab_light_blue"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="40dp"
@@ -95,13 +95,12 @@
         android:id="@+id/title_homeTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:fontFamily="@font/lato_bold"
-        android:text="SmarterMe a besoin\nde vos atouts"
+        android:text="SmarterMe a besoin\nde vos atouts et \nvotre compétence"
         android:textColor="#2B2A47"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/btn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn"
         app:layout_constraintTop_toBottomOf="@+id/AvatarImgTeacher" />
 
     <TextView
