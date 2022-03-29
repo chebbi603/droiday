@@ -73,8 +73,10 @@ public class TeacherHomePage extends AppCompatActivity {
                                 rep = Integer.valueOf(document.getData().get("rep").toString());
                                 UserName.setText(name);
                                 repText.setText(""+rep);
-                                Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
-                                loadImage(mUser.getPhotoUrl().toString());
+                                try {
+                                    Log.d("URL log", "onComplete: "+ mUser.getPhotoUrl().toString());
+                                    loadImage(mUser.getPhotoUrl().toString());
+                                }catch(Exception e){}
 
                             } else {
                             }

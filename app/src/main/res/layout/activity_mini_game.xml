@@ -29,15 +29,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/maze" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dot"
+            android:scaleX="0.55"
+            android:scaleY="0.55" />
 
-    <ImageView
-        android:id="@+id/player"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        android:background="@drawable/dot" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/ArriveeCase"
@@ -49,8 +49,8 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/xp"
         android:backgroundTint="#03A9F4"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <TextView
         android:id="@+id/Arrivee"
@@ -60,7 +60,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="50dp"
-        android:text="Arrivée" />
+        android:text="Arrivée"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/target5"
@@ -72,8 +73,8 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/xp"
         android:backgroundTint="#E6DBDB"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <ImageView
         android:id="@+id/target4"
@@ -85,8 +86,8 @@
         android:layout_marginBottom="150dp"
         android:background="@drawable/xp"
         android:backgroundTint="#E6DBDB"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <ImageView
         android:id="@+id/target3"
@@ -98,8 +99,8 @@
         android:layout_marginBottom="200dp"
         android:background="@drawable/xp"
         android:backgroundTint="#E6DBDB"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <ImageView
         android:id="@+id/target2"
@@ -111,8 +112,8 @@
         android:layout_marginBottom="250dp"
         android:background="@drawable/xp"
         android:backgroundTint="#E6DBDB"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <ImageView
         android:id="@+id/target"
@@ -124,8 +125,8 @@
         android:layout_marginBottom="300dp"
         android:background="@drawable/xp"
         android:backgroundTint="#E6DBDB"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <ImageView
         android:id="@+id/departCase"
@@ -137,8 +138,8 @@
         android:layout_marginBottom="350dp"
         android:background="@drawable/xp"
         android:backgroundTint="#8BC34A"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:scaleX="1"
+        android:scaleY="1" />
 
     <TextView
         android:id="@+id/depart"
@@ -148,7 +149,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="350dp"
-        android:text="Départ" />
+        android:text="Départ"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/moveUp"
@@ -199,7 +201,7 @@
         android:scaleY="2.5" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/SubmitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

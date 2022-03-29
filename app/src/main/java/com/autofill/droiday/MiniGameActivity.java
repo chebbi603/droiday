@@ -1,55 +1,42 @@
 package com.autofill.droiday;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.DragEvent;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.app.Activity;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniGameActivity extends Activity implements OnTouchListener {
-    /** Called when the activity is first created. */
     private View selected_item = null;
     private int offset_x = 0;
     private int offset_y = 0;
-    Boolean touchFlag=false;
+    boolean touchFlag=false;
     boolean dropFlag=false;
     LayoutParams imageParams;
-    ImageView target, target2, target3, target4,MoveU,MoveD,MoveR,MoveL;
-    int crashX,crashY;
-    Drawable dropDrawable,selectDrawable;
-    Rect dropRect,selectRect;
-    int topy,leftX,rightX,bottomY;
-    List<Bounds> bnd = new ArrayList<>();
+    ImageView MoveU,MoveD,MoveR,MoveL,Player,start,finish;
     List<ImageView> targets = new ArrayList<>();
-    int var[] = new int[5];
+    int crashX,crashY,ScreenX,ScreenY;
+    Button Submit;
+    List<Bounds> bnd = new ArrayList<>();
+    RelativeLayout.LayoutParams lp;
+    int[] directions = new int[5];
 
-    int dropArray[];
-
-    public class Bounds
+    public static class Bounds
     {
         private final int Top;
         private final int  Bottom;
@@ -58,10 +45,10 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
 
         public Bounds(int aTop, int aBottom, int aLeft , int aRight)
         {
-            Top   = aTop;
-            Bottom = aBottom;
-            Left = aLeft;
-            Right = aRight;
+            this.Top   = aTop;
+            this.Bottom = aBottom;
+            this.Left = aLeft;
+            this.Right = aRight;
         }
 
         public int Top()   { return Top; }
@@ -78,43 +65,99 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mini_game);
-        ViewGroup container = (ViewGroup) findViewById(R.id.container);
-        /*target=(ImageView) findViewById(R.id.target);
-        target2=(ImageView) findViewById(R.id.target2);
-        target3=(ImageView) findViewById(R.id.target3);
-        target4=(ImageView) findViewById(R.id.target4);*/
-        MoveU=(ImageView) findViewById(R.id.moveUp);
-        MoveD=(ImageView) findViewById(R.id.moveD);
-        MoveR=(ImageView) findViewById(R.id.moveR);
-        MoveL=(ImageView) findViewById(R.id.moveL);
+        ViewGroup container = findViewById(R.id.container);
+        MoveU= findViewById(R.id.moveUp);
+        MoveD=findViewById(R.id.moveD);
+        MoveR=findViewById(R.id.moveR);
+        MoveL=findViewById(R.id.moveL);
 
-        /*targets.add(imageDrop);
-        targets.add(imageDrop2);*/
-        targets.add((ImageView) findViewById(R.id.target));
-        targets.add((ImageView) findViewById(R.id.target2));
-        targets.add((ImageView) findViewById(R.id.target3));
-        targets.add((ImageView) findViewById(R.id.target4));
-        targets.add((ImageView) findViewById(R.id.target5));
+        start = findViewById(R.id.departCase);
+        finish = findViewById(R.id.ArriveeCase);
+        targets.add(findViewById(R.id.target));
+        targets.add(findViewById(R.id.target2));
+        targets.add(findViewById(R.id.target3));
+        targets.add(findViewById(R.id.target4));
+        targets.add(findViewById(R.id.target5));
 
-        /*topy=imageDrop.getTop();
-        leftX=imageDrop.getLeft();
-        rightX=imageDrop.getRight();
-        bottomY=imageDrop.getBottom();
-        bnd.add(new Bounds(topy, bottomY, leftX,rightX));
+        Submit = findViewById(R.id.SubmitButton);
 
-        topy=imageDrop2.getTop();
-        leftX=imageDrop2.getLeft();
-        rightX=imageDrop2.getRight();
-        bottomY=imageDrop2.getBottom();
-        bnd.add(new Bounds(topy, bottomY, leftX,rightX));*/
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics ();
+        display.getMetrics(outMetrics);
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+
+        Toast.makeText(this, "onCreate: " + dpWidth + " " + dpHeight, Toast.LENGTH_SHORT).show();
+
+        lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (350 * displayMetrics.density * dpHeight / 731));
+        start.setLayoutParams(lp);
+        start.setScaleX(1);
+        start.setScaleY(1);
+
+        int height = 300;
+        for(ImageView trg : targets) {
+            lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (height * displayMetrics.density * dpHeight / 731));
+            trg.setLayoutParams(lp);
+            trg.setScaleX(1);
+            trg.setScaleY(1);
+            height -= 50;
+        }
+
+        lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (50 * displayMetrics.density * dpHeight / 731));
+        finish.setLayoutParams(lp);
+        finish.setScaleX(1);
+        finish.setScaleY(1);
+
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean check = true;
+                for(int e : directions){
+                    if(e == 0){
+                        check = false;
+                    }
+                }
+                if(!check){
+                    Toast.makeText(MiniGameActivity.this, "Use All The Moves Available", Toast.LENGTH_SHORT).show();
+                }else{
+                    for(int e : directions){
+                        switch(e){
+                            case 1:
+
+                                break;
+                            case 2:
+
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+
+                                break;
+                        }
+                    }
+                }
+            }
+        });
 
         container.setOnTouchListener(new View.OnTouchListener()
         {
             public boolean onTouch(View v, MotionEvent event)
             {
-                if(touchFlag==true)
+                if(touchFlag)
                 {
-                    List<Bounds> bnd = new ArrayList<>();
+                    bnd = new ArrayList<>();
                     Bounds b1= new Bounds(targets.get(0).getTop(), targets.get(0).getBottom(), targets.get(0).getLeft(), targets.get(0).getRight());
                     Bounds b2= new Bounds(targets.get(1).getTop(), targets.get(1).getBottom(), targets.get(1).getLeft(), targets.get(1).getRight());
                     Bounds b3= new Bounds(targets.get(2).getTop(), targets.get(2).getBottom(), targets.get(2).getLeft(), targets.get(2).getRight());
@@ -131,7 +174,6 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                     {
                         case MotionEvent.ACTION_DOWN :
 
-
                             /*topy=target.getTop();
                             leftX=target.getLeft();
                             rightX=target.getRight();
@@ -142,13 +184,13 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                             System.err.println("Display Right-->"+rightX);
                             System.err.println("Display Bottom-->"+bottomY);*/
 
-                            //opRect.
                             break;
                         case MotionEvent.ACTION_MOVE:
                             crashX=(int) event.getX();
                             crashY=(int) event.getY();
                             System.err.println("Display Here X Value-->"+crashX);
                             System.err.println("Display Here Y Value-->"+crashY);
+
 
                             int x = (int) event.getX() - offset_x;
                             int y = (int) event.getY() - offset_y;
@@ -172,12 +214,11 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                                 }
                             }*/
                             for(int i = 0; i < targets.size() ; i++){
-                                if(var[i]==0) {
+                                if(directions[i]==0) {
                                     if (crashX > bnd.get(i).Left() && crashX < bnd.get(i).Right() && crashY > bnd.get(i).Top() && crashY < bnd.get(i).Bottom()) {
                                         targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffe5e5e5));
                                     } else {
                                         targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffdbdbdb));
-                                        //imageDrop.setBackgroundTintList(null);EDE5E5
                                     }
                                 }
                             }
@@ -186,46 +227,22 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                             selected_item.setLayoutParams(lp);
                             break;
                         case MotionEvent.ACTION_UP:
-                            //
-                            /*if (crashX > bnd.get(0).Left() && crashX < bnd.get(0).Right() && crashY > bnd.get(0).Top() && crashY < bnd.get(0).Bottom())
-                            {
-                                if(selected_item==MoveU){
-                                    Toast.makeText(MiniGameActivity.this, "up", Toast.LENGTH_SHORT).show();
-                                    var[0]=1;
-                                }if(selected_item==MoveD){
-                                    Toast.makeText(MiniGameActivity.this, "down", Toast.LENGTH_SHORT).show();
-                                    var[0]=2;
-                                }if(selected_item==MoveR){
-                                    Toast.makeText(MiniGameActivity.this, "left", Toast.LENGTH_SHORT).show();
-                                    var[0]=3;
-                                }if(selected_item==MoveL){
-                                    Toast.makeText(MiniGameActivity.this, "right", Toast.LENGTH_SHORT).show();
-                                    var[0]=4;
-                                }
-
-                                target.setBackgroundTintList(null);
-                                //Drawable temp=selected_item.getBackground();
-                                //imageDrop.setBackgroundDrawable(temp);
-                                //imageDrop.bringToFront();
-                                dropFlag=true;
-                                //selected_item.setVisibility(View.INVISIBLE);
-                            }*/
 
                             for(int i = 0; i < targets.size() ; i++){
                                 if(crashX > bnd.get(i).Left() && crashX < bnd.get(i).Right() && crashY > bnd.get(i).Top() && crashY < bnd.get(i).Bottom() )
                                 {
                                     if(selected_item==MoveU){
                                         Toast.makeText(MiniGameActivity.this, "up", Toast.LENGTH_SHORT).show();
-                                        var[i]=1;
+                                        directions[i]=1;
                                     }if(selected_item==MoveD){
                                         Toast.makeText(MiniGameActivity.this, "down", Toast.LENGTH_SHORT).show();
-                                        var[i]=2;
+                                        directions[i]=2;
                                     }if(selected_item==MoveR){
                                         Toast.makeText(MiniGameActivity.this, "left", Toast.LENGTH_SHORT).show();
-                                        var[i]=3;
+                                        directions[i]=3;
                                     }if(selected_item==MoveL){
                                         Toast.makeText(MiniGameActivity.this, "right", Toast.LENGTH_SHORT).show();
-                                        var[i]=4;
+                                        directions[i]=4;
                                     }
                                     targets.get(i).setBackgroundTintList(null);
                                     //Drawable temp=selected_item.getBackground();

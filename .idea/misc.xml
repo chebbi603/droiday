@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/back3.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail2.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail3.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail4.xml" value="0.137" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/maze.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/player.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/Leaderboard_Row.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_Teacher_leaderboard.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_account_set_up.xml" value="0.264" />
@@ -23,6 +26,7 @@
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.25" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_teacher_home_page.xml" value="0.264" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_teacher_leaderboard.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_tracks.xml" value="0.2" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/answer.xml" value="0.264" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/layout/calendar_cell.xml" value="0.27447916666666666" />

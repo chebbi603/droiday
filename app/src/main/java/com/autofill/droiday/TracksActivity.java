@@ -63,13 +63,13 @@ public class TracksActivity extends AppCompatActivity {
             }
         });
 
-        /*coding.setOnClickListener(new View.OnClickListener() {
+        coding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TracksActivity.this, MiniGameActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         math.setOnClickListener(new View.OnClickListener() {
             @Override
