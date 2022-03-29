@@ -4,12 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/back3.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/back_maze.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/empty.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/empty_hover.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail2.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail3.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/fail4.xml" value="0.137" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/finish_case.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/game_icon.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/maze.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/move_down.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/move_left.xml" value="0.2525" />
+        <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/move_right.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/move_up.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/player.xml" value="0.2525" />
         <entry key="..\:/Users/Adam Mankai/AndroidStudioProjects/droiday/app/src/main/res/drawable/start_case.xml" value="0.2525" />
@@ -67,7 +74,6 @@
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_pdf.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_register.xml" value="0.317481884057971" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_resources.xml" value="0.317481884057971" />
-        <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_teacher_home_page.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/activity_tracks.xml" value="0.346875" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/layout/leaderboard_row.xml" value="0.16869300911854104" />
         <entry key="..\:/Users/chebb/AndroidStudioProjects/droiday/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.302" />

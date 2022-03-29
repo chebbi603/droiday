@@ -91,30 +91,65 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
 
         Toast.makeText(this, "onCreate: " + dpWidth + " " + dpHeight, Toast.LENGTH_SHORT).show();
 
-        lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.8 * dpWidth / 411), (int) (55 * 2.8 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        lp.setMargins(0, 0, (int) (15 * displayMetrics.density * dpWidth / 411), (int) (332 * displayMetrics.density * dpHeight / 731));
+        MoveU.setLayoutParams(lp);
+        MoveU.setScaleX(1);
+        MoveU.setScaleY(1);
+
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.8 * dpWidth / 411), (int) (55 * 2.8 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        lp.setMargins(0, 0, (int) (15 * displayMetrics.density * dpWidth / 411), (int) (272 * displayMetrics.density * dpHeight / 731));
+        MoveD.setLayoutParams(lp);
+        MoveD.setScaleX(1);
+        MoveD.setScaleY(1);
+
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.8 * dpWidth / 411), (int) (55 * 2.8 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        lp.setMargins(0, 0, (int) (15 * displayMetrics.density * dpWidth / 411), (int) (212 * displayMetrics.density * dpHeight / 731));
+        MoveR.setLayoutParams(lp);
+        MoveR.setScaleX(1);
+        MoveR.setScaleY(1);
+
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.8 * dpWidth / 411), (int) (55 * 2.8 * dpHeight / 731));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        lp.setMargins(0, 0, (int) (15 * displayMetrics.density * dpWidth / 411), (int) (152 * displayMetrics.density * dpHeight / 731));
+        MoveL.setLayoutParams(lp);
+        MoveL.setScaleX(1);
+        MoveL.setScaleY(1);
+
+        int height = 350;
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
         lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (350 * displayMetrics.density * dpHeight / 731));
+        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (height * displayMetrics.density * dpHeight / 731));
         start.setLayoutParams(lp);
         start.setScaleX(1);
         start.setScaleY(1);
 
-        int height = 300;
         for(ImageView trg : targets) {
-            lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+            height -= 36;
+            lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
             lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
             lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (height * displayMetrics.density * dpHeight / 731));
             trg.setLayoutParams(lp);
             trg.setScaleX(1);
             trg.setScaleY(1);
-            height -= 50;
+            trg.bringToFront();
+            start.bringToFront();
         }
 
-        lp = new RelativeLayout.LayoutParams((int) (175 * 2.5 * dpWidth / 411), (int) (55 * 2.5 * dpHeight / 731));
+        height -= 28;
+        lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.5 * dpWidth / 411), (int) (55 * 0.8259722 * 2.5 * dpHeight / 731));
         lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (50 * displayMetrics.density * dpHeight / 731));
+        lp.setMargins((int) (15 * displayMetrics.density * dpWidth / 411), 0, 0, (int) (height * displayMetrics.density * dpHeight / 731));
         finish.setLayoutParams(lp);
         finish.setScaleX(1);
         finish.setScaleY(1);
@@ -205,20 +240,15 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
 
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(  selected_item.getLayoutParams().width , selected_item.getLayoutParams().height));
                             lp.setMargins(x, y, 0, 0);
-                            /*if(var[0]==0) {
-                                if (crashX > bnd.get(0).Left() && crashX < bnd.get(0).Right() && crashY > bnd.get(0).Top() && crashY < bnd.get(0).Bottom()) {
-                                    target.setBackgroundTintList(ColorStateList.valueOf(0xffe5e5e5));
-                                } else {
-                                    target.setBackgroundTintList(ColorStateList.valueOf(0xffdbdbdb));
-                                    //imageDrop.setBackgroundTintList(null);EDE5E5
-                                }
-                            }*/
+
                             for(int i = 0; i < targets.size() ; i++){
                                 if(directions[i]==0) {
                                     if (crashX > bnd.get(i).Left() && crashX < bnd.get(i).Right() && crashY > bnd.get(i).Top() && crashY < bnd.get(i).Bottom()) {
-                                        targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffe5e5e5));
+                                        //targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffe5e5e5));
+                                        targets.get(i).setBackgroundResource(R.drawable.empty_hover);
                                     } else {
-                                        targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffdbdbdb));
+                                        //targets.get(i).setBackgroundTintList(ColorStateList.valueOf(0xffdbdbdb));
+                                        targets.get(i).setBackgroundResource(R.drawable.empty);
                                     }
                                 }
                             }
@@ -234,16 +264,21 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                                     if(selected_item==MoveU){
                                         Toast.makeText(MiniGameActivity.this, "up", Toast.LENGTH_SHORT).show();
                                         directions[i]=1;
+                                        targets.get(i).setBackgroundResource(R.drawable.move_up);
                                     }if(selected_item==MoveD){
                                         Toast.makeText(MiniGameActivity.this, "down", Toast.LENGTH_SHORT).show();
                                         directions[i]=2;
+                                        targets.get(i).setBackgroundResource(R.drawable.move_down);
                                     }if(selected_item==MoveR){
                                         Toast.makeText(MiniGameActivity.this, "left", Toast.LENGTH_SHORT).show();
                                         directions[i]=3;
+                                        targets.get(i).setBackgroundResource(R.drawable.move_right);
                                     }if(selected_item==MoveL){
                                         Toast.makeText(MiniGameActivity.this, "right", Toast.LENGTH_SHORT).show();
                                         directions[i]=4;
+                                        targets.get(i).setBackgroundResource(R.drawable.move_left);
                                     }
+
                                     targets.get(i).setBackgroundTintList(null);
                                     //Drawable temp=selected_item.getBackground();
                                     //imageDrop.setBackgroundDrawable(temp);
@@ -292,6 +327,7 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                 offset_x = (int) event.getX();
                 offset_y = (int) event.getY();
                 selected_item = v;
+                v.bringToFront();
                 imageParams=v.getLayoutParams();
                 break;
             case MotionEvent.ACTION_UP:

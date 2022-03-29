@@ -5,39 +5,52 @@
     android:id="@+id/container"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F6F3F3"
+    android:background="#fff"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="400dp"
-        android:background="#FFFEFE">
+        android:layout_marginBottom="350dp"
+        android:background="#ffffff">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/back_maze"
             android:scaleType="fitCenter"
-            android:scaleX="1"
-            android:scaleY="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/maze" />
-
-        <ImageView
-            android:id="@+id/player"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/player"
-            android:scaleX="0.55"
-            android:scaleY="0.55" />
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/maze"
+        android:scaleX="0.8"
+        android:scaleY="0.8" />
+
+    <ImageView
+        android:id="@+id/player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/player"
+        android:scaleX="0.8"
+        android:scaleY="0.8" />
 
     <ImageView
         android:id="@+id/ArriveeCase"
@@ -47,8 +60,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#03A9F4"
+        android:background="@drawable/finish_case"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -71,8 +83,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#E6DBDB"
+        android:background="@drawable/empty"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -84,8 +95,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="150dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#E6DBDB"
+        android:background="@drawable/empty"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -97,8 +107,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="200dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#E6DBDB"
+        android:background="@drawable/empty"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -110,8 +119,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="250dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#E6DBDB"
+        android:background="@drawable/empty"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -123,8 +131,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="300dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#E6DBDB"
+        android:background="@drawable/empty"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -136,8 +143,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="350dp"
-        android:background="@drawable/xp"
-        android:backgroundTint="#8BC34A"
+        android:background="@drawable/start_case"
         android:scaleX="1"
         android:scaleY="1" />
 
@@ -158,11 +164,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="275dp"
         android:background="@drawable/move_up"
-        android:scaleX="1"
-        android:scaleY="1" />
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
 
     <ImageView
         android:id="@+id/moveD"
@@ -170,11 +176,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="225dp"
-        android:background="@drawable/xp"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:background="@drawable/move_down"
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
 
     <ImageView
         android:id="@+id/moveR"
@@ -182,11 +188,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="175dp"
-        android:background="@drawable/xp"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:background="@drawable/move_right"
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
 
     <ImageView
         android:id="@+id/moveL"
@@ -194,20 +200,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="125dp"
-        android:background="@drawable/xp"
-        android:scaleX="2.5"
-        android:scaleY="2.5" />
+        android:background="@drawable/move_left"
+        android:scaleX="1.2"
+        android:scaleY="1.2" />
 
     <Button
         android:id="@+id/SubmitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="false"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
-        android:text="Soumettre" />
+        android:background="@drawable/blubtnquiz"
+        android:fontFamily="@font/lato_bold"
+        android:text="Soumettre"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </RelativeLayout>
