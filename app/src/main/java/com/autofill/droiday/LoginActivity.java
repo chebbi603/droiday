@@ -55,9 +55,7 @@ public class LoginActivity extends AppCompatActivity{
         CreateAcc = findViewById(R.id.NewAccBtn);
         ForgotBtn = findViewById(R.id.ForgotBtn);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         db = FirebaseFirestore.getInstance();
-
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         /*FirebaseAuth.getInstance().signOut();
@@ -115,6 +113,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent( LoginActivity.this,FacebookAuthActivity.class);
+                //Intent intent =new Intent( LoginActivity.this,MiniGameActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }

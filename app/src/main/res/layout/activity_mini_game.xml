@@ -210,10 +210,8 @@
         android:id="@+id/SubmitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="false"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/blubtnquiz"
         android:fontFamily="@font/lato_bold"
@@ -222,4 +220,14 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie2"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_loop="true" />
 </RelativeLayout>

@@ -1,7 +1,11 @@
 package com.autofill.droiday;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -18,6 +22,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,21 +31,28 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
     private View selected_item = null;
     private int offset_x = 0;
     private int offset_y = 0;
+    int count = 0;
+    float player_x,player_y;
+    coords playerPos = new coords(1,1);
     boolean touchFlag=false;
     boolean dropFlag=false;
+    boolean done =true;
+    int[][] map = new int[5][5];
     LayoutParams imageParams;
     ImageView MoveU,MoveD,MoveR,MoveL,Player,start,finish;
     List<ImageView> targets = new ArrayList<>();
-    int crashX,crashY,ScreenX,ScreenY;
+    int crashX,crashY;
     Button Submit;
     List<Bounds> bnd = new ArrayList<>();
     RelativeLayout.LayoutParams lp;
     int[] directions = new int[5];
+    final Handler handler = new Handler(Looper.getMainLooper());
+    MediaPlayer correctMp = new MediaPlayer();
 
     public static class Bounds
     {
         private final int Top;
-        private final int  Bottom;
+        private final int Bottom;
         private final int Left;
         private final int Right;
 
@@ -56,7 +69,22 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         public int Left() { return Left; }
         public int Right() { return Right; }
     }
+    public static class coords
+    {
+        private  int x;
+        private  int y;
 
+        public coords(int X, int Y)
+        {
+            this.x = X;
+            this.y = Y;
+        }
+
+        public int x()   { return x; }
+        public int y() { return y; }
+        public void setX(int a)   { this.x = a; }
+        public void setY(int b) { this.y = b; }
+    }
 
 
     @Override
@@ -66,11 +94,12 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mini_game);
         ViewGroup container = findViewById(R.id.container);
+        LottieAnimationView lottie = findViewById(R.id.lottie2);
+        Player = findViewById(R.id.player);
         MoveU= findViewById(R.id.moveUp);
         MoveD=findViewById(R.id.moveD);
         MoveR=findViewById(R.id.moveR);
         MoveL=findViewById(R.id.moveL);
-
         start = findViewById(R.id.departCase);
         finish = findViewById(R.id.ArriveeCase);
         targets.add(findViewById(R.id.target));
@@ -79,7 +108,16 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         targets.add(findViewById(R.id.target4));
         targets.add(findViewById(R.id.target5));
 
+        correctMp = MediaPlayer.create(this, R.raw.correct);
+
         Submit = findViewById(R.id.SubmitButton);
+
+        map[1][1] = 1;
+        map[2][1] = 1;
+        map[3][1] = 1;
+        map[3][2] = 1;
+        map[3][3] = 1;
+        map[2][3] = 1;
 
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics ();
@@ -89,7 +127,17 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
 
-        Toast.makeText(this, "onCreate: " + dpWidth + " " + dpHeight, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate: " + dpWidth + " " + dpHeight, Toast.LENGTH_SHORT).show();
+
+        player_x = (380 * dpWidth / 411);
+        player_y = (217 * dpHeight / 731);
+        lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+        lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);//380-552-724//172
+        lp.setMargins((int) player_x, (int) player_y, 0, 0);//217-410//193
+        Player.setLayoutParams(lp);
+        Player.setScaleX(1);
+        Player.setScaleY(1);
 
         lp = new RelativeLayout.LayoutParams((int) (55 * 3.13 * 2.8 * dpWidth / 411), (int) (55 * 2.8 * dpHeight / 731));
         lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -154,33 +202,117 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
         finish.setScaleX(1);
         finish.setScaleY(1);
 
+
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean check = true;
-                for(int e : directions){
-                    if(e == 0){
-                        check = false;
-                    }
-                }
-                if(!check){
-                    Toast.makeText(MiniGameActivity.this, "Use All The Moves Available", Toast.LENGTH_SHORT).show();
-                }else{
-                    for(int e : directions){
-                        switch(e){
-                            case 1:
-
-                                break;
-                            case 2:
-
-                                break;
-                            case 3:
-
-                                break;
-                            case 4:
-
-                                break;
+                if(done) {
+                    boolean check = true;
+                    for (int e : directions) {
+                        if (e == 0) {
+                            check = false;
                         }
+                    }
+                    if (!check) {
+                        Toast.makeText(MiniGameActivity.this, "Use All The Moves Available", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(MiniGameActivity.this, "" + directions[0], Toast.LENGTH_SHORT).show();
+                        done = false;
+                        count = 0;
+                        Runnable runnable = new Runnable() {
+                            public void run() {
+                                if (count < 5) {
+                                    switch (directions[count]) {
+                                        case 1:
+                                            playerPos.setY(playerPos.y()-1);
+                                            if(map[playerPos.x()][playerPos.y()]==0){
+                                                Toast.makeText(MiniGameActivity.this, "Can't go up", Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                player_y -= (193 * dpHeight / 731);
+                                                lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);//380-552-724//172
+                                                lp.setMargins((int) player_x, (int) player_y, 0, 0);//217//193
+                                                Player.setLayoutParams(lp);
+                                            }
+                                            break;
+                                        case 2:
+                                            playerPos.setY(playerPos.y()+1);
+                                            if(map[playerPos.x()][playerPos.y()]==0){
+                                                Toast.makeText(MiniGameActivity.this, "Can't go down", Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                player_y += (193 * dpHeight / 731);
+                                                lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                                                lp.setMargins((int) player_x, (int) player_y, 0, 0);
+                                                Player.setLayoutParams(lp);
+                                            }
+                                            break;
+                                        case 3:
+                                            playerPos.setX(playerPos.x()+1);
+                                            if(map[playerPos.x()][playerPos.y()]==0){
+                                                Toast.makeText(MiniGameActivity.this, "Can't go right", Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                player_x += (172 * dpWidth / 411);
+                                                lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                                                lp.setMargins((int) player_x, (int) player_y, 0, 0);
+                                                Player.setLayoutParams(lp);
+                                            }
+                                            break;
+                                        case 4:
+                                            playerPos.setX(playerPos.x()-1);
+                                            if(map[playerPos.x()][playerPos.y()]==0){
+                                                Toast.makeText(MiniGameActivity.this, " Can't go left", Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                player_x -= (172 * dpWidth / 411);
+                                                lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                                                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                                                lp.setMargins((int) player_x, (int) player_y, 0, 0);
+                                                Player.setLayoutParams(lp);
+                                            }
+                                            break;
+                                    }
+                                    if(map[playerPos.x()][playerPos.y()]==0){
+                                        count=5;
+                                    }
+                                    count++;
+                                    handler.postDelayed(this, 500);
+                                }else{
+                                    if(map[playerPos.x()][playerPos.y()]==1){
+                                        //Toast.makeText(MiniGameActivity.this, "Well Done", Toast.LENGTH_SHORT).show();
+                                        lottie.bringToFront();
+                                        lottie.setAnimation("welldone.json");
+                                        lottie.playAnimation();
+                                        correctMp.start();
+                                        handler.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent intent = new Intent(MiniGameActivity.this, TracksActivity.class);
+                                                startActivity(intent);
+                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                            }
+                                        }, 4500);
+
+                                    }else{
+                                        playerPos = new coords(1,1);
+                                        player_x = (380 * dpWidth / 411);
+                                        player_y = (217 * dpHeight / 731);
+                                        lp = new RelativeLayout.LayoutParams((int) (45 * 2.8 * dpWidth / 411), (int) (45 * 2.8 * dpWidth / 411));
+                                        lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                                        lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                                        lp.setMargins((int) player_x, (int) player_y, 0, 0);
+                                        Player.setLayoutParams(lp);
+                                        done = true;
+                                    }
+
+                                }
+                            }
+                        };
+                        handler.post(runnable);
                     }
                 }
             }
@@ -262,19 +394,15 @@ public class MiniGameActivity extends Activity implements OnTouchListener {
                                 if(crashX > bnd.get(i).Left() && crashX < bnd.get(i).Right() && crashY > bnd.get(i).Top() && crashY < bnd.get(i).Bottom() )
                                 {
                                     if(selected_item==MoveU){
-                                        Toast.makeText(MiniGameActivity.this, "up", Toast.LENGTH_SHORT).show();
                                         directions[i]=1;
                                         targets.get(i).setBackgroundResource(R.drawable.move_up);
                                     }if(selected_item==MoveD){
-                                        Toast.makeText(MiniGameActivity.this, "down", Toast.LENGTH_SHORT).show();
                                         directions[i]=2;
                                         targets.get(i).setBackgroundResource(R.drawable.move_down);
                                     }if(selected_item==MoveR){
-                                        Toast.makeText(MiniGameActivity.this, "left", Toast.LENGTH_SHORT).show();
                                         directions[i]=3;
                                         targets.get(i).setBackgroundResource(R.drawable.move_right);
                                     }if(selected_item==MoveL){
-                                        Toast.makeText(MiniGameActivity.this, "right", Toast.LENGTH_SHORT).show();
                                         directions[i]=4;
                                         targets.get(i).setBackgroundResource(R.drawable.move_left);
                                     }
